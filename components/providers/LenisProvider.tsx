@@ -2,17 +2,23 @@
 
 import { ReactLenis } from "lenis/react";
 import { useEffect, useRef } from "react";
-import { gsap } from "@/lib/gsap";
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<any>(null);
 
   useEffect(() => {
+    let frameId: number;
+
     function update(time: number) {
-      lenisRef.current?.lenis?.raf(time * 1000);
+      lenisRef.current?.lenis?.raf(time);
+      frameId = requestAnimationFrame(update);
     }
-    gsap.ticker.add(update);
-    return () => gsap.ticker.remove(update);
+
+    frameId = requestAnimationFrame(update);
+    
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (

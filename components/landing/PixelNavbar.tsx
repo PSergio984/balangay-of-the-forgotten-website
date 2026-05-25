@@ -3,6 +3,11 @@
 import Link from "next/link";
 
 export default function PixelNavbar() {
+  const handleJoinVoyage = () => {
+    // Placeholder for actual join flow
+    window.location.href = '/join';
+  };
+
   return (
     <nav className="sticky top-0 z-40 w-full bg-black/80 backdrop-blur-sm border-b-4 border-zinc-800 font-pixel">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +31,11 @@ export default function PixelNavbar() {
           </div>
           
           <div className="flex items-center">
-            <button className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 text-[10px] uppercase border-b-4 border-r-4 border-indigo-900 active:border-0 active:translate-y-1 active:translate-x-1 transition-all">
+            <button 
+              onClick={handleJoinVoyage}
+              aria-label="Join the voyage"
+              className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 text-[10px] uppercase border-b-4 border-r-4 border-indigo-900 active:border-0 active:translate-y-1 active:translate-x-1 transition-all"
+            >
               Join Voyage
             </button>
           </div>
