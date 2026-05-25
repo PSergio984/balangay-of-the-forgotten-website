@@ -116,11 +116,11 @@ const RolesSection: React.FC = () => {
                 }`}
               >
                 {/* Character shadow sprite */}
-                <div className="w-24 h-24 relative flex items-center justify-center mb-4 bg-slate-100/50 border-2 border-[#0C4A6E]/20 p-2 overflow-hidden">
+                <div className="w-40 h-40 relative flex items-center justify-center mb-4 bg-slate-100/50 border-2 border-[#0C4A6E]/20 overflow-hidden">
                   <img
                     src={role.shadowGif}
                     alt={role.name}
-                    className="w-full h-full object-contain scale-[2.5] rendering-pixelated"
+                    className="w-full h-full object-contain scale-[5] rendering-pixelated"
                   />
                 </div>
 
