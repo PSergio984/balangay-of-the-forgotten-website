@@ -3,8 +3,8 @@
 ## v1 Requirements (The "WOW" Wiki & Landing Page)
 
 ### Core Landing & Identity (CORE)
-- [ ] **CORE-01**: Responsive Pixel Art Landing Page - Aesthetic matches game 2D pixel style.
-- [ ] **CORE-02**: Parallax Scroll Effects - Deep, layered backgrounds for "WOW" immersion.
+- [x] **CORE-01**: Responsive Pixel Art Landing Page - Aesthetic matches game 2D pixel style.
+- [x] **CORE-02**: Parallax Scroll Effects - Deep, layered backgrounds for "WOW" immersion.
 - [x] **CORE-03**: Scroll-triggered Animations - Interactive load-in and directional animations.
 - [ ] **CORE-04**: News/Updates Feed - Simple feed for game development milestones.
 
@@ -36,8 +36,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CORE-01 | Phase 1 | Pending |
-| CORE-02 | Phase 1 | Pending |
+| CORE-01 | Phase 1 | Complete |
+| CORE-02 | Phase 1 | Complete |
 | CORE-03 | Phase 1 | Complete |
 | CORE-04 | Phase 2 | Pending |
 | WIKI-01 | Phase 2 | Pending |

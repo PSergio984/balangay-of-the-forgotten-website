@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import fs from 'fs';
+import * as fs from 'node:fs';
 
 test('CRT scanline overlay exists in layout', () => {
   const layout = fs.readFileSync('app/layout.tsx', 'utf-8');

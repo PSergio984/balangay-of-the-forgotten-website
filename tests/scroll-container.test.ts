@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import fs from 'fs';
+import * as fs from 'node:fs';
 
 test('AncientScrollContainer uses thematic background and scroll-mask utility', () => {
   const component = fs.readFileSync('components/landing/AncientScrollContainer.tsx', 'utf-8');

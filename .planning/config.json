@@ -21,13 +21,13 @@
       {
         "heading": "Risks & Dependencies",
         "enabled": true,
-        "source": "PLAN.md ## Risks || PLAN.md ## Dependencies",
+        "source": "RESEARCH/PITFALLS.md ## Critical Pitfalls || RESEARCH/PITFALLS.md ## Moderate Pitfalls",
         "fallback": "- No known high-risk rollout dependencies."
       },
       {
         "heading": "Success Metrics & Release Criteria",
         "enabled": false,
-        "source": "REQUIREMENTS.md ## Definition of Done || VERIFICATION.md ## Release Criteria",
+        "source": "REQUIREMENTS.md ## Definition of Done || PHASES/VERIFICATION.md ## Success Criteria Verification",
         "fallback": "- Release when automated verification and required manual checks pass."
       },
       {

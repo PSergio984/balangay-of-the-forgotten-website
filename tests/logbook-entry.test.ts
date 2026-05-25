@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import fs from 'fs';
+import * as fs from 'node:fs';
 
 test('LogbookEntry uses serif font and has entrance animation', () => {
   const component = fs.readFileSync('components/landing/LogbookEntry.tsx', 'utf-8');
