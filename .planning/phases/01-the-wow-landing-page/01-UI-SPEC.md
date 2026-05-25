@@ -9,9 +9,12 @@ design_system: Pixelact UI (Tailwind 4)
 
 ## Design System & Registry
 
-- **Base System:** Tailwind CSS v4 + Pixelact UI (Custom)
-- **Visual Style:** Retro-Futurism / 2D Pixel Art
-- **Registry:** shadcn (not initialized yet, using custom components with pixel-art logic)
+| Registry | Status | Safety Gate | Specific Blocks / Components |
+|----------|--------|-------------|------------------------------|
+| **shadcn** (Official) | Initialized | `verified — official — 2026-05-25` | `navigation-menu`, `dialog`, `separator` |
+| **Pixelact UI** (3rd Party) | Approved | `view passed — no flags — 2026-05-25` | `button`, `card`, `badge`, `window` |
+
+- **Registry Strategy:** Official shadcn for structural primitives; Pixelact UI for pixel-art themed components.
 - **Rendering Policy:** `image-rendering: pixelated` must be applied globally to all `img` and `canvas` elements.
 
 ## Spacing & Grid
@@ -35,17 +38,17 @@ design_system: Pixelact UI (Tailwind 4)
 ## Typography
 
 - **Heading Font:** `Press Start 2P` (Google Fonts)
-- **Body Font:** `VT323` (Google Fonts)
+- **Body Font:** `Crimson Text` (Google Fonts)
 - **Body Line Height:** 1.5
 - **Heading Line Height:** 1.2
+- **Weights:** Regular (400), SemiBold (600)
 
 | Role | Font Size | Weight | Line Height | Usage |
 |------|-----------|--------|-------------|-------|
-| Display | 32px | 400 | 1.1 | Hero Main Title |
-| H1 | 28px | 400 | 1.2 | Section Headers |
+| H1 | 28px | 400 | 1.2 | Hero Main Title & Section Headers |
 | H2 | 20px | 400 | 1.2 | Subsection Headers |
-| Body | 16px | 400 | 1.5 | Long-form Lore / Content |
-| Detail | 14px | 400 | 1.4 | Captions, News dates |
+| Body | 16px | 400 | 1.5 | Long-form Lore / Content (Readable Serif per D-08) |
+| Detail | 14px | 600 | 1.4 | Captions, News dates, labels |
 
 ## Color Contract
 
@@ -86,10 +89,10 @@ Following the **60-30-10** split for visual hierarchy:
 
 ## Component Inventory
 
-1. **ParallaxHero**: Multi-layer background scene with centered Logo and Primary CTA.
+1. **ParallaxHero**: Multi-layer background scene with centered Logo and Primary CTA (uses `PixelButton`).
 2. **AncientScrollContainer**: Full-width lore container with SVG-masked scroll edges.
-3. **BulletinBoard**: Flex/Grid container for news items styled as pinned notes.
-4. **PixelNavbar**: Sticky header with pixelated border and nav links.
+3. **BulletinBoard**: Flex/Grid container for news items styled as pinned notes (uses `PixelCard` and `PixelBadge`).
+4. **PixelNavbar**: Sticky header with pixelated border and nav links (uses `NavigationMenu`).
 5. **LogbookEntry**: Two-column layout with a sprite on one side and lore text on the other.
 
 ## Implementation Notes
