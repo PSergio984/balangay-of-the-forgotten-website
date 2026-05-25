@@ -18,7 +18,11 @@
   2. Background layers move at different speeds (parallax) during scroll, creating a sense of depth.
   3. UI elements animate into view based on scroll position (fade-in, slide-in).
   4. The overall UX aesthetic feels "in-universe" (e.g., ancient scroll or logbook theme).
-**Plans**: TBD
+**Plans**: 4 plans
+- [ ] 01-01-PLAN.md — Foundation & Thematic Layout
+- [ ] 01-02-PLAN.md — Parallax Hero Implementation
+- [ ] 01-03-PLAN.md — Scroll Narrative & Lore Container
+- [ ] 01-04-PLAN.md — Experience & Polish
 **UI hint**: yes
 
 ### Phase 2: Wiki Core & Content Engine
@@ -56,7 +60,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. The "WOW" Landing Page | 0/0 | Not started | - |
+| 1. The "WOW" Landing Page | 0/4 | Not started | - |
 | 2. Wiki Core & Content Engine | 0/0 | Not started | - |
 | 3. Discovery & Search | 0/0 | Not started | - |
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |
