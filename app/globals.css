@@ -71,7 +71,11 @@ html.lenis, html.lenis body {
 }
 
 @utility scroll-mask {
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 0 L10 5 L20 0 L30 10 L40 5 L50 15 L60 5 L70 10 L80 0 L90 5 L100 0 V20 H0 Z' fill='black'/%3E%3C/svg%3E");
-  mask-repeat: repeat-x;
-  mask-position: top;
+  mask-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 0 L10 5 L20 0 L30 10 L40 5 L50 15 L60 5 L70 10 L80 0 L90 5 L100 0 V20 H0 Z' fill='black'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 20 L10 15 L20 20 L30 10 L40 15 L50 5 L60 15 L70 10 L80 20 L90 15 L100 20 V0 H0 Z' fill='black'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  mask-repeat: repeat-x, repeat-x, no-repeat;
+  mask-position: top, bottom, center;
+  mask-size: 100px 20px, 100px 20px, 100% 100%;
 }
