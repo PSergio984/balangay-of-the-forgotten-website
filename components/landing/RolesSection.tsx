@@ -116,11 +116,17 @@ const RolesSection: React.FC = () => {
                 }`}
               >
                 {/* Character shadow sprite */}
-                <div className="w-40 h-40 relative flex items-center justify-center mb-4 bg-slate-100/50 border-2 border-[#0C4A6E]/20 overflow-hidden">
+                {/* Character sprite — GIFs are 800×800 but sprites fill ~75% of canvas, so a 256px object-contain shows them large */}
+                <div style={{ width: '192px', height: '192px' }} className="relative mb-4 overflow-hidden">
                   <img
                     src={role.shadowGif}
                     alt={role.name}
-                    className="w-full h-full object-contain scale-[5] rendering-pixelated"
+                    style={{
+                      width: '192px',
+                      height: '192px',
+                      objectFit: 'contain',
+                      imageRendering: 'pixelated',
+                    }}
                   />
                 </div>
 

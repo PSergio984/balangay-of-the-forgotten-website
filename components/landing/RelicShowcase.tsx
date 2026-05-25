@@ -3,6 +3,21 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+/**
+ * Each relic PNG is 640×640 px with artwork in ONE quadrant:
+ *   Pangil  → top-left     (x:40-349,  y:40-349)
+ *   Luhain  → top-right    (x:250-599, y:40-349)
+ *   Korona  → bottom-left  (x:40-349,  y:260-599)
+ *   Silang  → bottom-right (x:270-599, y:260-599)
+ *
+ * Grid strategy: render each PNG at 320px (0.5×) inside a 160px slot so that
+ * the four slots tile into the complete 640px composition with zero gap.
+ *   Pangil : left=0,    top=0
+ *   Luhain : left=-160, top=0
+ *   Korona : left=0,    top=-160
+ *   Silang : left=-160, top=-160
+ */
+
 interface RelicData {
   id: string;
   name: string;
@@ -11,20 +26,26 @@ interface RelicData {
   rarity: "Common" | "Rare" | "Epic" | "Legendary";
   description: string;
   effect: string;
-  // objectPosition targets the centre of the artwork within the 640×640 canvas
-  objectPosition: string;
+  /** offset of the 320px-rendered image inside the 160px grid slot */
+  gridLeft: number;
+  gridTop: number;
+  /** offset of the 640px-native image inside the 224px inspector thumbnail */
+  inspLeft: number;
+  inspTop: number;
 }
 
 const RELICS: RelicData[] = [
   {
-    id: "korona",
-    name: "Korona ni Apolaki",
-    type: "Solar Crown Relic",
-    icon: "/relics/korona.png",
+    id: "pangil",
+    name: "Pangil ni Bakunawa",
+    type: "Draconic Fang Relic",
+    icon: "/relics/pangil.png",
     rarity: "Legendary",
-    description: "The golden crown of Apolaki, the god of sun and war. Hand-crafted from solar fire and celestial metal. It pulses with intense heat, commanding the respect of fire-dwelling creatures.",
-    effect: "+25% Fire damage, +15% ATK, and grants immunity to overheat effects.",
-    objectPosition: "25% 66%"  // artwork at left-bottom quadrant
+    description: "A colossal fang carved from the jaws of Bakunawa, the moon-eating serpent. Cold to the touch, it holds the power of the crushing ocean depths and tidal currents.",
+    effect: "Allows underwater breathing, +20% Water damage, and chance to freeze on hit.",
+    gridLeft: 0, gridTop: 0,
+    // centre (195,195) → inspector (224px): 112-195=-83
+    inspLeft: -83, inspTop: -83,
   },
   {
     id: "luhain",
@@ -34,27 +55,21 @@ const RELICS: RelicData[] = [
     rarity: "Epic",
     description: "A crystalized tear shed by Mayari, the goddess of the moon. It glows with a soft, comforting lunar aura. It cools the mind of the wearer and protects against dark shadow magic.",
     effect: "+30% Mana regeneration, +20% Magic Defense, and unlocks night vision.",
-    objectPosition: "68% 30%"  // artwork at right-top quadrant
+    gridLeft: -160, gridTop: 0,
+    // centre (425,195) → inspector: 112-425=-313, 112-195=-83
+    inspLeft: -313, inspTop: -83,
   },
   {
-    id: "memory-fragment",
-    name: "Memory Fragment",
-    type: "Divine Memory Shard",
-    icon: "/relics/memory-fragment.png",
-    rarity: "Rare",
-    description: "A floating, pixelated shard of memories. It holds fragmental visions of the old world before the Great Fragmentation. Staring into it reveals battles waged between the gods and the sea dragon.",
-    effect: "Permanently unlocks deep lore entries in the archives and grants +10% EXP.",
-    objectPosition: "50% 50%"  // artwork fills almost all canvas
-  },
-  {
-    id: "pangil",
-    name: "Pangil ni Bakunawa",
-    type: "Draconic Fang Relic",
-    icon: "/relics/pangil.png",
+    id: "korona",
+    name: "Korona ni Apolaki",
+    type: "Solar Crown Relic",
+    icon: "/relics/korona.png",
     rarity: "Legendary",
-    description: "A colossal fang carved from the jaws of Bakunawa, the moon-eating serpent. Cold to the touch, it holds the power of the crushing ocean depths and tidal currents.",
-    effect: "Allows underwater breathing, +20% Water damage, and chance to freeze on hit.",
-    objectPosition: "25% 30%"  // artwork at left-top quadrant
+    description: "The golden crown of Apolaki, the god of sun and war. Hand-crafted from solar fire and celestial metal. It pulses with intense heat, commanding the respect of fire-dwelling creatures.",
+    effect: "+25% Fire damage, +15% ATK, and grants immunity to overheat effects.",
+    gridLeft: 0, gridTop: -160,
+    // centre (195,430) → inspector: 112-195=-83, 112-430=-318
+    inspLeft: -83, inspTop: -318,
   },
   {
     id: "silang",
@@ -64,8 +79,10 @@ const RELICS: RelicData[] = [
     rarity: "Epic",
     description: "An ancient navigation relic shaped like a crescent star. Used by the first pinili voyage to navigate the Sky Mists. It points toward lost relics and guides the balangay safely through storms.",
     effect: "+15% Voyage Speed, decreases combat encounter rate by 20% in deep mists.",
-    objectPosition: "68% 66%"  // artwork at right-bottom quadrant
-  }
+    gridLeft: -160, gridTop: -160,
+    // centre (435,430) → inspector: 112-435=-323, 112-430=-318
+    inspLeft: -323, inspTop: -318,
+  },
 ];
 
 const RelicShowcase: React.FC = () => {
@@ -86,57 +103,66 @@ const RelicShowcase: React.FC = () => {
         </p>
 
         <div className="flex flex-col md:flex-row gap-8 items-stretch justify-center">
-          
-          {/* Inventory Grid Grid */}
-          <div className="w-full md:w-1/2 flex flex-col justify-center items-center">
-            <div className="border-4 border-[#0C4A6E] bg-white p-6 shadow-[6px_6px_0px_0px_rgba(12,74,110,1)] max-w-md w-full">
+
+          {/* ── 2×2 Inventory Grid ── */}
+          <div className="flex flex-col justify-center items-center">
+            <div className="border-4 border-[#0C4A6E] bg-white p-6 shadow-[6px_6px_0px_0px_rgba(12,74,110,1)]">
               <div className="font-pixel text-[10px] text-[#0C4A6E] border-b border-[#0C4A6E]/20 pb-2 mb-4 uppercase tracking-widest text-center">
-                Balangay Storage - Relics
+                Balangay Storage — Relics
               </div>
-              
-              <div className="grid grid-cols-3 gap-4 justify-items-center">
+
+              {/* 2×2 grid, no gap so the four relic pieces tile seamlessly */}
+              <div className="grid grid-cols-2" style={{ gap: 0 }}>
                 {RELICS.map((relic) => {
                   const isSelected = selectedRelic?.id === relic.id;
                   return (
                     <motion.button
                       key={relic.id}
                       onClick={() => selectRelic(relic)}
-                      whileHover={{ scale: 1.08 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`w-36 h-36 border-4 bg-[#F0F9FF] flex items-center justify-center relative cursor-pointer group overflow-hidden ${
-                        isSelected
-                          ? 'border-[#F97316] bg-[#FFF7ED] shadow-[4px_4px_0px_0px_rgba(249,115,22,1)]'
-                          : 'border-[#0C4A6E] hover:border-[#0EA5E9] hover:bg-white shadow-[4px_4px_0px_0px_rgba(12,74,110,0.5)]'
-                      }`}
+                      whileHover={{ scale: 1.04, zIndex: 10 }}
+                      whileTap={{ scale: 0.97 }}
+                      style={{
+                        width: '160px',
+                        height: '160px',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        cursor: 'pointer',
+                        outline: isSelected ? '3px solid #F97316' : '2px solid #0C4A6E',
+                        outlineOffset: '-2px',
+                        boxShadow: isSelected
+                          ? 'inset 0 0 0 2px #F97316'
+                          : undefined,
+                        background: '#F0F9FF',
+                        zIndex: isSelected ? 5 : 1,
+                      }}
                     >
+                      {/* 320px-rendered image positioned so this quadrant fills the 160px slot */}
                       <img
                         src={relic.icon}
                         alt={relic.name}
-                        className="w-full h-full group-hover:rotate-12 transition-transform duration-200 rendering-pixelated"
-                        style={{ objectFit: 'none', objectPosition: relic.objectPosition, transform: 'scale(2.2)', imageRendering: 'pixelated' }}
+                        style={{
+                          position: 'absolute',
+                          width: '320px',
+                          height: '320px',
+                          maxWidth: 'none',
+                          left: `${relic.gridLeft}px`,
+                          top: `${relic.gridTop}px`,
+                          imageRendering: 'pixelated',
+                        }}
                       />
-                      <div className={`absolute top-1 right-1 w-2.5 h-2.5 rounded-full ${
-                        relic.rarity === "Legendary" ? "bg-amber-500" :
-                        relic.rarity === "Epic" ? "bg-purple-500" : "bg-sky-500"
+                      {/* Rarity dot */}
+                      <div className={`absolute top-1 right-1 w-2.5 h-2.5 rounded-full z-10 ${
+                        relic.rarity === "Legendary" ? "bg-amber-500" : "bg-purple-500"
                       }`} />
                     </motion.button>
                   );
                 })}
-                {/* Empty slots for inventory visual effect */}
-                {[...Array(4)].map((_, i) => (
-                  <div
-                    key={`empty-${i}`}
-                    className="w-36 h-36 border-4 border-dashed border-[#0C4A6E]/30 bg-slate-50/50 flex items-center justify-center text-slate-300 font-pixel text-[10px]"
-                  >
-                    EMPTY
-                  </div>
-                ))}
               </div>
             </div>
           </div>
 
-          {/* Relic Inspector Panel */}
-          <div className="w-full md:w-1/2 flex">
+          {/* ── Inspector Panel ── */}
+          <div className="flex-1 flex">
             <AnimatePresence mode="wait">
               {selectedRelic ? (
                 <motion.div
@@ -151,20 +177,30 @@ const RelicShowcase: React.FC = () => {
                     <div className="flex justify-between items-center border-b border-[#0C4A6E]/20 pb-2">
                       <span className="font-pixel text-[8px] text-[#0C4A6E]/60 uppercase">{selectedRelic.type}</span>
                       <span className={`px-2 py-0.5 text-[8px] font-pixel uppercase text-white ${
-                        selectedRelic.rarity === "Legendary" ? "bg-amber-500" :
-                        selectedRelic.rarity === "Epic" ? "bg-purple-500" : "bg-sky-500"
+                        selectedRelic.rarity === "Legendary" ? "bg-amber-500" : "bg-purple-500"
                       }`}>
                         {selectedRelic.rarity}
                       </span>
                     </div>
 
                     <div className="flex gap-4 items-center">
-                      <div className="w-48 h-48 border-4 border-[#0C4A6E] bg-[#F0F9FF] flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_rgba(12,74,110,0.2)] overflow-hidden">
+                      {/* 224px inspector thumbnail — native 640px image centred on artwork */}
+                      <div
+                        style={{ width: '224px', height: '224px', minWidth: '224px', position: 'relative', overflow: 'hidden' }}
+                        className="border-4 border-[#0C4A6E] bg-[#F0F9FF] shadow-[4px_4px_0px_0px_rgba(12,74,110,0.2)]"
+                      >
                         <img
                           src={selectedRelic.icon}
                           alt={selectedRelic.name}
-                          className="w-full h-full rendering-pixelated"
-                          style={{ objectFit: 'none', objectPosition: selectedRelic.objectPosition, transform: 'scale(3)', imageRendering: 'pixelated' }}
+                          style={{
+                            position: 'absolute',
+                            width: '640px',
+                            height: '640px',
+                            maxWidth: 'none',
+                            left: `${selectedRelic.inspLeft}px`,
+                            top: `${selectedRelic.inspTop}px`,
+                            imageRendering: 'pixelated',
+                          }}
                         />
                       </div>
                       <div>
@@ -197,7 +233,7 @@ const RelicShowcase: React.FC = () => {
                     ?
                   </div>
                   <p className="font-pixel text-[10px] text-[#0C4A6E]/60 max-w-xs leading-normal">
-                    CLICK AN ITEM FROM THE BALANGAY STORAGE INVENTORY TO INSPECT DIVINE LORE & MAGICAL ATTRIBUTES
+                    CLICK AN ITEM FROM THE BALANGAY STORAGE INVENTORY TO INSPECT DIVINE LORE &amp; MAGICAL ATTRIBUTES
                   </p>
                 </div>
               )}
