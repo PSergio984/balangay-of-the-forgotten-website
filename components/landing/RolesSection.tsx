@@ -120,7 +120,7 @@ const RolesSection: React.FC = () => {
                   <img
                     src={role.shadowGif}
                     alt={role.name}
-                    className="w-full h-full object-contain rendering-pixelated"
+                    className="w-full h-full object-contain scale-[2.5] rendering-pixelated"
                   />
                 </div>
 

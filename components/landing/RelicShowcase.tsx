@@ -105,7 +105,7 @@ const RelicShowcase: React.FC = () => {
                       <img
                         src={relic.icon}
                         alt={relic.name}
-                        className="w-full h-full object-contain rendering-pixelated group-hover:rotate-12 transition-transform duration-200"
+                        className="w-full h-full object-contain scale-[2.5] rendering-pixelated group-hover:rotate-12 transition-transform duration-200"
                       />
                       <div className={`absolute top-1 right-1 w-2.5 h-2.5 rounded-full ${
                         relic.rarity === "Legendary" ? "bg-amber-500" :
@@ -151,11 +151,11 @@ const RelicShowcase: React.FC = () => {
                     </div>
 
                     <div className="flex gap-4 items-center">
-                      <div className="w-16 h-16 border-2 border-[#0C4A6E] bg-[#F0F9FF] p-2 overflow-hidden flex items-center justify-center shrink-0">
+                      <div className="w-32 h-32 border-4 border-[#0C4A6E] bg-[#F0F9FF] p-2 flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_rgba(12,74,110,0.2)]">
                         <img
                           src={selectedRelic.icon}
                           alt={selectedRelic.name}
-                          className="w-full h-full object-contain rendering-pixelated"
+                          className="w-full h-full object-contain scale-[2.5] rendering-pixelated"
                         />
                       </div>
                       <div>
