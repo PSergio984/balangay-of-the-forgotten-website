@@ -1,20 +1,30 @@
 "use client";
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const AmbientPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const charAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const toggleAudio = async () => {
     if (!audioRef.current) return;
 
     try {
       if (isPlaying) {
+        // Mute/Pause everything
         audioRef.current.pause();
+        if (charAudioRef.current) {
+          charAudioRef.current.pause();
+        }
         setIsPlaying(false);
       } else {
-        await audioRef.current.play();
+        // If a custom theme was active, play it instead of the main background
+        if (charAudioRef.current) {
+          await charAudioRef.current.play();
+        } else {
+          await audioRef.current.play();
+        }
         setIsPlaying(true);
       }
     } catch (err) {
@@ -23,12 +33,67 @@ const AmbientPlayer: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handlePlayTheme = async (e: Event) => {
+      const customEvent = e as CustomEvent<{ src: string }>;
+      const { src } = customEvent.detail;
+
+      // Pause main ambient theme
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+
+      // Stop current theme if any
+      if (charAudioRef.current) {
+        charAudioRef.current.pause();
+        charAudioRef.current = null;
+      }
+
+      // Initialize and play new theme
+      const newAudio = new Audio(src);
+      newAudio.loop = true;
+      newAudio.volume = 0.5;
+      charAudioRef.current = newAudio;
+
+      if (isPlaying) {
+        try {
+          await newAudio.play();
+        } catch (err) {
+          console.error("Failed to play custom theme:", err);
+        }
+      }
+    };
+
+    const handleStopTheme = () => {
+      if (charAudioRef.current) {
+        charAudioRef.current.pause();
+        charAudioRef.current = null;
+      }
+
+      // Resume main ambient theme if we should be playing
+      if (isPlaying && audioRef.current) {
+        audioRef.current.play().catch(err => console.error(err));
+      }
+    };
+
+    window.addEventListener('play-game-theme', handlePlayTheme);
+    window.addEventListener('stop-game-theme', handleStopTheme);
+
+    return () => {
+      window.removeEventListener('play-game-theme', handlePlayTheme);
+      window.removeEventListener('stop-game-theme', handleStopTheme);
+      if (charAudioRef.current) {
+        charAudioRef.current.pause();
+      }
+    };
+  }, [isPlaying]);
+
   return (
     <div className="fixed bottom-8 left-8 z-40">
       <audio 
         ref={audioRef}
         loop
-        src="/ambient-loop.mp3" 
+        src="/audio/intro/isla-ng-lihim.mp3" 
       />
       <button 
         onClick={toggleAudio}

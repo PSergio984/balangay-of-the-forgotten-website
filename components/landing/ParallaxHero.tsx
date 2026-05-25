@@ -11,44 +11,64 @@ export default function ParallaxHero() {
     offset: ["start start", "end start"]
   });
 
-  // Replicating GSAP yPercent differences:
-  // Background: -25%
-  // Mid: -15%
-  // Foreground: -5%
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
-  const midY = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
-  const foregroundY = useTransform(scrollYProgress, [0, 1], ["0%", "-5%"]);
+  // Logo animations (occur during the first half of the scroll)
+  const logoY = useTransform(scrollYProgress, [0, 0.5], ["0px", "-150px"]);
+  const logoOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const logoScale = useTransform(scrollYProgress, [0, 0.5], [1, 0.85]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+
+  // Video background adjustments
+  const videoScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.15]);
+  const videoOpacity = useTransform(scrollYProgress, [0.3, 0.6], [1, 0.2]);
 
   return (
-    <section 
+    <div 
       ref={containerRef} 
-      className="relative h-screen w-full overflow-hidden bg-black flex items-center justify-center"
+      className="relative h-[180vh] w-full bg-black"
     >
-      {/* Background Layer */}
-      <motion.div 
-        style={{ y: backgroundY, imageRendering: 'pixelated' }}
-        className="absolute inset-0 bg-indigo-950 opacity-50"
-      >
-        {/* Placeholder for starfield/distant mountains */}
-      </motion.div>
+      {/* Sticky container that stays in place while scrolling */}
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center z-10">
+        
+        {/* Background Video Layer */}
+        <motion.div 
+          style={{ scale: videoScale, opacity: videoOpacity }}
+          className="absolute inset-0 w-full h-full"
+        >
+          <video
+            src="/videos/animations/menuscreen.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover rendering-pixelated"
+          />
+          {/* Subtle dark vignette overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 pointer-events-none" />
+        </motion.div>
 
-      {/* Mid Layer */}
-      <motion.div 
-        style={{ y: midY, imageRendering: 'pixelated' }}
-        className="absolute inset-0 flex items-center justify-center"
-      >
-        <h1 className="text-6xl md:text-9xl font-bold text-white tracking-tighter">
-          BALANGAY
-        </h1>
-      </motion.div>
+        {/* Foreground Logo & Text Layer */}
+        <motion.div 
+          style={{ y: logoY, opacity: logoOpacity, scale: logoScale }}
+          className="relative z-20 flex flex-col items-center justify-center px-4 max-w-4xl text-center pointer-events-none"
+        >
+          <img 
+            src="/videos/animations/logo.png" 
+            alt="Balangay of the Forgotten" 
+            className="w-[90%] md:w-full h-auto max-h-[50vh] object-contain rendering-pixelated drop-shadow-[0_8px_8px_rgba(0,0,0,0.8)]"
+          />
+          
+          <motion.div 
+            style={{ opacity: textOpacity }}
+            className="mt-12 flex flex-col items-center gap-4"
+          >
+            <span className="font-pixel text-[10px] md:text-xs text-white tracking-widest bg-black/50 px-4 py-2 border-2 border-white/20 animate-pulse">
+              SCROLL TO EXPLORE ARCHIVES
+            </span>
+            <div className="w-1 h-12 bg-gradient-to-b from-white to-transparent animate-bounce mt-4" />
+          </motion.div>
+        </motion.div>
 
-      {/* Foreground Layer */}
-      <motion.div 
-        style={{ y: foregroundY, imageRendering: 'pixelated' }}
-        className="absolute inset-0 pointer-events-none"
-      >
-        {/* Placeholder for foreground foliage/ruins */}
-      </motion.div>
-    </section>
+      </div>
+    </div>
   );
 }

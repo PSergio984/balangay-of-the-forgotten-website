@@ -8,7 +8,7 @@ interface AncientScrollContainerProps {
 const AncientScrollContainer: React.FC<AncientScrollContainerProps> = ({ children, className = '' }) => {
   return (
     <div 
-      className={`relative w-full bg-[#F0F9FF] py-16 scroll-mask ${className}`}
+      className={`relative z-20 w-full bg-[#F0F9FF] py-16 scroll-mask ${className}`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {children}
