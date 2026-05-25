@@ -11,6 +11,7 @@ interface RelicData {
   rarity: "Common" | "Rare" | "Epic" | "Legendary";
   description: string;
   effect: string;
+  transformStyle: string;
 }
 
 const RELICS: RelicData[] = [
@@ -21,7 +22,8 @@ const RELICS: RelicData[] = [
     icon: "/relics/korona.png",
     rarity: "Legendary",
     description: "The golden crown of Apolaki, the god of sun and war. Hand-crafted from solar fire and celestial metal. It pulses with intense heat, commanding the respect of fire-dwelling creatures.",
-    effect: "+25% Fire damage, +15% ATK, and grants immunity to overheat effects."
+    effect: "+25% Fire damage, +15% ATK, and grants immunity to overheat effects.",
+    transformStyle: "scale(3.6) translate(19.5%, -16.4%)"
   },
   {
     id: "luhain",
@@ -30,7 +32,8 @@ const RELICS: RelicData[] = [
     icon: "/relics/luhain.png",
     rarity: "Epic",
     description: "A crystalized tear shed by Mayari, the goddess of the moon. It glows with a soft, comforting lunar aura. It cools the mind of the wearer and protects against dark shadow magic.",
-    effect: "+30% Mana regeneration, +20% Magic Defense, and unlocks night vision."
+    effect: "+30% Mana regeneration, +20% Magic Defense, and unlocks night vision.",
+    transformStyle: "scale(3.6) translate(-16.4%, 20.3%)"
   },
   {
     id: "memory-fragment",
@@ -39,7 +42,8 @@ const RELICS: RelicData[] = [
     icon: "/relics/memory-fragment.png",
     rarity: "Rare",
     description: "A floating, pixelated shard of memories. It holds fragmental visions of the old world before the Great Fragmentation. Staring into it reveals battles waged between the gods and the sea dragon.",
-    effect: "Permanently unlocks deep lore entries in the archives and grants +10% EXP."
+    effect: "Permanently unlocks deep lore entries in the archives and grants +10% EXP.",
+    transformStyle: "scale(2.2) translate(0%, 0%)"
   },
   {
     id: "pangil",
@@ -48,7 +52,8 @@ const RELICS: RelicData[] = [
     icon: "/relics/pangil.png",
     rarity: "Legendary",
     description: "A colossal fang carved from the jaws of Bakunawa, the moon-eating serpent. Cold to the touch, it holds the power of the crushing ocean depths and tidal currents.",
-    effect: "Allows underwater breathing, +20% Water damage, and chance to freeze on hit."
+    effect: "Allows underwater breathing, +20% Water damage, and chance to freeze on hit.",
+    transformStyle: "scale(3.6) translate(19.5%, 20.3%)"
   },
   {
     id: "silang",
@@ -57,7 +62,8 @@ const RELICS: RelicData[] = [
     icon: "/relics/silang.png",
     rarity: "Epic",
     description: "An ancient navigation relic shaped like a crescent star. Used by the first pinili voyage to navigate the Sky Mists. It points toward lost relics and guides the balangay safely through storms.",
-    effect: "+15% Voyage Speed, decreases combat encounter rate by 20% in deep mists."
+    effect: "+15% Voyage Speed, decreases combat encounter rate by 20% in deep mists.",
+    transformStyle: "scale(3.6) translate(-17.96%, -16.4%)"
   }
 ];
 
@@ -96,17 +102,22 @@ const RelicShowcase: React.FC = () => {
                       onClick={() => selectRelic(relic)}
                       whileHover={{ scale: 1.08 }}
                       whileTap={{ scale: 0.95 }}
-                      className={`w-24 h-24 border-4 p-2 bg-[#F0F9FF] flex items-center justify-center relative cursor-pointer group ${
+                      className={`w-24 h-24 border-4 p-2 bg-[#F0F9FF] flex items-center justify-center relative cursor-pointer group overflow-hidden ${
                         isSelected
                           ? 'border-[#F97316] bg-[#FFF7ED] shadow-[4px_4px_0px_0px_rgba(249,115,22,1)]'
                           : 'border-[#0C4A6E] hover:border-[#0EA5E9] hover:bg-white shadow-[4px_4px_0px_0px_rgba(12,74,110,0.5)]'
                       }`}
                     >
-                      <img
-                        src={relic.icon}
-                        alt={relic.name}
-                        className="w-full h-full object-contain scale-[2.5] rendering-pixelated group-hover:rotate-12 transition-transform duration-200"
-                      />
+                      <div 
+                        className="w-full h-full flex items-center justify-center transition-transform duration-200 group-hover:rotate-12"
+                        style={{ transform: relic.transformStyle }}
+                      >
+                        <img
+                          src={relic.icon}
+                          alt={relic.name}
+                          className="w-full h-full object-contain rendering-pixelated"
+                        />
+                      </div>
                       <div className={`absolute top-1 right-1 w-2.5 h-2.5 rounded-full ${
                         relic.rarity === "Legendary" ? "bg-amber-500" :
                         relic.rarity === "Epic" ? "bg-purple-500" : "bg-sky-500"
@@ -151,12 +162,17 @@ const RelicShowcase: React.FC = () => {
                     </div>
 
                     <div className="flex gap-4 items-center">
-                      <div className="w-32 h-32 border-4 border-[#0C4A6E] bg-[#F0F9FF] p-2 flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_rgba(12,74,110,0.2)]">
-                        <img
-                          src={selectedRelic.icon}
-                          alt={selectedRelic.name}
-                          className="w-full h-full object-contain scale-[2.5] rendering-pixelated"
-                        />
+                      <div className="w-32 h-32 border-4 border-[#0C4A6E] bg-[#F0F9FF] p-2 flex items-center justify-center shrink-0 shadow-[4px_4px_0px_0px_rgba(12,74,110,0.2)] overflow-hidden">
+                        <div 
+                          className="w-full h-full flex items-center justify-center"
+                          style={{ transform: selectedRelic.transformStyle }}
+                        >
+                          <img
+                            src={selectedRelic.icon}
+                            alt={selectedRelic.name}
+                            className="w-full h-full object-contain rendering-pixelated"
+                          />
+                        </div>
                       </div>
                       <div>
                         <h3 className="text-lg font-pixel text-[#0C4A6E] uppercase">
