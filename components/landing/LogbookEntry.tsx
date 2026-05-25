@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { gsap, useGSAP } from '@/lib/gsap';
+import { motion } from 'framer-motion';
 
 interface LogbookEntryProps {
   title: string;
@@ -19,36 +19,13 @@ const LogbookEntry: React.FC<LogbookEntryProps> = ({
   imageAlt = 'Lore illustration',
   reversed = false,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    gsap.fromTo(
-      containerRef.current,
-      {
-        opacity: 0,
-        y: 30,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-        },
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <div 
-      ref={containerRef}
-      className={`flex flex-col md:flex-row items-center gap-8 py-12 opacity-0 ${
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-20%" }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className={`flex flex-col md:flex-row items-center gap-8 py-12 ${
         reversed ? 'md:flex-row-reverse' : ''
       }`}
     >
@@ -64,7 +41,7 @@ const LogbookEntry: React.FC<LogbookEntryProps> = ({
         </div>
       </div>
 
-      <div ref={contentRef} className="w-full md:w-2/3 space-y-4">
+      <div className="w-full md:w-2/3 space-y-4">
         <h3 className="text-xl font-pixel text-[#0C4A6E] uppercase tracking-wider">
           {title}
         </h3>
@@ -72,7 +49,7 @@ const LogbookEntry: React.FC<LogbookEntryProps> = ({
           {content}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

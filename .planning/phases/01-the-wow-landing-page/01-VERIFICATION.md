@@ -9,8 +9,8 @@
 | ID | Success Criteria | Status | Evidence |
 |----|------------------|--------|----------|
 | SC-01 | Pixel-perfect rendering (no blur) | **PASS** | `image-rendering: pixelated` applied to all images/canvas in `globals.css`. |
-| SC-02 | Parallax scroll effects | **PASS** | `ParallaxHero.tsx` uses GSAP `ScrollTrigger` with 3 depth layers. |
-| SC-03 | Scroll-triggered animations | **PASS** | `LogbookEntry` and `BulletinBoard` implement staggered GSAP entrances. |
+| SC-02 | Parallax scroll effects | **PASS** | `ParallaxHero.tsx` uses Framer Motion `useScroll` with 3 depth layers. |
+| SC-03 | Scroll-triggered animations | **PASS** | `LogbookEntry` and `BulletinBoard` implement staggered Framer Motion entrances. |
 | SC-04 | "In-Universe" UX aesthetic | **PASS** | CRT scanline overlay, `AncientScrollContainer` masking, and thematic fonts active. |
 
 ## Requirement Traceability
