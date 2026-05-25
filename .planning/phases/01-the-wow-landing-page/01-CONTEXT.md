@@ -30,10 +30,6 @@ Creation of an immersive, pixel-perfect landing page that sets the game's atmosp
 - **D-08:** **Hybrid Typography** — Pixel art fonts for titles/headers; clean serif or sans-serif fonts for long-form lore text to ensure readability.
 - **D-09:** **Sticky Pixel Bar** — A persistent, pixel-styled navigation bar for easy access between sections.
 
-### Wiki & Timeline Structure
-- **D-10:** **Two-Column Sidebar Layout** — Classic wiki layout with a sidebar for categories and a main content area for lore.
-- **D-11:** **Vertical Scroll-based Timeline** — Users move through game history by scrolling vertically.
-
 ### Experience Enhancements
 - **D-12:** **Ambient Music Hook** — Include atmospheric game loops with a clear "Unmute" button/toggle.
 - **D-13:** **Integer Upscaling for Mobile** — Maintain pixel crispness on mobile by using integer-ratio scaling.

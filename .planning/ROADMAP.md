@@ -19,10 +19,10 @@
   3. UI elements animate into view based on scroll position (fade-in, slide-in).
   4. The overall UX aesthetic feels "in-universe" (e.g., ancient scroll or logbook theme).
 **Plans**: 4 plans
-- [ ] 01-01-PLAN.md — Foundation & Thematic Layout
-- [ ] 01-02-PLAN.md — Parallax Hero Implementation
-- [ ] 01-03-PLAN.md — Scroll Narrative & Lore Container
-- [ ] 01-04-PLAN.md — Experience & Polish
+- [x] 01-01-PLAN.md — Foundation & Thematic Layout
+- [x] 01-02-PLAN.md — Parallax Hero Implementation
+- [x] 01-03-PLAN.md — Scroll Narrative & Lore Container
+- [x] 01-04-PLAN.md — Experience & Polish
 **UI hint**: yes
 
 ### Phase 2: Wiki Core & Content Engine
