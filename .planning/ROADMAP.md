@@ -2,7 +2,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: The "WOW" Landing Page** - Establish pixel-art identity with parallax and animations.
+- [x] **Phase 1: The "WOW" Landing Page** - Establish pixel-art identity with parallax and animations.
 - [ ] **Phase 2: Wiki Core & Content Engine** - Build the database for lore, characters, and news.
 - [ ] **Phase 3: Discovery & Search** - Implement global search and interactive lore timeline.
 - [ ] **Phase 4: Unity Interactive Showcase** - Embed Unity WebGL models for character inspection.
@@ -60,7 +60,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. The "WOW" Landing Page | 0/4 | Not started | - |
+| 1. The "WOW" Landing Page | 4/4 | Complete | 2026-05-25 |
 | 2. Wiki Core & Content Engine | 0/0 | Not started | - |
 | 3. Discovery & Search | 0/0 | Not started | - |
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |

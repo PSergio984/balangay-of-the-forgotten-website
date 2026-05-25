@@ -5,7 +5,7 @@
 ### Core Landing & Identity (CORE)
 - [ ] **CORE-01**: Responsive Pixel Art Landing Page - Aesthetic matches game 2D pixel style.
 - [ ] **CORE-02**: Parallax Scroll Effects - Deep, layered backgrounds for "WOW" immersion.
-- [ ] **CORE-03**: Scroll-triggered Animations - Interactive load-in and directional animations.
+- [x] **CORE-03**: Scroll-triggered Animations - Interactive load-in and directional animations.
 - [ ] **CORE-04**: News/Updates Feed - Simple feed for game development milestones.
 
 ### Wiki & Lore Repository (WIKI)
@@ -16,7 +16,7 @@
 ### Interactive Differentiators (INT)
 - [ ] **INT-01**: Unity Model Preview - Embedded Unity WebGL instance for character inspection.
 - [ ] **INT-02**: Interactive Lore Timeline - Visual journey through the game's historical events.
-- [ ] **INT-03**: Thematic UI Hook - "In-Universe" UX aesthetic (e.g., Logbook or Ancient Scroll).
+- [x] **INT-03**: Thematic UI Hook - "In-Universe" UX aesthetic (e.g., Logbook or Ancient Scroll).
 
 ## v2 Requirements (Deferred)
 - [ ] **INTG-01**: ASP.NET Backend Foundation - Shared .NET models for data sync with Unity.
@@ -38,11 +38,11 @@
 |-------------|-------|--------|
 | CORE-01 | Phase 1 | Pending |
 | CORE-02 | Phase 1 | Pending |
-| CORE-03 | Phase 1 | Pending |
+| CORE-03 | Phase 1 | Complete |
 | CORE-04 | Phase 2 | Pending |
 | WIKI-01 | Phase 2 | Pending |
 | WIKI-02 | Phase 3 | Pending |
 | WIKI-03 | Phase 2 | Pending |
 | INT-01 | Phase 4 | Pending |
 | INT-02 | Phase 3 | Pending |
-| INT-03 | Phase 1 | Pending |
+| INT-03 | Phase 1 | Complete |
