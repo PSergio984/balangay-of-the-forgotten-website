@@ -33,4 +33,16 @@
 - All REQ-IDs verified by automated or manual tests.
 
 ## Traceability
-<!-- Filled by roadmap creation -->
+
+| Requirement | Phase | Status |
+|-------------|-------|--------|
+| CORE-01 | Phase 1 | Pending |
+| CORE-02 | Phase 1 | Pending |
+| CORE-03 | Phase 1 | Pending |
+| CORE-04 | Phase 2 | Pending |
+| WIKI-01 | Phase 2 | Pending |
+| WIKI-02 | Phase 3 | Pending |
+| WIKI-03 | Phase 2 | Pending |
+| INT-01 | Phase 4 | Pending |
+| INT-02 | Phase 3 | Pending |
+| INT-03 | Phase 1 | Pending |
