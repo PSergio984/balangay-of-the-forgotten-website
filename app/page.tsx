@@ -1,6 +1,7 @@
 import ParallaxHero from "@/components/landing/ParallaxHero";
 import AncientScrollContainer from "@/components/landing/AncientScrollContainer";
 import LogbookEntry from "@/components/landing/LogbookEntry";
+import BulletinBoard from "@/components/landing/BulletinBoard";
 
 export default function Home() {
   return (
@@ -37,6 +38,8 @@ export default function Home() {
           />
         </section>
       </AncientScrollContainer>
+
+      <BulletinBoard />
 
       {/* Footer spacer */}
       <section className="h-[50vh] bg-[#0C4A6E] flex items-center justify-center p-8">
