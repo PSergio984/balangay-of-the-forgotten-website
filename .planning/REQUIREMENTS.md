@@ -6,7 +6,7 @@
 - [x] **CORE-01**: Responsive Pixel Art Landing Page - Aesthetic matches game 2D pixel style.
 - [x] **CORE-02**: Parallax Scroll Effects - Deep, layered backgrounds for "WOW" immersion.
 - [x] **CORE-03**: Scroll-triggered Animations - Interactive load-in and directional animations.
-- [ ] **CORE-04**: News/Updates Feed - Simple feed for game development milestones.
+- [ ] **CORE-04**: Lore/News Bulletin Board - Thematic lore feed presenting game milestones and world events.
 
 ### Wiki & Lore Repository (WIKI)
 - [ ] **WIKI-01**: Character & Enemy Database - Structured repository for lore, stats, and media.

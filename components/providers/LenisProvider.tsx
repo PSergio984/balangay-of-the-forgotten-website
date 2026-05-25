@@ -1,10 +1,10 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
+import { ReactLenis, LenisRef } from "lenis/react";
 import { useEffect, useRef } from "react";
 
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<any>(null);
+  const lenisRef = useRef<LenisRef | null>(null);
 
   useEffect(() => {
     let frameId: number;
