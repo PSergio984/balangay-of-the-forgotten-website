@@ -3,6 +3,7 @@ import { Press_Start_2P, Crimson_Text } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
 import PixelNavbar from "@/components/landing/PixelNavbar";
+import AmbientPlayer from "@/components/audio/AmbientPlayer";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <div className="crt-overlay" />
           <PixelNavbar />
           {children}
+          <AmbientPlayer />
         </LenisProvider>
       </body>
     </html>
