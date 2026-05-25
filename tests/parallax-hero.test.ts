@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import * as fs from 'node:fs';
-import path from 'path';
+import * as path from 'node:path';
 
 test('ParallaxHero component exists and uses GSAP', () => {
   const componentPath = path.join(process.cwd(), 'components/landing/ParallaxHero.tsx');

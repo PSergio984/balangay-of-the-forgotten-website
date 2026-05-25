@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from 'react';
-import { gsap, useGSAP } from '@/lib/gsap';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface NewsItem {
   id: number;
@@ -31,46 +31,57 @@ const NEWS_DATA: NewsItem[] = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20, 
+    scale: 0.9 
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "backOut",
+    },
+  },
+};
+
 const BulletinBoard: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    if (!containerRef.current) return;
-
-    gsap.fromTo(
-      '[data-type="note"]',
-      {
-        opacity: 0,
-        y: 20,
-        scale: 0.9,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 85%',
-        },
-      }
-    );
-  }, { scope: containerRef });
-
   return (
-    <section ref={containerRef} className="py-20 px-4 max-w-6xl mx-auto">
-      <h2 className="text-2xl font-pixel text-[#0C4A6E] mb-12 text-center uppercase tracking-widest">
+    <section className="py-20 px-4 max-w-6xl mx-auto">
+      <motion.h2 
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className="text-2xl font-pixel text-[#0C4A6E] mb-12 text-center uppercase tracking-widest"
+      >
         The Town Bulletin
-      </h2>
+      </motion.h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-8"
+      >
         {NEWS_DATA.map((item) => (
-          <div 
+          <motion.div 
             key={item.id}
-            data-type="note"
-            className="border-4 border-[#0C4A6E] p-6 bg-white shadow-[8px_8px_0px_0px_rgba(12,74,110,1)] relative opacity-0"
+            variants={itemVariants}
+            className="border-4 border-[#0C4A6E] p-6 bg-white shadow-[8px_8px_0px_0px_rgba(12,74,110,1)] relative"
           >
             <div className="text-xs font-pixel text-[#F97316] mb-2">{item.date}</div>
             <h3 className="text-lg font-pixel text-[#0C4A6E] mb-4 leading-tight uppercase">
@@ -81,9 +92,9 @@ const BulletinBoard: React.FC = () => {
             </p>
             {/* Thumbtack effect */}
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#F97316] border-2 border-[#0C4A6E]" />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

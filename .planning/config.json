@@ -21,13 +21,13 @@
       {
         "heading": "Risks & Dependencies",
         "enabled": true,
-        "source": "RESEARCH/PITFALLS.md ## Critical Pitfalls || RESEARCH/PITFALLS.md ## Moderate Pitfalls",
+        "source": ".planning/research/PITFALLS.md ## Critical Pitfalls || .planning/research/PITFALLS.md ## Moderate Pitfalls",
         "fallback": "- No known high-risk rollout dependencies."
       },
       {
         "heading": "Success Metrics & Release Criteria",
         "enabled": false,
-        "source": "REQUIREMENTS.md ## Definition of Done || PHASES/VERIFICATION.md ## Success Criteria Verification",
+        "source": ".planning/REQUIREMENTS.md ## Definition of Done || .planning/phases/01-the-wow-landing-page/01-VERIFICATION.md ## Success Criteria Verification",
         "fallback": "- Release when automated verification and required manual checks pass."
       },
       {

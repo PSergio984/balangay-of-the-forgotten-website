@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import * as fs from 'node:fs';
-import path from 'path';
+import * as path from 'node:path';
 
 test('Sticky Pixel Navbar exists with correct links', () => {
   const componentPath = path.join(process.cwd(), 'components/landing/PixelNavbar.tsx');
