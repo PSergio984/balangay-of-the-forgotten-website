@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --spacing: 1px;
+
+  /* Fonts */
+  --font-pixel: "Press Start 2P", system-ui;
+  --font-serif: "Crimson Text", serif;
+
+  /* Colors - 60-30-10 Split */
+  --color-sky-mist: #F0F9FF;
+  --color-deep-sky: #0EA5E9;
+  --color-gold-retro: #F97316;
+  --color-midnight-blue: #0C4A6E;
+
+  /* Spacing Tokens from UI-SPEC */
+  --p-unit: 4px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@utility rendering-pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Global Reset & Base Styles */
+html, body {
+  background-color: var(--color-sky-mist);
+  color: var(--color-midnight-blue);
+  font-family: var(--font-serif);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+img, canvas {
+  image-rendering: pixelated;
+}
+
+/* Base style to ensure Lenis smooth scrolling */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* CRT Scanline Overlay */
+.crt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.05) 50%
+  ),
+  linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.02),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.02)
+  );
+  background-size: 100% 4px, 3px 100%;
 }
