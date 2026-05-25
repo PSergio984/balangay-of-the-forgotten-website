@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Press_Start_2P, Crimson_Text } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
+import PixelNavbar from "@/components/landing/PixelNavbar";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <LenisProvider>
           <div className="crt-overlay" />
+          <PixelNavbar />
           {children}
         </LenisProvider>
       </body>
