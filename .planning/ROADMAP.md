@@ -33,7 +33,8 @@
   1. User can browse a structured database of characters and enemies.
   2. User can navigate between related lore entries via cross-links.
   3. User can read game development news and milestones on the landing page.
-**Plans**: TBD
+**Plans**: 1 plan
+- [x] 02-01-PLAN.md — CMS Infrastructure & Data Modeling
 **UI hint**: yes
 
 ### Phase 3: Discovery & Search
@@ -61,6 +62,6 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. The "WOW" Landing Page | 4/4 | Complete | 2026-05-25 |
-| 2. Wiki Core & Content Engine | 0/0 | Not started | - |
+| 2. Wiki Core & Content Engine | 1/1 | Complete | 2026-05-26 |
 | 3. Discovery & Search | 0/0 | Not started | - |
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |

@@ -5,8 +5,18 @@ import BulletinBoard from "@/components/landing/BulletinBoard";
 import RolesSection from "@/components/landing/RolesSection";
 import WorldMapSection from "@/components/landing/WorldMapSection";
 import RelicShowcase from "@/components/landing/RelicShowcase";
+import { getPayloadInstance } from "@/lib/payload";
 
-export default function Home() {
+export default async function Home() {
+  const payload = await getPayloadInstance();
+  
+  // Fetch latest 3 news items for the Bulletin Board
+  const newsResult = await payload.find({
+    collection: 'news',
+    sort: '-publishedDate',
+    limit: 3,
+  });
+
   return (
     <main className="flex min-h-screen flex-col">
       {/* Pinned Video Parallax Hero Section */}
@@ -49,7 +59,13 @@ export default function Home() {
       <RelicShowcase />
 
       {/* Town Bulletin Board (News Feed) */}
-      <BulletinBoard />
+      <BulletinBoard news={newsResult.docs.map(doc => ({
+        id: doc.id,
+        title: doc.title,
+        publishedDate: doc.publishedDate,
+        summary: (doc as any).summary, // Ensure we map whatever summary field we might add later
+        content: doc.content
+      }))} />
 
       {/* Cinematic Footer */}
       <section className="h-[40vh] bg-[#0C4A6E] flex flex-col items-center justify-center p-8 border-t-4 border-[#0EA5E9]">

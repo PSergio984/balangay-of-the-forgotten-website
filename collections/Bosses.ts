@@ -1,0 +1,67 @@
+import type { CollectionConfig } from 'payload'
+
+export const Bosses: CollectionConfig = {
+  slug: 'bosses',
+  admin: {
+    useAsTitle: 'name',
+    defaultColumns: ['name', 'location', 'hp'],
+  },
+  fields: [
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      required: true,
+      unique: true,
+    },
+    {
+      name: 'description',
+      type: 'richText',
+    },
+    {
+      name: 'stats',
+      type: 'group',
+      fields: [
+        { name: 'hp', type: 'number', required: true },
+        { name: 'atk', type: 'number', required: true },
+        { name: 'mag', type: 'number', required: true },
+        { name: 'def', type: 'number', required: true },
+      ],
+    },
+    {
+      name: 'moveset',
+      type: 'array',
+      fields: [
+        { name: 'name', type: 'text', required: true },
+        { name: 'type', type: 'select', options: ['Single Target', 'AoE', 'Buff', 'Ultimate', 'Passive'] },
+        { name: 'description', type: 'textarea' },
+      ],
+    },
+    {
+      name: 'location',
+      type: 'relationship',
+      relationTo: 'locations',
+    },
+    {
+      name: 'droppedRelics',
+      type: 'join',
+      collection: 'relics',
+      on: 'sourceBoss',
+    },
+    {
+      name: 'minibosses',
+      type: 'join',
+      collection: 'minibosses',
+      on: 'parentBoss',
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+    },
+  ],
+}

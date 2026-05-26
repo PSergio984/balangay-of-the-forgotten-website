@@ -31,6 +31,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${pixelFont.variable} ${bodyFont.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
         <LenisProvider>

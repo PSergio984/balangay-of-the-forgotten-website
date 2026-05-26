@@ -28,9 +28,10 @@ Showcase the game's world and characters through an immersive wiki that will lat
 
 ## Context
 
-- Game engine: Unity (2D pixel game)
-- Future tech stack: ASP.NET for hybrid tabletop integration
-- Aesthetic: 2D Pixel Art
+- **Frontend**: Next.js 15 (App Router), Tailwind 4, Framer Motion, Lenis.
+- **CMS**: Payload CMS 3.0 (Next.js native).
+- **Database**: PostgreSQL.
+- **Aesthetic**: 2D Pixel Art (Ancient Scroll / Logbook theme).
 
 ## Constraints
 
@@ -41,7 +42,10 @@ Showcase the game's world and characters through an immersive wiki that will lat
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Project Init | Initializing project structure via GSD. | — Pending |
+| Next.js 15 | Modern, SEO-friendly, and integrates with Payload 3.0. | Implemented |
+| Payload CMS 3.0 | TypeScript-native, runs as route handler, perfect for lore data. | Selected for Phase 2 |
+| Immersive Scroll | Maintains "WOW" factor while providing wiki functionality. | Selected for Phase 2 |
+
 
 ---
 *Last updated: 2026-05-25 after Project Init*

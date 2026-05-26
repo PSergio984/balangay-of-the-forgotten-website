@@ -4,32 +4,16 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 
 interface NewsItem {
-  id: number;
-  date: string;
+  id: string | number;
+  publishedDate?: string;
   title: string;
-  summary: string;
+  summary?: string;
+  content?: any; // Payload richText
 }
 
-const NEWS_DATA: NewsItem[] = [
-  {
-    id: 1,
-    date: "742 AE",
-    title: "Vessel Sighted",
-    summary: "A large balangay was seen drifting near the edge of the forgotten reefs. No survivors reported."
-  },
-  {
-    id: 2,
-    date: "743 AE",
-    title: "The Great Drought",
-    summary: "The spirits of the waters have retreated. Tribes gather at the monolith to offer chants."
-  },
-  {
-    id: 3,
-    date: "745 AE",
-    title: "Shadows in the Mist",
-    summary: "Hunters speak of shifting shapes in the mangrove shadows. Keep the torches burning."
-  }
-];
+interface BulletinBoardProps {
+  news?: NewsItem[];
+}
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -58,7 +42,29 @@ const itemVariants: Variants = {
   },
 };
 
-const BulletinBoard: React.FC = () => {
+const BulletinBoard: React.FC<BulletinBoardProps> = ({ news }) => {
+  // Fallback to static data if no news provided (for initial dev/empty state)
+  const displayNews = news && news.length > 0 ? news : [
+    {
+      id: 1,
+      publishedDate: "742 AE",
+      title: "Vessel Sighted",
+      summary: "A large balangay was seen drifting near the edge of the forgotten reefs. No survivors reported."
+    },
+    {
+      id: 2,
+      publishedDate: "743 AE",
+      title: "The Great Drought",
+      summary: "The spirits of the waters have retreated. Tribes gather at the monolith to offer chants."
+    },
+    {
+      id: 3,
+      publishedDate: "745 AE",
+      title: "Shadows in the Mist",
+      summary: "Hunters speak of shifting shapes in the mangrove shadows. Keep the torches burning."
+    }
+  ];
+
   return (
     <section className="py-20 px-4 max-w-6xl mx-auto">
       <motion.h2 
@@ -77,18 +83,20 @@ const BulletinBoard: React.FC = () => {
         viewport={{ once: true, amount: 0.2 }}
         className="grid grid-cols-1 md:grid-cols-3 gap-8"
       >
-        {NEWS_DATA.map((item) => (
+        {displayNews.map((item) => (
           <motion.div 
             key={item.id}
             variants={itemVariants}
             className="border-4 border-[#0C4A6E] p-6 bg-white shadow-[8px_8px_0px_0px_rgba(12,74,110,1)] relative"
           >
-            <div className="text-xs font-pixel text-[#F97316] mb-2">{item.date}</div>
+            <div className="text-xs font-pixel text-[#F97316] mb-2">
+              {item.publishedDate ? new Date(item.publishedDate).toLocaleDateString() : '745 AE'}
+            </div>
             <h3 className="text-lg font-pixel text-[#0C4A6E] mb-4 leading-tight uppercase">
               {item.title}
             </h3>
             <p className="text-base font-serif text-[#0C4A6E]">
-              {item.summary}
+              {item.summary || (item.content ? 'View more details in the archives...' : '')}
             </p>
             {/* Thumbtack effect */}
             <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#F97316] border-2 border-[#0C4A6E]" />
