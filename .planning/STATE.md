@@ -18,13 +18,13 @@ progress:
 
 **Core Value**: Showcase the game's world and characters through an immersive wiki that matches the 2D pixel art aesthetic of "Balangay of the Forgotten".
 
-**Current Focus**: Phase 3 - Discovery & Search.
+**Current Focus**: Phase 2.75 - Wiki Polish & Performance Optimization.
 
 ## Current Position
 
-**Phase**: 3 - Discovery & Search
+**Phase**: 2.75 - Wiki Polish & Performance Optimization
 **Plan**: TBD
-**Status**: Phase 2.5 Complete. Ready for Phase 3 Planning.
+**Status**: Phase 2.75 Gathered. Ready for Phase 2.75 Planning.
 
 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░] 75%
 
