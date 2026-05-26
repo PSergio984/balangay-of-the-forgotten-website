@@ -149,8 +149,8 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                 <div className="relative aspect-square bg-[#0C4A6E] mb-6 border-4 border-black overflow-hidden group">
                   {doc.image ? (
                     <Image 
-                      src={typeof doc.image === 'string' ? doc.image : doc.image.url} 
-                      alt={doc.name} 
+                      src={typeof doc.image === 'string' ? doc.image : (doc.image.url.startsWith('/api/media/file/') ? doc.image.url.replace('/api/media/file/', '/media/') : doc.image.url)} 
+                      alt={doc.name || doc.title || 'Entry image'} 
                       fill 
                       className="object-cover pixelated"
                     />

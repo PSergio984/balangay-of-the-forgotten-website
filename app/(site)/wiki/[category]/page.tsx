@@ -81,8 +81,8 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
                 <div className="relative aspect-square bg-[#0C4A6E] border-b-4 border-black overflow-hidden">
                   {doc.image ? (
                     <Image 
-                      src={typeof doc.image === 'string' ? doc.image : doc.image.url} 
-                      alt={doc.name || doc.title} 
+                      src={typeof doc.image === 'string' ? doc.image : (doc.image.url.startsWith('/api/media/file/') ? doc.image.url.replace('/api/media/file/', '/media/') : doc.image.url)} 
+                      alt={doc.name || doc.title || 'Entry image'} 
                       fill 
                       className="object-cover pixelated group-hover:scale-110 transition-transform"
                     />
