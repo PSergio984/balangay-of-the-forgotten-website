@@ -160,7 +160,8 @@ const seed = async () => {
         }
     }
 
-    const nameForAsset = relic.name === 'Memory Fragment' ? 'Memory Fragment' : relic.name.split(' ')[0]
+    let nameForAsset = relic.name === 'Memory Fragment' ? 'Memory Fragment' : relic.name.split(' ')[0]
+    if (relic.htmlSlug === 'luhain') nameForAsset = 'Luhain'
     const imgPath = path.join(OLD_WIKI_PATH, 'assets', 'relics', `${nameForAsset}.png`)
     const imageId = await uploadImage(imgPath, relic.name)
 

@@ -76,6 +76,8 @@ export interface Config {
     characters: Character;
     news: News;
     events: Event;
+    'status-effects': StatusEffect;
+    rules: Rule;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -101,6 +103,8 @@ export interface Config {
     characters: CharactersSelect<false> | CharactersSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
+    'status-effects': StatusEffectsSelect<false> | StatusEffectsSelect<true>;
+    rules: RulesSelect<false> | RulesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -465,6 +469,48 @@ export interface Event {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "status-effects".
+ */
+export interface StatusEffect {
+  id: number;
+  name: string;
+  type: 'Buff' | 'Debuff';
+  description: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rules".
+ */
+export interface Rule {
+  id: number;
+  title: string;
+  slug: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Order of the rules/flow section
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -522,6 +568,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'events';
         value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'status-effects';
+        value: number | StatusEffect;
+      } | null)
+    | ({
+        relationTo: 'rules';
+        value: number | Rule;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -748,6 +802,29 @@ export interface EventsSelect<T extends boolean = true> {
   description?: T;
   image?: T;
   relatedLore?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "status-effects_select".
+ */
+export interface StatusEffectsSelect<T extends boolean = true> {
+  name?: T;
+  type?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rules_select".
+ */
+export interface RulesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  content?: T;
+  order?: T;
   updatedAt?: T;
   createdAt?: T;
 }
