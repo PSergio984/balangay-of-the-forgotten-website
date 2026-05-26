@@ -4,6 +4,7 @@
 
 - [x] **Phase 1: The "WOW" Landing Page** - Establish pixel-art identity with parallax and animations.
 - [ ] **Phase 2: Wiki Core & Content Engine** - Build the database for lore, characters, and news.
+- [ ] **Phase 2.75: Wiki Polish & Performance Optimization** - Fix image loading, optimize performance, fix sticky footer, and format wiki.
 - [ ] **Phase 3: Discovery & Search** - Implement global search and interactive lore timeline.
 - [ ] **Phase 4: Unity Interactive Showcase** - Embed Unity WebGL models for character inspection.
 
@@ -37,6 +38,28 @@
 - [x] 02-01-PLAN.md — CMS Infrastructure & Data Modeling
 **UI hint**: yes
 
+### Phase 02.1: Wiki Polish, Footer Fix & Performance Optimization (INSERTED)
+
+**Goal:** [Urgent work - to be planned]
+**Requirements**: TBD
+**Depends on:** Phase 2
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd-plan-phase 02.1 to break down)
+
+### Phase 2.75: Wiki Polish & Performance Optimization
+**Goal**: Fix image loading on deployment, optimize performance, fix sticky footer, and correct wiki page formatting.
+**Depends on**: Phase 2
+**Requirements**: WIKI-01, WIKI-03, CORE-04
+**Success Criteria** (what must be TRUE):
+  1. Images load correctly on deployment.
+  2. The footer is sticky and correctly aligned.
+  3. Wiki layout is beautifully formatted with full lore descriptions.
+  4. Wiki loading performance is fast (optimized queries, SSG/ISR).
+**Plans**: TBD
+**UI hint**: yes
+
 ### Phase 3: Discovery & Search
 **Goal**: Enable easy navigation and chronological visualization of game lore.
 **Depends on**: Phase 2
@@ -63,5 +86,6 @@
 |-------|----------------|--------|-----------|
 | 1. The "WOW" Landing Page | 4/4 | Complete | 2026-05-25 |
 | 2. Wiki Core & Content Engine | 1/1 | Complete | 2026-05-26 |
+| 2.75. Wiki Polish & Performance Optimization | 0/0 | Not started | - |
 | 3. Discovery & Search | 0/0 | Not started | - |
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |
