@@ -5,6 +5,7 @@ import BulletinBoard from "@/components/landing/BulletinBoard";
 import RolesSection from "@/components/landing/RolesSection";
 import WorldMapSection from "@/components/landing/WorldMapSection";
 import RelicShowcase from "@/components/landing/RelicShowcase";
+import AccoladesSection from "@/components/landing/AccoladesSection";
 import { getPayloadInstance } from "@/lib/payload";
 
 export const revalidate = 3600;
@@ -59,6 +60,9 @@ export default async function Home() {
 
       {/* Interactive Relic Collection Section */}
       <RelicShowcase />
+
+      {/* Game Awards and Recognitions */}
+      <AccoladesSection />
 
       {/* Town Bulletin Board (News Feed) */}
       <BulletinBoard news={newsResult.docs.map(doc => ({
