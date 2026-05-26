@@ -70,11 +70,16 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
     <main className="min-h-screen bg-[#0a0a0a] pt-24 pb-20">
       <AncientScrollContainer>
         <div className="flex flex-col gap-12">
-          {/* Breadcrumbs */}
-          <nav className="text-sm font-pixel text-gray-500 uppercase flex gap-2">
-            <a href="/" className="hover:text-black transition-colors">Home</a>
-            <span>/</span>
-            <span className="text-black">{category}</span>
+          {/* Breadcrumbs / Back Navigation */}
+          <nav className="text-sm font-pixel text-gray-500 uppercase flex gap-4 items-center bg-white/50 border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
+            <a href="/wiki" className="hover:text-[#F97316] transition-colors flex items-center gap-2">
+              <span className="text-lg leading-none mb-1">←</span>
+              <span>Archives</span>
+            </a>
+            <span className="text-black/30">/</span>
+            <a href={`/wiki/${category}`} className="hover:text-[#F97316] transition-colors text-[#0C4A6E]">
+              {category}
+            </a>
           </nav>
 
           <header className="border-b-8 border-black pb-6">

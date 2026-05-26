@@ -51,9 +51,9 @@ export default function PixelNavbar() {
           
           <div className="flex items-center shrink-0">
             <button 
-              onClick={handleJoinVoyage}
-              aria-label="Join the voyage"
-              className="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 text-[10px] uppercase border-b-4 border-r-4 border-indigo-900 active:border-0 active:translate-y-1 active:translate-x-1 transition-all"
+              disabled
+              aria-label="Join the voyage (Currently Disabled)"
+              className="bg-gray-600 text-gray-400 cursor-not-allowed px-4 py-2 text-[10px] uppercase border-b-4 border-r-4 border-gray-800 transition-all"
             >
               Join Voyage
             </button>
