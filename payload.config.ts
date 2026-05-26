@@ -10,11 +10,11 @@ import { Bosses } from './collections/Bosses'
 import { Minibosses } from './collections/Minibosses'
 import { Relics } from './collections/Relics'
 import { Locations } from './collections/Locations'
-import { Characters } from './collections/Characters.js'
-import { News } from './collections/News.js'
-import { Events } from './collections/Events.js'
-import { StatusEffects } from './collections/StatusEffects.js'
-import { Rules } from './collections/Rules.js'
+import { Characters } from './collections/Characters'
+import { News } from './collections/News'
+import { Events } from './collections/Events'
+import { StatusEffects } from './collections/StatusEffects'
+import { Rules } from './collections/Rules'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
