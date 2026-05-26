@@ -10,6 +10,7 @@ interface SearchResult {
   title?: string;
   slug: string;
   collection: string;
+  image?: any;
 }
 
 const WikiSearch: React.FC = () => {
