@@ -13,6 +13,8 @@ import { Locations } from './collections/Locations'
 import { Characters } from './collections/Characters.js'
 import { News } from './collections/News.js'
 import { Events } from './collections/Events.js'
+import { StatusEffects } from './collections/StatusEffects.js'
+import { Rules } from './collections/Rules.js'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,6 +36,8 @@ export default buildConfig({
     Characters,
     News,
     Events,
+    StatusEffects,
+    Rules,
   ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',
