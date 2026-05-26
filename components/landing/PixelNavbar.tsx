@@ -16,6 +16,8 @@ export default function PixelNavbar() {
     { name: "Explore", href: "/explore" },
     { name: "Logbook", href: "/logbook" },
     { name: "Wiki", href: "/wiki" },
+    { name: "Timeline", href: "/wiki/timeline" },
+    { name: "Search", href: "/wiki/search" },
   ];
 
   return (

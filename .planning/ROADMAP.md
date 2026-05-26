@@ -67,7 +67,8 @@ Plans:
 **Success Criteria** (what must be TRUE):
   1. User can find any wiki entry instantly using a global search bar.
   2. User can interact with a visual timeline to understand the game's historical events.
-**Plans**: TBD
+**Plans**: 1 plan
+- [/] 03-01-PLAN.md — Search Hub & Lore Timeline (Base implemented)
 **UI hint**: yes
 
 ### Phase 4: Unity Interactive Showcase
@@ -86,6 +87,8 @@ Plans:
 |-------|----------------|--------|-----------|
 | 1. The "WOW" Landing Page | 4/4 | Complete | 2026-05-25 |
 | 2. Wiki Core & Content Engine | 1/1 | Complete | 2026-05-26 |
-| 2.75. Wiki Polish & Performance Optimization | 0/0 | Not started | - |
-| 3. Discovery & Search | 0/0 | Not started | - |
+| 2.5 Wiki Polish & Migration | 1/1 | Complete | 2026-05-26 |
+| 3. Discovery & Search | 0.5/1 | In Progress | - |
+| 4. Unity Interactive Showcase | 0/0 | Not started | - |
+
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |
