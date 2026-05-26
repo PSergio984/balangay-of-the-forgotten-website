@@ -48,7 +48,8 @@ const WikiSearch: React.FC = () => {
                 id: doc.id,
                 name: doc.name || doc.title,
                 slug: doc.slug,
-                collection: col
+                collection: col,
+                image: doc.image
               })));
             }
           }
@@ -104,17 +105,35 @@ const WikiSearch: React.FC = () => {
               <button
                 key={`${result.collection}-${result.id}`}
                 onClick={() => handleSelect(result.collection, result.slug)}
-                className="w-full text-left p-3 hover:bg-[#F0F9FF] border-b-2 border-black last:border-b-0 flex justify-between items-center group transition-colors"
+                className="w-full text-left p-3 hover:bg-[#F0F9FF] border-b-2 border-black last:border-b-0 flex gap-4 items-center group transition-colors"
               >
-                <div>
-                  <div className="font-bold text-lg uppercase tracking-tight">{result.name}</div>
-                  <div className="text-xs text-gray-500 uppercase">{result.collection}</div>
+                <div className="relative w-12 h-12 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
+                  {result.image ? (
+                    <img 
+                      src={typeof result.image === 'string' ? result.image : (result.image.url.startsWith('/api/media/file/') ? result.image.url.replace('/api/media/file/', '/media/') : result.image.url)} 
+                      alt="" 
+                      className="w-full h-full object-cover pixelated"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-white/20 text-[6px] font-pixel">?</div>
+                  )}
+                </div>
+                <div className="flex-1 overflow-hidden">
+                  <div className="font-bold text-base uppercase tracking-tight truncate">{result.name}</div>
+                  <div className="text-[8px] font-pixel text-gray-400 uppercase">{result.collection}</div>
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                   <span className="text-[#F97316]">→</span>
                 </div>
               </button>
             ))}
+            <Link 
+              href="/wiki/search" 
+              className="block w-full text-center p-3 bg-gray-100 font-pixel text-[10px] hover:bg-[#F97316] hover:text-white transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              VIEW ALL RESULTS
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

@@ -4,6 +4,20 @@ import Link from 'next/link'
 
 const categories = [
   {
+    name: 'Timeline',
+    slug: 'timeline',
+    description: 'A chronological journey through the Great Fragmentation and the Age of the Balangay.',
+    color: 'bg-black',
+    icon: '⏳'
+  },
+  {
+    name: 'Search Hub',
+    slug: 'search',
+    description: 'Advanced filtering to find any legend or record in the archives.',
+    color: 'bg-gray-800',
+    icon: '🔍'
+  },
+  {
     name: 'Characters',
     slug: 'characters',
     description: 'The brave souls (Pinili) chosen to protect the Balangay.',

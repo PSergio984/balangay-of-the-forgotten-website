@@ -75,6 +75,7 @@ export interface Config {
     locations: Location;
     characters: Character;
     news: News;
+    events: Event;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -99,6 +100,7 @@ export interface Config {
     locations: LocationsSelect<false> | LocationsSelect<true>;
     characters: CharactersSelect<false> | CharactersSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    events: EventsSelect<false> | EventsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -416,6 +418,53 @@ export interface News {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events".
+ */
+export interface Event {
+  id: number;
+  title: string;
+  /**
+   * Year of the event (e.g., 742)
+   */
+  year: number;
+  era: 'Early Migration' | 'The Great Fragmentation' | 'Age of the Balangay' | 'The Current Awakening';
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  image?: (number | null) | Media;
+  relatedLore?:
+    | (
+        | {
+            relationTo: 'bosses';
+            value: number | Boss;
+          }
+        | {
+            relationTo: 'characters';
+            value: number | Character;
+          }
+        | {
+            relationTo: 'locations';
+            value: number | Location;
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -469,6 +518,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'news';
         value: number | News;
+      } | null)
+    | ({
+        relationTo: 'events';
+        value: number | Event;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -681,6 +734,20 @@ export interface NewsSelect<T extends boolean = true> {
   content?: T;
   publishedDate?: T;
   image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "events_select".
+ */
+export interface EventsSelect<T extends boolean = true> {
+  title?: T;
+  year?: T;
+  era?: T;
+  description?: T;
+  image?: T;
+  relatedLore?: T;
   updatedAt?: T;
   createdAt?: T;
 }

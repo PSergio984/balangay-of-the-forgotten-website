@@ -10,8 +10,9 @@ import { Bosses } from './collections/Bosses'
 import { Minibosses } from './collections/Minibosses'
 import { Relics } from './collections/Relics'
 import { Locations } from './collections/Locations'
-import { Characters } from './collections/Characters'
-import { News } from './collections/News'
+import { Characters } from './collections/Characters.js'
+import { News } from './collections/News.js'
+import { Events } from './collections/Events.js'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -32,6 +33,7 @@ export default buildConfig({
     Locations,
     Characters,
     News,
+    Events,
   ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',

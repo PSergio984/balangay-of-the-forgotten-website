@@ -84,6 +84,8 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
                       src={typeof doc.image === 'string' ? doc.image : (doc.image.url.startsWith('/api/media/file/') ? doc.image.url.replace('/api/media/file/', '/media/') : doc.image.url)} 
                       alt={doc.name || doc.title || 'Entry image'} 
                       fill 
+                      loading="eager"
+                      unoptimized
                       className="object-cover pixelated group-hover:scale-110 transition-transform"
                     />
                   ) : (

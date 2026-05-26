@@ -152,6 +152,8 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                       src={typeof doc.image === 'string' ? doc.image : (doc.image.url.startsWith('/api/media/file/') ? doc.image.url.replace('/api/media/file/', '/media/') : doc.image.url)} 
                       alt={doc.name || doc.title || 'Entry image'} 
                       fill 
+                      priority
+                      unoptimized
                       className="object-cover pixelated"
                     />
                   ) : (
