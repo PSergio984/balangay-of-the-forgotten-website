@@ -2,6 +2,27 @@ import { notFound } from 'next/navigation'
 import { getPayloadInstance } from '@/lib/payload'
 import AncientScrollContainer from '@/components/landing/AncientScrollContainer'
 import Image from 'next/image'
+import { RichText } from '@payloadcms/richtext-lexical/react'
+
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  const payload = await getPayloadInstance()
+  const collections = ['bosses', 'characters', 'relics', 'locations', 'minibosses']
+  const params = []
+
+  for (const collection of collections) {
+    const result = await payload.find({
+      collection: collection as any,
+      limit: 100,
+      select: { slug: true },
+    })
+    for (const doc of result.docs) {
+      params.push({ category: collection, slug: (doc as any).slug })
+    }
+  }
+  return params
+}
 
 interface WikiPageProps {
   params: Promise<{
@@ -76,11 +97,14 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
             <div className="lg:col-span-2 space-y-12">
               <section>
                 <h2 className="text-3xl font-bold mb-6 border-l-8 border-[#F97316] pl-4 uppercase">Lore & History</h2>
-                <div className="prose prose-xl max-w-none text-gray-800 leading-relaxed">
-                  {/* RichText rendering would go here in a full implementation */}
-                  <p>
-                    {doc.description ? "Detailed lore description from archives..." : `No detailed lore available for ${doc.name}. Seek the elders for more information.`}
-                  </p>
+                <div className="wiki-lore-content prose prose-xl max-w-none text-gray-800 leading-relaxed">
+                  {doc.description ? (
+                    <RichText data={doc.description as any} />
+                  ) : (
+                    <p>
+                      No detailed lore available for {doc.name || doc.title}. Seek the elders for more information.
+                    </p>
+                  )}
                 </div>
               </section>
 

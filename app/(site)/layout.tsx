@@ -4,6 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/providers/LenisProvider";
 import PixelNavbar from "@/components/landing/PixelNavbar";
 import AmbientPlayer from "@/components/audio/AmbientPlayer";
+import Footer from "@/components/landing/Footer";
 
 const pixelFont = Press_Start_2P({
   weight: "400",
@@ -37,7 +38,10 @@ export default function RootLayout({
         <LenisProvider>
           <div className="crt-overlay" />
           <PixelNavbar />
-          {children}
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
           <AmbientPlayer />
         </LenisProvider>
       </body>

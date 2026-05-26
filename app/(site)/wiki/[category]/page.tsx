@@ -10,6 +10,18 @@ interface CategoryPageProps {
   }>
 }
 
+export const revalidate = 3600
+
+export async function generateStaticParams() {
+  return [
+    { category: 'bosses' },
+    { category: 'characters' },
+    { category: 'relics' },
+    { category: 'locations' },
+    { category: 'minibosses' },
+  ]
+}
+
 export default async function WikiCategoryPage({ params }: CategoryPageProps) {
   const { category } = await params
   const payload = await getPayloadInstance()
@@ -32,6 +44,12 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
   const result = await payload.find({
     collection: collection as any,
     limit: 100,
+    select: {
+      name: true,
+      title: true,
+      slug: true,
+      image: true,
+    },
   })
 
   return (

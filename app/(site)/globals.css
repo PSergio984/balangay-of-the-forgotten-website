@@ -79,3 +79,47 @@ html.lenis, html.lenis body {
   mask-position: top, bottom, center;
   mask-size: 100px 20px, 100px 20px, 100% 100%;
 }
+
+/* Wiki RichText Lore Content styling */
+.wiki-lore-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+  color: #1e293b;
+}
+.wiki-lore-content h1,
+.wiki-lore-content h2,
+.wiki-lore-content h3,
+.wiki-lore-content h4 {
+  color: var(--color-midnight-blue);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+.wiki-lore-content h1 { font-size: 2rem; }
+.wiki-lore-content h2 { font-size: 1.5rem; border-left: 6px solid var(--color-gold-retro); padding-left: 0.75rem; }
+.wiki-lore-content h3 { font-size: 1.25rem; }
+.wiki-lore-content strong {
+  font-weight: 700;
+  color: #000;
+}
+.wiki-lore-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.wiki-lore-content ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.wiki-lore-content li {
+  margin-bottom: 0.5rem;
+}
+.wiki-lore-content blockquote {
+  border-left: 4px solid var(--color-deep-sky);
+  padding-left: 1rem;
+  font-style: italic;
+  color: #475569;
+  margin: 1.5rem 0;
+}
