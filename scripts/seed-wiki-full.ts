@@ -58,7 +58,7 @@ const seed = async () => {
     { name: 'Bundok Pulag', slug: 'bundok-pulag', description: { root: { children: [{ children: [{ text: 'The sacred playground of the gods.' }], type: 'paragraph' }], type: 'root' } } },
   ]
 
-  const locations: Record<string, string> = {}
+  const locations: Record<string, string | number> = {}
   for (const loc of locationsData) {
     const doc = await payload.create({ collection: 'locations', data: loc as any })
     locations[loc.slug] = doc.id
