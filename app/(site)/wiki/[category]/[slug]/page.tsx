@@ -8,17 +8,19 @@ export const revalidate = 3600
 
 export async function generateStaticParams() {
   const payload = await getPayloadInstance()
-  const collections = ['bosses', 'characters', 'relics', 'locations', 'minibosses']
+  const collections = ['bosses', 'characters', 'relics', 'locations', 'minibosses', 'status-effects', 'rules', 'cards']
   const params = []
 
   for (const collection of collections) {
     const result = await payload.find({
       collection: collection as any,
-      limit: 100,
+      limit: 200,
       select: { slug: true },
     })
     for (const doc of result.docs) {
-      params.push({ category: collection, slug: (doc as any).slug })
+      if (doc.slug) {
+        params.push({ category: collection, slug: doc.slug })
+      }
     }
   }
   return params
@@ -42,6 +44,9 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
     relics: 'relics',
     locations: 'locations',
     minibosses: 'minibosses',
+    'status-effects': 'status-effects',
+    rules: 'rules',
+    cards: 'cards',
   }
 
   const collection = collectionMap[category]
@@ -104,7 +109,11 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                 <h2 className="text-3xl font-bold mb-6 border-l-8 border-[#F97316] pl-4 uppercase">Lore & History</h2>
                 <div className="wiki-lore-content prose prose-xl max-w-none text-gray-800 leading-relaxed">
                   {doc.description ? (
-                    <RichText data={doc.description as any} />
+                    typeof doc.description === 'string' ? (
+                      <p>{doc.description}</p>
+                    ) : (
+                      <RichText data={doc.description as any} />
+                    )
                   ) : (
                     <p>
                       No detailed lore available for {doc.name || doc.title}. Seek the elders for more information.
@@ -132,6 +141,37 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                   </div>
                 </section>
               )}
+
+              {doc.presets && doc.presets.length > 0 && (
+                <section>
+                  <h2 className="text-3xl font-bold mb-6 border-l-8 border-[#F97316] pl-4 uppercase">Character Builds (Presets)</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {doc.presets.map((preset: any, index: number) => (
+                      <div key={index} className="border-4 border-black p-4 bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                        <h3 className="font-bold text-lg uppercase mb-4 text-center border-b-2 border-black pb-2">{preset.name}</h3>
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-[10px] font-pixel">
+                            <span className="text-gray-400">HP</span>
+                            <span className="text-red-600 font-bold">{preset.stats.hp}</span>
+                          </div>
+                          <div className="flex justify-between text-[10px] font-pixel">
+                            <span className="text-gray-400">ATK</span>
+                            <span className="text-orange-600 font-bold">{preset.stats.atk}</span>
+                          </div>
+                          <div className="flex justify-between text-[10px] font-pixel">
+                            <span className="text-gray-400">MAG</span>
+                            <span className="text-blue-600 font-bold">{preset.stats.mag}</span>
+                          </div>
+                          <div className="flex justify-between text-[10px] font-pixel">
+                            <span className="text-gray-400">DEF</span>
+                            <span className="text-green-600 font-bold">{preset.stats.def}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
               
               {/* Relational Sections (Join fields) */}
               {doc.droppedRelics && doc.droppedRelics.docs?.length > 0 && (
@@ -151,7 +191,7 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
             <aside className="space-y-8">
               {/* Infobox-style card */}
               <div className="border-4 border-black p-4 bg-white shadow-[10px_10px_0px_0px_rgba(249,115,22,1)] sticky top-32">
-                <div className="relative aspect-square bg-[#0C4A6E] mb-6 border-4 border-black overflow-hidden group">
+                <div className={`relative ${category === 'cards' ? 'aspect-[2.5/3.5]' : 'aspect-square'} bg-[#0C4A6E] mb-6 border-4 border-black overflow-hidden group`}>
                   {doc.image ? (
                     <Image 
                       src={typeof doc.image === 'string' ? doc.image : (doc.image.url.startsWith('/api/media/file/') ? doc.image.url.replace('/api/media/file/', '/media/') : doc.image.url)} 
@@ -159,7 +199,7 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                       fill 
                       priority
                       unoptimized
-                      className="object-cover pixelated"
+                      className="object-contain pixelated"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-white/20 font-pixel text-xs text-center p-8">
@@ -181,6 +221,24 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                   )}
 
                   <div className="pt-4 border-t-2 border-black/10 space-y-3">
+                    {category === 'cards' && doc.type && (
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-gray-500 uppercase font-pixel text-[10px]">Card Type</span>
+                        <span className="font-bold uppercase tracking-tight">{doc.type}</span>
+                      </div>
+                    )}
+                    {category === 'cards' && doc.category && (
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-gray-500 uppercase font-pixel text-[10px]">Deck/Role</span>
+                        <span className="font-bold uppercase tracking-tight">{doc.category}</span>
+                      </div>
+                    )}
+                    {category !== 'cards' && doc.type && (
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-gray-500 uppercase font-pixel text-[10px]">Classification</span>
+                        <span className={`font-bold uppercase tracking-tight ${doc.type === 'Fragment' ? 'text-purple-600' : 'text-black'}`}>{doc.type}</span>
+                      </div>
+                    )}
                     {doc.location && (
                       <div className="flex justify-between items-center text-sm">
                         <span className="text-gray-500 uppercase font-pixel text-[10px]">Primary Habitat</span>

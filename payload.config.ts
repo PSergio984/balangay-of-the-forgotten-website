@@ -15,6 +15,7 @@ import { News } from './collections/News'
 import { Events } from './collections/Events'
 import { StatusEffects } from './collections/StatusEffects'
 import { Rules } from './collections/Rules'
+import { Cards } from './collections/Cards'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -38,6 +39,7 @@ export default buildConfig({
     Events,
     StatusEffects,
     Rules,
+    Cards,
   ],
   editor: lexicalEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',

@@ -2,6 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const Bosses: CollectionConfig = {
   slug: 'bosses',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'name',
     defaultColumns: ['name', 'location', 'hp'],

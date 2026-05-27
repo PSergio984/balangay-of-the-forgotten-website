@@ -45,17 +45,25 @@ export default function SearchHubPage() {
         const allResults: SearchResult[] = [];
 
         for (const col of searchCollections) {
-          const url = `/api/${col}?where[name][contains]=${query}&limit=10`;
-          const res = await fetch(url);
-          const data = await res.json();
-          if (data.docs) {
-            allResults.push(...data.docs.map((doc: any) => ({
-              id: doc.id,
-              name: doc.name || doc.title,
-              slug: doc.slug,
-              collection: col,
-              image: doc.image
-            })));
+          try {
+            const url = `/api/${col}?where[name][contains]=${query}&limit=10`;
+            const res = await fetch(url);
+            if (!res.ok) {
+              console.warn(`Search hub failed for collection ${col}: ${res.statusText}`);
+              continue;
+            }
+            const data = await res.json();
+            if (data.docs) {
+              allResults.push(...data.docs.map((doc: any) => ({
+                id: doc.id,
+                name: doc.name || doc.title,
+                slug: doc.slug,
+                collection: col,
+                image: doc.image
+              })));
+            }
+          } catch (err) {
+            console.error(`Error searching ${col}:`, err);
           }
         }
         

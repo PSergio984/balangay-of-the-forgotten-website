@@ -37,22 +37,29 @@ const WikiSearch: React.FC = () => {
       if (query.length > 2) {
         setIsSearching(true);
         try {
-          // In a real app, you'd probably have a dedicated search endpoint 
-          // or query multiple collections. For simplicity, we'll search across a few.
-          const collections = ['bosses', 'characters', 'relics', 'locations'];
+          // Search across all major lore collections
+          const collections = ['bosses', 'characters', 'relics', 'locations', 'minibosses'];
           const allResults: SearchResult[] = [];
 
           for (const col of collections) {
-            const res = await fetch(`/api/${col}?where[name][contains]=${query}&limit=3`);
-            const data = await res.json();
-            if (data.docs) {
-              allResults.push(...data.docs.map((doc: any) => ({
-                id: doc.id,
-                name: doc.name || doc.title,
-                slug: doc.slug,
-                collection: col,
-                image: doc.image
-              })));
+            try {
+              const res = await fetch(`/api/${col}?where[name][contains]=${query}&limit=5`);
+              if (!res.ok) {
+                console.warn(`Search failed for collection ${col}: ${res.statusText}`);
+                continue;
+              }
+              const data = await res.json();
+              if (data.docs) {
+                allResults.push(...data.docs.map((doc: any) => ({
+                  id: doc.id,
+                  name: doc.name || doc.title,
+                  slug: doc.slug,
+                  collection: col,
+                  image: doc.image
+                })));
+              }
+            } catch (err) {
+              console.error(`Error fetching ${col}:`, err);
             }
           }
           

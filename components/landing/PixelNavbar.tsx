@@ -51,7 +51,7 @@ export default function PixelNavbar() {
           
           <div className="flex items-center shrink-0">
             <a 
-              href="https://itch.io/e/36476865/psergio-published-balangay-of-the-forgotten"
+              href="https://psergio984.itch.io/balangay-of-the-forgotten"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#F97316] hover:bg-orange-500 text-white px-4 py-3 text-[10px] font-bold uppercase border-b-4 border-r-4 border-orange-800 active:border-0 active:translate-y-1 active:translate-x-1 transition-all shadow-[4px_4px_0_rgba(0,0,0,0.5)]"

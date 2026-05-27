@@ -45,6 +45,7 @@ const seed = async () => {
   await payload.delete({ collection: 'locations', where: { id: { exists: true } } })
   await payload.delete({ collection: 'status-effects', where: { id: { exists: true } } })
   await payload.delete({ collection: 'rules', where: { id: { exists: true } } })
+  await payload.delete({ collection: 'cards', where: { id: { exists: true } } })
   // Don't delete media to avoid breaking existing references if we don't re-upload everything
 
   // Helper to upload image
@@ -141,11 +142,11 @@ const seed = async () => {
 
   console.log('--- Seeding Relics (Items) ---')
   const relicsData = [
-    { name: 'Korona ng Araw', slug: 'korona', htmlSlug: 'korona', effect: 'Ancient relic of the archipelago.', loc: 'bundok_pulag' },
-    { name: 'Luha ng Buwan', slug: 'luhain', htmlSlug: 'luhain', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan' },
-    { name: 'Pangil ng Buwan', slug: 'pangil', htmlSlug: 'pangil', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan' },
-    { name: 'Silang', slug: 'silang', htmlSlug: 'silang', effect: 'Ancient relic of the archipelago.', loc: 'kaluwalhatian' },
-    { name: 'Memory Fragment', slug: 'memory-fragment', htmlSlug: 'memory-fragment', effect: 'Fragment of memories.', loc: 'ang_kabilang_mundo' }
+    { name: 'Korona ng Araw', slug: 'korona', htmlSlug: 'korona', effect: 'Ancient relic of the archipelago.', loc: 'bundok_pulag', type: 'Artifact' },
+    { name: 'Luha ng Buwan', slug: 'luhain', htmlSlug: 'luhain', tagalogTitle: 'Tabak ng Luha ng Buwan - Ang Bantay ni Mayari', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact' },
+    { name: 'Pangil ng Buwan', slug: 'pangil', htmlSlug: 'pangil', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact' },
+    { name: 'Silang', slug: 'silang', htmlSlug: 'silang', tagalogTitle: 'Bato ng Pagsilang - Ang Bantay ni Bathala', effect: 'Ancient relic of the archipelago.', loc: 'kaluwalhatian', type: 'Artifact' },
+    { name: 'Memory Fragment', slug: 'memory-fragment', htmlSlug: 'memory-fragment', effect: 'The combination of all sacred relics. A fragment of the ultimate truth.', loc: 'ang_kabilang_mundo', type: 'Fragment' }
   ]
 
   for (const relic of relicsData) {
@@ -155,7 +156,7 @@ const seed = async () => {
         if (fs.existsSync(htmlPath)) {
             const html = fs.readFileSync(htmlPath, 'utf-8')
             const titleMatch = html.match(/<h2>(.*?)<\/h2>/)
-            const tagalogTitle = titleMatch ? titleMatch[1] : 'Lore'
+            const tagalogTitle = relic.tagalogTitle || (titleMatch ? titleMatch[1] : 'Lore')
             loreData = extractLoreFull(html, tagalogTitle)
         }
     }
@@ -173,7 +174,8 @@ const seed = async () => {
         description: loreData,
         effect: relic.effect,
         foundAt: locations[relic.loc],
-        image: imageId
+        image: imageId,
+        type: relic.type
       } as any 
     })
     console.log(`Created relic: ${relic.name}`)
@@ -182,7 +184,7 @@ const seed = async () => {
   console.log('--- Seeding Bosses ---')
   const bossesData = [
     {
-      name: 'Bathala', slug: 'bathala', tagalogTitle: 'Ang Manlilikha',
+      name: 'Bathala', slug: 'bathala', tagalogTitle: 'Ama ng Langit',
       stats: { hp: 2800, atk: 110, mag: 250, def: 200 },
       moveset: [
         { name: "Heaven's Mandate", type: 'Buff', description: 'Do On Guard on self. Removes Debuff. Won’t work if it gets pick after the previous turn.' },
@@ -202,7 +204,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Apolaki', slug: 'apolaki', tagalogTitle: 'Diyos ng Araw at Digmaan',
+      name: 'Apolaki', slug: 'apolaki', tagalogTitle: 'Diyos ng Araw',
       stats: { hp: 1700, atk: 360, mag: 70, def: 150 },
       moveset: [
         { name: 'Solar Flare Slash', type: 'Single Target', description: 'Deals 175% ATK to enemy, + 55% CRIT Rate.' },
@@ -223,7 +225,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Minokawa', slug: 'minokawa', tagalogTitle: 'Ang Lumalamon ng Araw',
+      name: 'Minokawa', slug: 'minokawa', tagalogTitle: 'Lawin ng Kamatayan',
       stats: { hp: 1000, atk: 300, mag: 40, def: 190 },
       moveset: [
         { name: 'Solar Devour', type: 'Single Target', description: 'Swallows prey, stunning for 1 turn. Deals 90% ATK, ignore 10% DEF.' },
@@ -262,7 +264,7 @@ const seed = async () => {
   console.log('--- Seeding Mini Bosses ---')
   const minibossesData = [
     {
-      name: 'Manananggal', slug: 'manananggal', tagalogTitle: 'Ang Halimaw ng Gabi', loc: 'dagat_kabisayaan',
+      name: 'Manananggal', slug: 'manananggal', tagalogTitle: 'Ang Bantay ni Mayari', loc: 'dagat_kabisayaan',
       stats: { hp: 900, atk: 230, mag: 35, def: 100 },
       moveset: [
         { name: 'Batwing Slash', description: 'Deals 1.2 x ATK to one enemy' },
@@ -271,7 +273,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Tiyanak', slug: 'tiyanak', tagalogTitle: 'Ang Sumpa ng Gubat', loc: 'daragang_magayon',
+      name: 'Tiyanak', slug: 'tiyanak', tagalogTitle: 'Ang Bantay ni Apolaki', loc: 'daragang_magayon',
       stats: { hp: 1150, atk: 50, mag: 195, def: 125 },
       moveset: [
         { name: 'Claw Latch', description: 'Deals 1.2 x MAG to one enemy' },
@@ -280,7 +282,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Sirena', slug: 'sirena', tagalogTitle: 'Ang Tinig ng Karagatan', loc: 'dagat_kabisayaan',
+      name: 'Sirena', slug: 'sirena', tagalogTitle: 'Ang Bantay ni Bakunawa at Minokawa', loc: 'dagat_kabisayaan',
       stats: { hp: 1000, atk: 20, mag: 240, def: 80 },
       moveset: [
         { name: 'Drowning Current', description: 'Deals 1.2 x MAG to one enemy' },
@@ -289,7 +291,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Kapre', slug: 'kapre', tagalogTitle: 'Ang Higanteng Tagabantay', loc: 'bundok_pulag',
+      name: 'Kapre', slug: 'kapre', tagalogTitle: 'Ang Bantay ni Bathala', loc: 'bundok_pulag',
       stats: { hp: 1300, atk: 200, mag: 0, def: 150 },
       moveset: [
         { name: 'Tree Smash', description: 'Deals 1.2 x ATK to one enemy' },
@@ -449,6 +451,91 @@ const seed = async () => {
               } as any
           })
           console.log(`Created rule: ${rule.title}`)
+      }
+  }
+
+  console.log('--- Seeding Cards ---')
+  const assetsPath = path.join(OLD_WIKI_PATH, 'assets')
+  
+  const seedCardDir = async (dirName: string, type: string, category?: string) => {
+      const fullPath = path.join(assetsPath, dirName)
+      if (!fs.existsSync(fullPath)) return
+      
+      const files = fs.readdirSync(fullPath)
+      for (const file of files) {
+          const filePath = path.join(fullPath, file)
+          if (fs.lstatSync(filePath).isDirectory()) {
+              await seedCardDir(path.join(dirName, file), type, file)
+              continue
+          }
+          
+          if (!file.match(/\.(jpg|jpeg|png|gif)$/i)) continue
+          
+          const name = file.split('.')[0].replace(/([A-Z])/g, ' $1').trim()
+          const imageId = await uploadImage(filePath, name)
+          if (imageId) {
+              await payload.create({
+                  collection: 'cards',
+                  data: {
+                      name,
+                      slug: `${type}-${file.split('.')[0].toLowerCase()}`,
+                      type: type as any,
+                      category: category,
+                      image: imageId,
+                      description: `Official ${type} card for ${name}.`
+                  } as any
+              })
+              console.log(`Created card: ${name} (${type})`)
+          }
+      }
+  }
+
+  await seedCardDir('ROLE CARDS', 'role')
+  await seedCardDir('PRESET CARDS', 'preset')
+  await seedCardDir('SKILL CARDS', 'skill')
+  await seedCardDir('MAP CARDS', 'map')
+  await seedCardDir('MAIN BOSS CARDS', 'boss')
+  await seedCardDir('MINI BOSS CARDS', 'miniboss')
+  await seedCardDir('SPECIAL ITEM CARDS', 'item')
+  
+  // Seed individual cards
+  const backCardPath = path.join(assetsPath, 'CARD BACK OG.png')
+  const backImageId = await uploadImage(backCardPath, 'Card Back')
+  if (backImageId) {
+      await payload.create({
+          collection: 'cards',
+          data: {
+              name: 'Balangay Card Back',
+              slug: 'card-back',
+              type: 'back',
+              image: backImageId,
+              description: 'The official card back for all Balangay of the Forgotten cards.'
+          } as any
+      })
+  }
+
+  const utilities = [
+      { file: 'turnpiece.png', name: 'Turn Piece', type: 'utility' },
+      { file: 'd4.png', name: 'd4 Dice', type: 'utility' },
+      { file: 'd10.png', name: 'd10 Dice', type: 'utility' },
+      { file: 'd20.png', name: 'd20 Dice', type: 'utility' },
+      { file: 'd100.png', name: 'd100 Dice', type: 'utility' }
+  ]
+
+  for (const util of utilities) {
+      const utilPath = path.join(assetsPath, util.file)
+      const utilImageId = await uploadImage(utilPath, util.name)
+      if (utilImageId) {
+          await payload.create({
+              collection: 'cards',
+              data: {
+                  name: util.name,
+                  slug: util.name.toLowerCase().replace(/\s+/g, '-'),
+                  type: 'utility',
+                  image: utilImageId,
+                  description: `Game utility: ${util.name}`
+              } as any
+          })
       }
   }
 

@@ -78,6 +78,7 @@ export interface Config {
     events: Event;
     'status-effects': StatusEffect;
     rules: Rule;
+    cards: Card;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -105,6 +106,7 @@ export interface Config {
     events: EventsSelect<false> | EventsSelect<true>;
     'status-effects': StatusEffectsSelect<false> | StatusEffectsSelect<true>;
     rules: RulesSelect<false> | RulesSelect<true>;
+    cards: CardsSelect<false> | CardsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -302,6 +304,7 @@ export interface Relic {
     [k: string]: unknown;
   } | null;
   effect?: string | null;
+  type?: ('Artifact' | 'Special' | 'Fragment') | null;
   sourceBoss?: (number | null) | Boss;
   foundAt?: (number | null) | Location;
   image?: (number | null) | Media;
@@ -511,6 +514,24 @@ export interface Rule {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cards".
+ */
+export interface Card {
+  id: number;
+  name: string;
+  slug: string;
+  type: 'role' | 'preset' | 'skill' | 'map' | 'boss' | 'miniboss' | 'item' | 'back' | 'utility';
+  /**
+   * Sub-category like character name (Mandirigma) or region.
+   */
+  category?: string | null;
+  image: number | Media;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -576,6 +597,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'rules';
         value: number | Rule;
+      } | null)
+    | ({
+        relationTo: 'cards';
+        value: number | Card;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -721,6 +746,7 @@ export interface RelicsSelect<T extends boolean = true> {
   slug?: T;
   description?: T;
   effect?: T;
+  type?: T;
   sourceBoss?: T;
   foundAt?: T;
   image?: T;
@@ -825,6 +851,20 @@ export interface RulesSelect<T extends boolean = true> {
   slug?: T;
   content?: T;
   order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cards_select".
+ */
+export interface CardsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  type?: T;
+  category?: T;
+  image?: T;
+  description?: T;
   updatedAt?: T;
   createdAt?: T;
 }

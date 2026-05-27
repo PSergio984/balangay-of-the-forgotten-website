@@ -2,6 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const Minibosses: CollectionConfig = {
   slug: 'minibosses',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'name',
   },

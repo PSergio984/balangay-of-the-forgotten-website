@@ -2,6 +2,9 @@ import type { CollectionConfig } from 'payload'
 
 export const Relics: CollectionConfig = {
   slug: 'relics',
+  access: {
+    read: () => true,
+  },
   admin: {
     useAsTitle: 'name',
   },
@@ -24,6 +27,12 @@ export const Relics: CollectionConfig = {
     {
       name: 'effect',
       type: 'textarea',
+    },
+    {
+      name: 'type',
+      type: 'select',
+      options: ['Artifact', 'Special', 'Fragment'],
+      defaultValue: 'Artifact',
     },
     {
       name: 'sourceBoss',

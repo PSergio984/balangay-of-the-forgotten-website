@@ -51,6 +51,27 @@ const categories = [
     description: 'The sacred and fragmented lands we must navigate.',
     color: 'bg-green-600',
     icon: '🗺️'
+  },
+  {
+    name: 'Status Effects',
+    slug: 'status-effects',
+    description: 'The blessings and curses that dictate the flow of battle.',
+    color: 'bg-yellow-600',
+    icon: '✨'
+  },
+  {
+    name: 'Game Rules',
+    slug: 'rules',
+    description: 'The laws of the world and the mechanics of the game.',
+    color: 'bg-zinc-600',
+    icon: '📜'
+  },
+  {
+    name: 'Card Archives',
+    slug: 'cards',
+    description: 'A visual gallery of all physical game cards used in the Balangay voyage.',
+    color: 'bg-amber-800',
+    icon: '🃏'
   }
 ]
 

@@ -19,7 +19,7 @@ const bodyFont = Crimson_Text({
 });
 
 export const metadata: Metadata = {
-  title: "Balangay of the Forgotten",
+  title: "Balangay of the Forgotten - Ang Pook ng Kabilang Mundo",
   description: "An immersive pixel-art experience through the archives of the forgotten.",
 };
 
