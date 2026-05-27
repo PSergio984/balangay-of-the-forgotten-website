@@ -52,7 +52,6 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
     limit: 100,
     select: {
       name: true,
-      title: true,
       slug: true,
       image: true,
       type: true, // For cards

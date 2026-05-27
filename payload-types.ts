@@ -479,6 +479,7 @@ export interface StatusEffect {
   name: string;
   type: 'Buff' | 'Debuff';
   description: string;
+  image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
 }
@@ -839,6 +840,7 @@ export interface StatusEffectsSelect<T extends boolean = true> {
   name?: T;
   type?: T;
   description?: T;
+  image?: T;
   updatedAt?: T;
   createdAt?: T;
 }
