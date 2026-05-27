@@ -202,8 +202,8 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                       className="object-contain pixelated"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-white/20 font-pixel text-xs text-center p-8">
-                      IMAGE NOT RECOVERED FROM ARCHIVES
+                    <div className="w-full h-full flex items-center justify-center bg-black text-[#F97316] font-pixel text-4xl">
+                      ?
                     </div>
                   )}
                 </div>

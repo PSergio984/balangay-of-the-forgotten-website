@@ -25,5 +25,10 @@ export const StatusEffects: CollectionConfig = {
       type: 'textarea',
       required: true,
     },
+    {
+      name: 'image',
+      type: 'upload',
+      relationTo: 'media',
+    },
   ],
 }
