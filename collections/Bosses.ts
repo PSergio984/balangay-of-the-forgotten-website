@@ -48,18 +48,21 @@ export const Bosses: CollectionConfig = {
       name: 'location',
       type: 'relationship',
       relationTo: 'locations',
+      label: 'Home Region',
     },
     {
       name: 'droppedRelics',
       type: 'join',
       collection: 'relics',
       on: 'sourceBoss',
+      label: 'Associated Relics',
     },
     {
       name: 'minibosses',
       type: 'join',
       collection: 'minibosses',
       on: 'parentBoss',
+      label: 'Guardians',
     },
     {
       name: 'image',
