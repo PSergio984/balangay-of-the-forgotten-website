@@ -112,22 +112,7 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
                     typeof doc.description === 'string' ? (
                       <p>{doc.description}</p>
                     ) : (
-                      <RichText 
-                        data={doc.description as any} 
-                        render={({ node }) => {
-                           // Simple auto-linker for known wiki terms
-                           if (node.type === 'text') {
-                             const words = ['Bathala', 'Mayari', 'Apolaki', 'Bakunawa', 'Minokawa', 'Dagat', 'Bundok'];
-                             let text = node.text;
-                             words.forEach(word => {
-                               const regex = new RegExp(`\\b${word}\\b`, 'gi');
-                               text = text.replace(regex, `<a href="/wiki/search?q=${word.toLowerCase()}" class="text-[#F97316] underline">${word}</a>`);
-                             });
-                             return <span dangerouslySetInnerHTML={{ __html: text }} />;
-                           }
-                           return null;
-                        }}
-                      />
+                      <RichText data={doc.description as any} />
                     )
                   ) : (
                     <p>
