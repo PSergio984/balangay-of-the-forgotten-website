@@ -1,10 +1,82 @@
 import { notFound } from 'next/navigation'
-import { getPayloadInstance } from '@/lib/payload'
+import { getPayloadInstance } from '../../../../../lib/payload'
 import AncientScrollContainer from '@/components/landing/AncientScrollContainer'
 import Image from 'next/image'
 import { RichText } from '@payloadcms/richtext-lexical/react'
+import type { Metadata } from 'next'
 
 export const revalidate = 3600
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string; slug: string }>
+}): Promise<Metadata> {
+  const { category, slug } = await params
+  const payload = await getPayloadInstance()
+  
+  const collectionMap: Record<string, string> = {
+    bosses: 'bosses',
+    characters: 'characters',
+    relics: 'relics',
+    locations: 'locations',
+    minibosses: 'minibosses',
+    'status-effects': 'status-effects',
+    rules: 'rules',
+    cards: 'cards',
+  }
+
+  const collection = collectionMap[category]
+  if (!collection) return {}
+
+  const result = await payload.find({
+    collection: collection as any,
+    where: {
+      slug: {
+        equals: slug,
+      },
+    },
+    limit: 1,
+  })
+
+  const doc: any = result.docs[0]
+  if (!doc) return {}
+
+  let desc = ''
+  if (doc.description) {
+    if (typeof doc.description === 'string') {
+      desc = doc.description
+    } else if (doc.description.root && doc.description.root.children) {
+      const firstP = doc.description.root.children.find((child: any) => child.type === 'paragraph')
+      if (firstP && firstP.children && firstP.children[0]) {
+        desc = firstP.children[0].text || ''
+      }
+    }
+  }
+  
+  if (!desc) {
+    desc = `Learn about ${doc.name || doc.title} in the official Balangay of the Forgotten archives.`
+  }
+
+  const title = `${doc.name || doc.title} - Balangay of the Forgotten Wiki`
+  const imageUrl = doc.image?.url ? (doc.image.url.startsWith('/api/media/file/') ? doc.image.url.replace('/api/media/file/', '/media/') : doc.image.url) : null
+
+  return {
+    title,
+    description: desc,
+    openGraph: {
+      title,
+      description: desc,
+      images: imageUrl ? [{ url: imageUrl }] : [],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: desc,
+      images: imageUrl ? [imageUrl] : [],
+    }
+  }
+}
 
 export async function generateStaticParams() {
   const payload = await getPayloadInstance()
