@@ -59,7 +59,8 @@ Plans:
   4. Wiki loading performance is fast (optimized queries, SSG/ISR).
   5. SEO meta tags, OpenGraph tags, and JSON-LD structured data are implemented for dynamic pages.
   6. Dynamic XML sitemap is generated and updated automatically.
-**Plans**: TBD
+**Plans**: 1 plan
+- [ ] 02.75-01-PLAN.md — Polish, Performance & SEO Optimization
 **UI hint**: yes
 
 ### Phase 3: Discovery & Search
