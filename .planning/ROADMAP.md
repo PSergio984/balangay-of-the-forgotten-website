@@ -3,8 +3,8 @@
 ## Phases
 
 - [x] **Phase 1: The "WOW" Landing Page** - Establish pixel-art identity with parallax and animations.
-- [ ] **Phase 2: Wiki Core & Content Engine** - Build the database for lore, characters, and news.
-- [ ] **Phase 2.75: Wiki Polish & Performance Optimization** - Fix image loading, optimize performance, fix sticky footer, and format wiki.
+- [x] **Phase 2: Wiki Core & Content Engine** - Build the database for lore, characters, and news.
+- [x] **Phase 2.75: Wiki Polish, Performance & SEO Optimization** - Fix image loading, optimize performance, fix sticky footer, correct wiki page formatting, and implement SEO/sitemap.
 - [ ] **Phase 3: Discovery & Search** - Implement global search and interactive lore timeline.
 - [ ] **Phase 4: Unity Interactive Showcase** - Embed Unity WebGL models for character inspection.
 
@@ -60,7 +60,7 @@ Plans:
   5. SEO meta tags, OpenGraph tags, and JSON-LD structured data are implemented for dynamic pages.
   6. Dynamic XML sitemap is generated and updated automatically.
 **Plans**: 1 plan
-- [ ] 02.75-01-PLAN.md — Polish, Performance & SEO Optimization
+- [x] 02.75-01-PLAN.md — Polish, Performance & SEO Optimization
 **UI hint**: yes
 
 ### Phase 3: Discovery & Search
@@ -91,6 +91,7 @@ Plans:
 | 1. The "WOW" Landing Page | 4/4 | Complete | 2026-05-25 |
 | 2. Wiki Core & Content Engine | 1/1 | Complete | 2026-05-26 |
 | 2.5 Wiki Polish & Migration | 1/1 | Complete | 2026-05-26 |
+| 2.75 Wiki Polish, Performance & SEO | 1/1 | Complete | 2026-06-07 |
 | 3. Discovery & Search | 0.5/1 | In Progress | - |
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |
 
