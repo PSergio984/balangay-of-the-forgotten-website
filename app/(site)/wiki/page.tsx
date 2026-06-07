@@ -1,6 +1,12 @@
 import React from 'react'
+import type { Metadata } from 'next'
 import AncientScrollContainer from '@/components/landing/AncientScrollContainer'
 import Link from 'next/link'
+
+export const metadata: Metadata = {
+  title: 'The Ancient Archives | Balangay of the Forgotten',
+  description: 'Welcome to the official archives of Balangay of the Forgotten. Discover the history, characters, deities, and relics of the archipelago.',
+}
 
 const categories = [
   {

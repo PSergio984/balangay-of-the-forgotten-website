@@ -42,6 +42,13 @@ export const Locations: CollectionConfig = {
       on: 'location',
     },
     {
+      name: 'tags',
+      type: 'text',
+      admin: {
+        description: 'Comma-separated tags',
+      },
+    },
+    {
       name: 'image',
       type: 'upload',
       relationTo: 'media',

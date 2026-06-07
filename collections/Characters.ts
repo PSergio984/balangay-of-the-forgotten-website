@@ -57,6 +57,13 @@ export const Characters: CollectionConfig = {
       ],
     },
     {
+      name: 'tags',
+      type: 'text',
+      admin: {
+        description: 'Comma-separated tags',
+      },
+    },
+    {
       name: 'image',
       type: 'upload',
       relationTo: 'media',

@@ -238,6 +238,10 @@ export interface Boss {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  /**
+   * Comma-separated tags
+   */
+  tags?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -276,6 +280,10 @@ export interface Location {
     hasNextPage?: boolean;
     totalDocs?: number;
   };
+  /**
+   * Comma-separated tags
+   */
+  tags?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -305,6 +313,11 @@ export interface Relic {
   } | null;
   effect?: string | null;
   type?: ('Artifact' | 'Special' | 'Fragment') | null;
+  rarity?: ('Common' | 'Rare' | 'Epic' | 'Legendary') | null;
+  /**
+   * Comma-separated tags
+   */
+  tags?: string | null;
   sourceBoss?: (number | null) | Boss;
   foundAt?: (number | null) | Location;
   image?: (number | null) | Media;
@@ -342,6 +355,10 @@ export interface Miniboss {
   };
   parentBoss?: (number | null) | Boss;
   location?: (number | null) | Location;
+  /**
+   * Comma-separated tags
+   */
+  tags?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -390,6 +407,10 @@ export interface Character {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Comma-separated tags
+   */
+  tags?: string | null;
   image?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
@@ -712,6 +733,7 @@ export interface BossesSelect<T extends boolean = true> {
   location?: T;
   droppedRelics?: T;
   minibosses?: T;
+  tags?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -734,6 +756,7 @@ export interface MinibossesSelect<T extends boolean = true> {
       };
   parentBoss?: T;
   location?: T;
+  tags?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -748,6 +771,8 @@ export interface RelicsSelect<T extends boolean = true> {
   description?: T;
   effect?: T;
   type?: T;
+  rarity?: T;
+  tags?: T;
   sourceBoss?: T;
   foundAt?: T;
   image?: T;
@@ -765,6 +790,7 @@ export interface LocationsSelect<T extends boolean = true> {
   parent?: T;
   subLocations?: T;
   bosses?: T;
+  tags?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -800,6 +826,7 @@ export interface CharactersSelect<T extends boolean = true> {
         cooldown?: T;
         id?: T;
       };
+  tags?: T;
   image?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -8,6 +8,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
     { url: `${baseUrl}/`, lastModified: new Date() },
     { url: `${baseUrl}/wiki`, lastModified: new Date() },
+    { url: `${baseUrl}/wiki/search`, lastModified: new Date() },
+    { url: `${baseUrl}/wiki/timeline`, lastModified: new Date() },
   ]
   
   const collections = ['bosses', 'characters', 'relics', 'locations', 'minibosses', 'status-effects', 'rules', 'cards']

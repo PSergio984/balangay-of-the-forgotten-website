@@ -37,34 +37,23 @@ const WikiSearch: React.FC = () => {
       if (query.length > 2) {
         setIsSearching(true);
         try {
-          // Search across all major lore collections
-          const collections = ['bosses', 'characters', 'relics', 'locations', 'minibosses'];
-          const allResults: SearchResult[] = [];
-
-          for (const col of collections) {
-            try {
-              const res = await fetch(`/api/${col}?where[name][contains]=${query}&limit=5`);
-              if (!res.ok) {
-                console.warn(`Search failed for collection ${col}: ${res.statusText}`);
-                continue;
-              }
-              const data = await res.json();
-              if (data.docs) {
-                allResults.push(...data.docs.map((doc: any) => ({
-                  id: doc.id,
-                  name: doc.name || doc.title,
-                  slug: doc.slug,
-                  collection: col,
-                  image: doc.image
-                })));
-              }
-            } catch (err) {
-              console.error(`Error fetching ${col}:`, err);
-            }
+          const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+          if (!res.ok) {
+            console.warn(`Search failed: ${res.statusText}`);
+            return;
           }
-          
-          setResults(allResults);
-          setIsOpen(allResults.length > 0);
+          const data = await res.json();
+          if (data.docs) {
+            const allResults = data.docs.map((doc: any) => ({
+              id: doc.id,
+              name: doc.name,
+              slug: doc.slug,
+              collection: doc.collection,
+              image: doc.image
+            }));
+            setResults(allResults);
+            setIsOpen(allResults.length > 0);
+          }
         } catch (error) {
           console.error('Search error:', error);
         } finally {
