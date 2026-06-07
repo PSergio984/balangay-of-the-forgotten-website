@@ -18,6 +18,9 @@
 - [ ] **INT-02**: Interactive Lore Timeline - Visual journey through the game's historical events.
 - [x] **INT-03**: Thematic UI Hook - "In-Universe" UX aesthetic (e.g., Logbook or Ancient Scroll).
 
+### Search Engine Optimization (SEO)
+- [ ] **SEO-01**: SEO & Sitemap - Meta tags, OpenGraph, JSON-LD structured data, and dynamic XML sitemap.
+
 ## v2 Requirements (Deferred)
 - [ ] **INTG-01**: ASP.NET Backend Foundation - Shared .NET models for data sync with Unity.
 - [ ] **INTG-02**: SignalR Tabletop Bridge - Real-time connection for hybrid tabletop gameplay.
@@ -46,3 +49,4 @@
 | INT-01 | Phase 4 | Pending |
 | INT-02 | Phase 3 | Pending |
 | INT-03 | Phase 1 | Complete |
+| SEO-01 | Phase 2.75 | Pending |

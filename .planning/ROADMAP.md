@@ -48,15 +48,17 @@
 Plans:
 - [ ] TBD (run /gsd-plan-phase 02.1 to break down)
 
-### Phase 2.75: Wiki Polish & Performance Optimization
-**Goal**: Fix image loading on deployment, optimize performance, fix sticky footer, and correct wiki page formatting.
+### Phase 2.75: Wiki Polish, Performance & SEO Optimization
+**Goal**: Fix image loading on deployment, optimize performance, fix sticky footer, correct wiki page formatting, and implement SEO optimization and XML sitemap.
 **Depends on**: Phase 2
-**Requirements**: WIKI-01, WIKI-03, CORE-04
+**Requirements**: WIKI-01, WIKI-03, CORE-04, SEO-01
 **Success Criteria** (what must be TRUE):
   1. Images load correctly on deployment.
   2. The footer is sticky and correctly aligned.
   3. Wiki layout is beautifully formatted with full lore descriptions.
   4. Wiki loading performance is fast (optimized queries, SSG/ISR).
+  5. SEO meta tags, OpenGraph tags, and JSON-LD structured data are implemented for dynamic pages.
+  6. Dynamic XML sitemap is generated and updated automatically.
 **Plans**: TBD
 **UI hint**: yes
 
