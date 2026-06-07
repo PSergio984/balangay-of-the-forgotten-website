@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in_progress
-last_updated: "2026-05-27T00:45:00.000Z"
+last_updated: "2026-06-07T21:41:00.000Z"
 progress:
   total_phases: 4
   completed_phases: 3
@@ -18,19 +18,19 @@ progress:
 
 **Core Value**: Showcase the game's world and characters through an immersive wiki that matches the 2D pixel art aesthetic of "Balangay of the Forgotten".
 
-**Current Focus**: Phase 3 - Discovery & Search.
+**Current Focus**: Phase 2.75 - Wiki Polish, Performance & SEO Optimization.
 
 ## Current Position
 
-**Phase**: 3 - Discovery & Search
-**Plan**: 03-01-PLAN.md (In Progress)
-**Status**: Search Hub and Timeline functional. Performance optimized.
+**Phase**: 2.75 - Wiki Polish, Performance & SEO Optimization
+**Plan**: TBD (Context gathered)
+**Status**: Ready for planning
 
 [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░] 90%
 
 ## Performance Metrics
 
-- **Requirement Coverage**: 10/10 v1 requirements mapped (100%)
+- **Requirement Coverage**: 11/11 v1 requirements mapped (100%)
 - **Phase Progress**: 3/4 phases complete (Phase 1, 2, 2.5)
 - **Build Health**: PASSED
 
@@ -42,6 +42,8 @@ progress:
 - **Asset Migration**: Migrated all images from the old wiki to the new Media collection.
 - **Performance**: Disabled Next.js image optimization (`unoptimized`) and added `priority` for small pixel-art assets to eliminate the 2s loading delay.
 - **Architecture**: Isolated site/admin via route groups.
+- **SEO & Meta Tags**: Dynamically generate meta titles, descriptions, and OpenGraph sharing images using dynamic Payload CMS queries via `generateMetadata`.
+- **Dynamic Sitemap**: Dynamic XML sitemap generation via Next.js `app/sitemap.ts` querying CMS routes.
 
 ### Todos
 
