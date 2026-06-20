@@ -165,7 +165,7 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
             </h1>
             <div className="flex items-center gap-4 mt-4">
               <span className="bg-black text-white px-3 py-1 text-sm font-pixel uppercase">
-                {category.slice(0, -1)}
+                {category === 'bosses' ? 'boss' : category === 'minibosses' ? 'miniboss' : category === 'status-effects' ? 'status effect' : category.endsWith('s') ? category.slice(0, -1) : category}
               </span>
               {doc.role && (
                 <span className="border-2 border-black px-3 py-1 text-sm font-pixel uppercase">

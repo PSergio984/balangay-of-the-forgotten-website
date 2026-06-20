@@ -9,7 +9,7 @@ const OLD_WIKI_PATH = 'C:/Users/admin/OneDrive/Documents/GitHub/balangay_of_the_
 function extractLoreFull(html: string, title: string): any {
   const regex = new RegExp(`<h2>${title}</h2>([\\s\\S]*?)(?:<h2>|<div class="image-section">|</div>)`, 'i')
   const match = html.match(regex)
-  if (!match) return { root: { children: [{ children: [{ text: 'Lore not found.' }], type: 'paragraph' }], type: 'root' } }
+  if (!match) return { root: { children: [{ children: [{ text: 'Lore not found.', type: 'text' }], type: 'paragraph' }], type: 'root' } }
 
   const content = match[1]
   const pRegex = /<p>([\s\S]*?)<\/p>/gi
@@ -21,14 +21,14 @@ function extractLoreFull(html: string, title: string): any {
       if (cleanText) {
          paragraphs.push({
              type: 'paragraph',
-             children: [{ text: cleanText }]
+             children: [{ text: cleanText, type: 'text' }]
          })
       }
   }
   
   if (paragraphs.length === 0) {
       const fallbackText = content.replace(/<[^>]*>?/gm, '').trim().replace(/\s+/g, ' ')
-      return { root: { children: [{ children: [{ text: fallbackText || 'Lore not found.' }], type: 'paragraph' }], type: 'root' } }
+      return { root: { children: [{ children: [{ text: fallbackText || 'Lore not found.', type: 'text' }], type: 'paragraph' }], type: 'root' } }
   }
   
   return { root: { children: paragraphs, type: 'root' } }
