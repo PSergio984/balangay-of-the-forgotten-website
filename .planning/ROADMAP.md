@@ -5,7 +5,7 @@
 - [x] **Phase 1: The "WOW" Landing Page** - Establish pixel-art identity with parallax and animations.
 - [x] **Phase 2: Wiki Core & Content Engine** - Build the database for lore, characters, and news.
 - [x] **Phase 2.75: Wiki Polish, Performance & SEO Optimization** - Fix image loading, optimize performance, fix sticky footer, correct wiki page formatting, and implement SEO/sitemap.
-- [ ] **Phase 3: Discovery & Search** - Implement global search and interactive lore timeline.
+- [x] **Phase 3: Discovery & Search** - Implement global search and interactive lore timeline.
 - [ ] **Phase 4: Unity Interactive Showcase** - Embed Unity WebGL models for character inspection.
 
 ## Phase Details
@@ -71,7 +71,7 @@ Plans:
   1. User can find any wiki entry instantly using a global search bar.
   2. User can interact with a visual timeline to understand the game's historical events.
 **Plans**: 1 plan
-- [/] 03-01-PLAN.md — Search Hub & Lore Timeline (Base implemented)
+- [x] 03-01-PLAN.md — Search Hub & Lore Timeline
 **UI hint**: yes
 
 ### Phase 4: Unity Interactive Showcase
@@ -92,7 +92,7 @@ Plans:
 | 2. Wiki Core & Content Engine | 1/1 | Complete | 2026-05-26 |
 | 2.5 Wiki Polish & Migration | 1/1 | Complete | 2026-05-26 |
 | 2.75 Wiki Polish, Performance & SEO | 1/1 | Complete | 2026-06-07 |
-| 3. Discovery & Search | 0.5/1 | In Progress | - |
+| 3. Discovery & Search | 1/1 | Complete | 2026-06-07 |
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |
 
 | 4. Unity Interactive Showcase | 0/0 | Not started | - |
