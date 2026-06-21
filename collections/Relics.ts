@@ -34,19 +34,7 @@ export const Relics: CollectionConfig = {
       options: ['Artifact', 'Special', 'Fragment'],
       defaultValue: 'Artifact',
     },
-    {
-      name: 'rarity',
-      type: 'select',
-      options: ['Common', 'Rare', 'Epic', 'Legendary'],
-      defaultValue: 'Common',
-    },
-    {
-      name: 'tags',
-      type: 'text',
-      admin: {
-        description: 'Comma-separated tags',
-      },
-    },
+
     {
       name: 'sourceBoss',
       type: 'relationship',

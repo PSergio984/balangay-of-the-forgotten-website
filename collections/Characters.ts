@@ -56,13 +56,7 @@ export const Characters: CollectionConfig = {
         { name: 'cooldown', type: 'number' },
       ],
     },
-    {
-      name: 'tags',
-      type: 'text',
-      admin: {
-        description: 'Comma-separated tags',
-      },
-    },
+
     {
       name: 'image',
       type: 'upload',

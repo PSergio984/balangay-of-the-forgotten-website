@@ -108,11 +108,11 @@ const seed = async () => {
 
   console.log('--- Seeding Locations ---')
   const locationsData = [
-    { name: 'Dagat ng Kabisayaan', slug: 'dagat_kabisayaan', tagalogTitle: 'Karagatan ng Eklipse', tags: 'sea, ocean, water, eclipse' },
-    { name: 'Daragang Magayon', slug: 'daragang_magayon', tagalogTitle: 'Bulkan ng Magayon', tags: 'volcano, fire, lava, mountain' },
-    { name: 'Bundok Pulag', slug: 'bundok_pulag', tagalogTitle: 'Bundok ng mga Diyos', tags: 'mountain, sky, clouds' },
-    { name: 'Kaluwalhatian', slug: 'kaluwalhatian', tagalogTitle: 'Tahanan ng mga Diyos', tags: 'sky, heaven, clouds, holy' },
-    { name: 'Ang Kabilang Mundo', slug: 'ang_kabilang_mundo', tagalogTitle: 'Lagusan', tags: 'veil, portal, gateway, shadow' }
+    { name: 'Dagat ng Kabisayaan', slug: 'dagat_kabisayaan', tagalogTitle: 'Karagatan ng Eklipse' },
+    { name: 'Daragang Magayon', slug: 'daragang_magayon', tagalogTitle: 'Bulkan ng Magayon' },
+    { name: 'Bundok Pulag', slug: 'bundok_pulag', tagalogTitle: 'Bundok ng mga Diyos' },
+    { name: 'Kaluwalhatian', slug: 'kaluwalhatian', tagalogTitle: 'Tahanan ng mga Diyos' },
+    { name: 'Ang Kabilang Mundo', slug: 'ang_kabilang_mundo', tagalogTitle: 'Lagusan' }
   ]
 
   const locations: Record<string, number | string> = {}
@@ -133,8 +133,7 @@ const seed = async () => {
         name: loc.name,
         slug: loc.slug.replace('_', '-'),
         description: loreData,
-        image: imageId,
-        tags: loc.tags
+        image: imageId
       } as any 
     })
     locations[loc.slug] = doc.id
@@ -143,11 +142,11 @@ const seed = async () => {
 
   console.log('--- Seeding Relics (Items) ---')
   const relicsData = [
-    { name: 'Korona ng Araw', slug: 'korona', htmlSlug: 'korona', effect: 'Ancient relic of the archipelago.', loc: 'bundok_pulag', type: 'Artifact', rarity: 'Legendary', tags: 'solar, crown, fire, armor' },
-    { name: 'Luha ng Buwan', slug: 'luhain', htmlSlug: 'luhain', tagalogTitle: 'Tabak ng Luha ng Buwan - Ang Bantay ni Mayari', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact', rarity: 'Epic', tags: 'lunar, sword, silver, weapon' },
-    { name: 'Pangil ng Buwan', slug: 'pangil', htmlSlug: 'pangil', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact', rarity: 'Epic', tags: 'lunar, tooth, relic, shadow' },
-    { name: 'Silang', slug: 'silang', htmlSlug: 'silang', tagalogTitle: 'Bato ng Pagsilang - Ang Bantay ni Bathala', effect: 'Ancient relic of the archipelago.', loc: 'kaluwalhatian', type: 'Artifact', rarity: 'Legendary', tags: 'holy, birth, stone, light' },
-    { name: 'Memory Fragment', slug: 'memory-fragment', htmlSlug: 'memory-fragment', effect: 'The combination of all sacred relics. A fragment of the ultimate truth.', loc: 'ang_kabilang_mundo', type: 'Fragment', rarity: 'Legendary', tags: 'sacred, core, relic, fragment' }
+    { name: 'Korona ng Araw', slug: 'korona', htmlSlug: 'korona', effect: 'Ancient relic of the archipelago.', loc: 'bundok_pulag', type: 'Artifact' },
+    { name: 'Luha ng Buwan', slug: 'luhain', htmlSlug: 'luhain', tagalogTitle: 'Tabak ng Luha ng Buwan - Ang Bantay ni Mayari', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact' },
+    { name: 'Pangil ng Buwan', slug: 'pangil', htmlSlug: 'pangil', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact' },
+    { name: 'Silang', slug: 'silang', htmlSlug: 'silang', tagalogTitle: 'Bato ng Pagsilang - Ang Bantay ni Bathala', effect: 'Ancient relic of the archipelago.', loc: 'kaluwalhatian', type: 'Artifact' },
+    { name: 'Memory Fragment', slug: 'memory-fragment', htmlSlug: 'memory-fragment', effect: 'The combination of all sacred relics. A fragment of the ultimate truth.', loc: 'ang_kabilang_mundo', type: 'Fragment' }
   ]
 
   for (const relic of relicsData) {
@@ -176,9 +175,7 @@ const seed = async () => {
         effect: relic.effect,
         foundAt: locations[relic.loc],
         image: imageId,
-        type: relic.type,
-        rarity: relic.rarity,
-        tags: relic.tags
+        type: relic.type
       } as any 
     })
     console.log(`Created relic: ${relic.name}`)
@@ -189,7 +186,6 @@ const seed = async () => {
     {
       name: 'Bathala', slug: 'bathala', tagalogTitle: 'Ama ng Langit',
       stats: { hp: 2800, atk: 110, mag: 250, def: 200 },
-      tags: 'sky, heaven, lightning, cloud, holy, boss',
       moveset: [
         { name: "Heaven's Mandate", type: 'Buff', description: 'Do On Guard on self. Removes Debuff. Won’t work if it gets pick after the previous turn.' },
         { name: 'Skyhammer', type: 'Single Target', description: 'Deals 175% MAG on a single target. 70% chance to stun 1 player for 1 turn.' },
@@ -200,7 +196,6 @@ const seed = async () => {
     {
       name: 'Mayari', slug: 'mayari', tagalogTitle: 'Diyosa ng Buwan',
       stats: { hp: 2100, atk: 300, mag: 120, def: 180 },
-      tags: 'lunar, moon, silver, night, boss',
       moveset: [
         { name: 'Moonlight Grace', type: 'Buff', description: 'Heal herself with a total of 25% max HP.' },
         { name: 'Lunar Strike', type: 'Single Target', description: 'Powerful strike, dealing 115% ATK + 20% MAG.' },
@@ -211,7 +206,6 @@ const seed = async () => {
     {
       name: 'Apolaki', slug: 'apolaki', tagalogTitle: 'Diyos ng Araw',
       stats: { hp: 1700, atk: 360, mag: 70, def: 150 },
-      tags: 'solar, sun, fire, day, boss',
       moveset: [
         { name: 'Solar Flare Slash', type: 'Single Target', description: 'Deals 175% ATK to enemy, + 55% CRIT Rate.' },
         { name: 'Radiant Charge', type: 'AoE', description: 'Deals damage to all enemies (80% ATK + 100% MAG). 30% chance to stun 1 hit enemy.' },
@@ -222,7 +216,6 @@ const seed = async () => {
     {
       name: 'Bakunawa', slug: 'bakunawa', tagalogTitle: 'Serpiyente ng Buwan',
       stats: { hp: 2000, atk: 40, mag: 300, def: 190 },
-      tags: 'eclipse, serpent, water, shadow, moon, boss',
       moveset: [
         { name: 'Eclipse Fang', type: 'Single Target', description: 'Heals Bakunawa for 50 (+100%) MAG. Deals 110% MAG as damage.' },
         { name: "Serpent's Coil", type: 'Single Target', description: 'Binds enemy. Deal 50 (+150%) ATK damage.' },
@@ -234,7 +227,6 @@ const seed = async () => {
     {
       name: 'Minokawa', slug: 'minokawa', tagalogTitle: 'Lawin ng Kamatayan',
       stats: { hp: 1000, atk: 300, mag: 40, def: 190 },
-      tags: 'eclipse, hawk, wind, sky, shadow, boss',
       moveset: [
         { name: 'Solar Devour', type: 'Single Target', description: 'Swallows prey, stunning for 1 turn. Deals 90% ATK, ignore 10% DEF.' },
         { name: 'Wing Tempest', type: 'AoE', description: 'Deals 80% ATK damage to all. Inflicts Eye of the Dragon (Decrease DEF by 10% for 2 turns).' },
@@ -264,8 +256,7 @@ const seed = async () => {
         description: loreData,
         stats: boss.stats,
         moveset: boss.moveset,
-        image: imageId,
-        tags: boss.tags
+        image: imageId
       } as any
     })
     bosses[boss.slug] = doc.id
@@ -277,7 +268,6 @@ const seed = async () => {
     {
       name: 'Manananggal', slug: 'manananggal', tagalogTitle: 'Ang Bantay ni Mayari', loc: 'dagat_kabisayaan',
       stats: { hp: 900, atk: 230, mag: 35, def: 100 },
-      tags: 'lunar, shadow, bat, assassin, miniboss',
       moveset: [
         { name: 'Batwing Slash', description: 'Deals 1.2 x ATK to one enemy' },
         { name: 'Blood Splash', description: 'Deals 1.5 x ATK to one enemy' },
@@ -287,7 +277,6 @@ const seed = async () => {
     {
       name: 'Tiyanak', slug: 'tiyanak', tagalogTitle: 'Ang Bantay ni Apolaki', loc: 'daragang_magayon',
       stats: { hp: 1150, atk: 50, mag: 195, def: 125 },
-      tags: 'solar, fire, child, trickster, miniboss',
       moveset: [
         { name: 'Claw Latch', description: 'Deals 1.2 x MAG to one enemy' },
         { name: 'Blood Hex', description: 'Deals 1.5 x MAG to one enemy' },
@@ -297,7 +286,6 @@ const seed = async () => {
     {
       name: 'Sirena', slug: 'sirena', tagalogTitle: 'Ang Bantay ni Bakunawa at Minokawa', loc: 'dagat_kabisayaan',
       stats: { hp: 1000, atk: 20, mag: 240, def: 80 },
-      tags: 'eclipse, water, ocean, mage, miniboss',
       moveset: [
         { name: 'Drowning Current', description: 'Deals 1.2 x MAG to one enemy' },
         { name: 'Tidal Surge', description: 'Deals 1.5 x MAG to one enemy' },
@@ -307,7 +295,6 @@ const seed = async () => {
     {
       name: 'Kapre', slug: 'kapre', tagalogTitle: 'Ang Bantay ni Bathala', loc: 'bundok_pulag',
       stats: { hp: 1300, atk: 200, mag: 0, def: 150 },
-      tags: 'sky, wood, giant, tank, miniboss',
       moveset: [
         { name: 'Tree Smash', description: 'Deals 1.2 x ATK to one enemy' },
         { name: 'Uproot Smash', description: 'Deals 1.5 x ATK to one enemy' },
@@ -338,8 +325,7 @@ const seed = async () => {
         stats: mini.stats,
         moveset: mini.moveset,
         location: locations[mini.loc],
-        image: imageId,
-        tags: mini.tags
+        image: imageId
       } as any
     })
     console.log(`Created miniboss: ${mini.name}`)
@@ -349,7 +335,6 @@ const seed = async () => {
   const charactersData = [
     {
       name: 'Mandirigma', slug: 'mandirigma', role: 'Damage', tagalogTitle: 'Ang Matapang na Mandirigma',
-      tags: 'damage, warrior, sword, physical, character',
       presets: [
         { name: 'Glass Canon', stats: { hp: 650, atk: 120, mag: 0, def: 60 } },
         { name: 'Bruiser', stats: { hp: 800, atk: 90, mag: 0, def: 90 } },
@@ -365,7 +350,6 @@ const seed = async () => {
     },
     {
       name: 'Bagani', slug: 'bagani', role: 'Tank', tagalogTitle: 'Ang Tagapagtanggol',
-      tags: 'tank, guardian, defense, shield, character',
       presets: [
         { name: 'Wall', stats: { hp: 1050, atk: 30, mag: 0, def: 250 } },
         { name: 'Juggernaut', stats: { hp: 1000, atk: 60, mag: 0, def: 190 } },
@@ -381,7 +365,6 @@ const seed = async () => {
     },
     {
       name: 'Babaylan', slug: 'babaylan', role: 'Healer', tagalogTitle: 'Ang Manggagamot',
-      tags: 'healer, priest, magic, support, character',
       presets: [
         { name: 'Pure Healer', stats: { hp: 500, atk: 0, mag: 220, def: 70 } },
         { name: 'Support Cleric', stats: { hp: 650, atk: 0, mag: 200, def: 80 } },
@@ -397,7 +380,6 @@ const seed = async () => {
     },
     {
       name: 'Mangangayaw', slug: 'mangangayaw', role: 'Ranged', tagalogTitle: 'Ang Mangangaso',
-      tags: 'ranged, hunter, speed, bow, character',
       presets: [
         { name: 'Sniper', stats: { hp: 600, atk: 110, mag: 0, def: 50 } },
         { name: 'Ranger', stats: { hp: 700, atk: 90, mag: 0, def: 100 } },
@@ -434,8 +416,7 @@ const seed = async () => {
         description: loreData,
         presets: char.presets,
         moveset: char.moveset,
-        image: imageId,
-        tags: char.tags
+        image: imageId
       } as any
     })
     characters[char.slug] = doc.id
@@ -568,42 +549,36 @@ const seed = async () => {
       title: 'The Divine Genesis',
       year: -1000,
       era: 'Early Migration',
-      tags: 'creation, gods, genesis, early-migration',
       descriptionText: 'Bathala, Mayari, and Apolaki watch over the creation of the archipelago. The first Balangay vessels are carved by ancestral hands, blessed with rituals to navigate both the mortal seas and the currents of memory.'
     },
     {
       title: 'The Age of Harmony',
       year: 250,
       era: 'Early Migration',
-      tags: 'peace, settlement, early-migration',
       descriptionText: 'Mortal settlements flourish along the coastlines of Dagat ng Kabisayaan and Bundok Pulag. Ancient scrolls detail peaceful cooperation between mortals and elemental spirits under the guidance of the gods.'
     },
     {
       title: "The Father's Tyranny",
       year: 500,
       era: 'The Great Fragmentation',
-      tags: 'bathala, greed, fragmentation',
       descriptionText: 'Consumed by greed and pride, Bathala claims supreme dominion. He seizes the Stone of Birth and retreats to the floating kingdom of Kaluwalhatian, enslaving the forest Kapre to guard his heavenly sanctuary.'
     },
     {
       title: 'The Eclipse War',
       year: 520,
       era: 'The Great Fragmentation',
-      tags: 'war, eclipse, fragmentation, moon, sun',
       descriptionText: 'Mayari and Apolaki unite to challenge their father’s tyranny. The celestial conflict fragments the archipelago, separating the mortal realm from the memory-bound Kabilang Mundo. During the war, Mayari\'s silver sword, the Tears of the Moon, is shattered.'
     },
     {
       title: 'The Rising of Bakunawa',
       year: 700,
       era: 'Age of the Balangay',
-      tags: 'bakunawa, serpent, eclipse, monster, sea',
       descriptionText: 'As the gods remain wounded and isolated, the giant sea serpent Bakunawa rises from the depths of the Eclipse Ocean, attempting to swallow the moons. Sirens are spawned to lure mortal ships to their doom.'
     },
     {
       title: 'The Wake of the Forgotten',
       year: 1000,
       era: 'The Current Awakening',
-      tags: 'awakening, return, heroes, balangay',
       descriptionText: 'The ancient Balangay vessel reawakens. A new generation of Pinili (the Chosen)—the Mandirigma, Bagani, Babaylan, and Mangangayaw—step aboard to cross the veil into the Kabilang Mundo and reconstruct the forgotten memories.'
     }
   ]
@@ -690,7 +665,6 @@ const seed = async () => {
         year: ev.year,
         era: ev.era,
         description: desc,
-        tags: ev.tags,
         image: imageId,
         relatedLore
       } as any

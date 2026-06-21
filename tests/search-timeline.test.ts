@@ -3,16 +3,16 @@ import * as fs from 'node:fs';
 
 test('Relics Schema and Rarity Field', () => {
   const relicSchema = fs.readFileSync('collections/Relics.ts', 'utf-8');
-  expect(relicSchema).toContain("name: 'rarity'");
-  expect(relicSchema).toContain("name: 'tags'");
-  expect(relicSchema).toContain("options: ['Common', 'Rare', 'Epic', 'Legendary']");
+  expect(relicSchema).not.toContain("name: 'rarity'");
+  expect(relicSchema).not.toContain("name: 'tags'");
+  expect(relicSchema).not.toContain("options: ['Common', 'Rare', 'Epic', 'Legendary']");
 });
 
 test('Tags Field Added to Collections', () => {
   const collections = ['Bosses', 'Characters', 'Minibosses', 'Locations'];
   for (const col of collections) {
     const content = fs.readFileSync(`collections/${col}.ts`, 'utf-8');
-    expect(content).toContain("name: 'tags'");
+    expect(content).not.toContain("name: 'tags'");
   }
 });
 
@@ -23,7 +23,7 @@ test('Unified Search API Implementation', () => {
   const searchRoute = fs.readFileSync('app/(site)/api/search/route.ts', 'utf-8');
   expect(searchRoute).toContain('Promise.all');
   expect(searchRoute).toContain("collectionFilter === 'all'");
-  expect(searchRoute).toContain("equals: rarity");
+  expect(searchRoute).not.toContain("equals: rarity");
 });
 
 test('Navbar Search Dropdown Refactored', () => {

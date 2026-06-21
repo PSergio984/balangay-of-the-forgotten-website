@@ -44,13 +44,7 @@ export const Minibosses: CollectionConfig = {
       type: 'relationship',
       relationTo: 'locations',
     },
-    {
-      name: 'tags',
-      type: 'text',
-      admin: {
-        description: 'Comma-separated tags',
-      },
-    },
+
     {
       name: 'image',
       type: 'upload',

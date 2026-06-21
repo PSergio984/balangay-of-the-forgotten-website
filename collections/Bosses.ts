@@ -64,13 +64,7 @@ export const Bosses: CollectionConfig = {
       on: 'parentBoss',
       label: 'Guardians',
     },
-    {
-      name: 'tags',
-      type: 'text',
-      admin: {
-        description: 'Comma-separated tags',
-      },
-    },
+
     {
       name: 'image',
       type: 'upload',

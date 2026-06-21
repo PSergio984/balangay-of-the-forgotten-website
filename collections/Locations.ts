@@ -41,13 +41,7 @@ export const Locations: CollectionConfig = {
       collection: 'bosses',
       on: 'location',
     },
-    {
-      name: 'tags',
-      type: 'text',
-      admin: {
-        description: 'Comma-separated tags',
-      },
-    },
+
     {
       name: 'image',
       type: 'upload',

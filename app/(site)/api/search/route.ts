@@ -5,11 +5,9 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const query = searchParams.get('q') || ''
   const collectionFilter = searchParams.get('collection') || 'all'
-  const tag = searchParams.get('tag') || ''
-  const rarity = searchParams.get('rarity') || ''
 
   // If all parameters are empty, return empty results
-  if (!query && collectionFilter === 'all' && !tag && !rarity) {
+  if (!query && collectionFilter === 'all') {
     return NextResponse.json({ docs: [] })
   }
 
@@ -27,22 +25,6 @@ export async function GET(request: Request) {
         andFilters.push({
           name: {
             contains: query,
-          },
-        })
-      }
-
-      if (tag) {
-        andFilters.push({
-          tags: {
-            contains: tag,
-          },
-        })
-      }
-
-      if (rarity && col === 'relics') {
-        andFilters.push({
-          rarity: {
-            equals: rarity,
           },
         })
       }
@@ -66,8 +48,6 @@ export async function GET(request: Request) {
         collection: col,
         image: doc.image,
         description: doc.description,
-        tags: doc.tags,
-        rarity: doc.rarity,
       }))
     })
 

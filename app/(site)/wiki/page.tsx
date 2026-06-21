@@ -83,7 +83,7 @@ const categories = [
 
 export default function WikiHubPage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 pb-20">
+    <div className="flex-grow bg-[#0a0a0a] pt-32 pb-24">
       <AncientScrollContainer>
         <div className="flex flex-col gap-12">
           <header className="text-center space-y-4">
@@ -133,6 +133,6 @@ export default function WikiHubPage() {
           </section>
         </div>
       </AncientScrollContainer>
-    </main>
+    </div>
   )
 }

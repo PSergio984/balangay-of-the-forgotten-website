@@ -4,7 +4,7 @@ import WorldMapSection from '@/components/landing/WorldMapSection'
 
 export default function ExplorePage() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 pb-20">
+    <div className="flex-grow bg-[#0a0a0a] pt-32 pb-24">
       <AncientScrollContainer>
         <div className="flex flex-col gap-12">
            <header className="text-center space-y-4">
@@ -53,6 +53,6 @@ export default function ExplorePage() {
           </div>
         </div>
       </AncientScrollContainer>
-    </main>
+    </div>
   )
 }
