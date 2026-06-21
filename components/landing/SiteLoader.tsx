@@ -37,6 +37,7 @@ export default function SiteLoader() {
           setTimeout(() => {
             setVisible(false)
             sessionStorage.setItem('balangay-site-loaded', 'true')
+            window.dispatchEvent(new CustomEvent('balangay-ready'))
           }, 400)
           return 100
         }
