@@ -94,7 +94,13 @@ const RelicShowcase: React.FC = () => {
 
   return (
     <section className="py-20 border-t-4 border-[#0C4A6E] bg-gradient-to-b from-[#E0F2FE] to-[#F0F9FF]">
-      <div className="max-w-6xl mx-auto px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="max-w-6xl mx-auto px-4"
+      >
         <h2 className="text-3xl font-pixel text-[#0C4A6E] mb-4 text-center uppercase tracking-widest">
           Collect Divine Relics
         </h2>
@@ -241,7 +247,7 @@ const RelicShowcase: React.FC = () => {
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

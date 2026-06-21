@@ -90,7 +90,13 @@ const WorldMapSection: React.FC = () => {
 
   return (
     <section className="py-20 border-t-4 border-[#0C4A6E] bg-[#0C4A6E] text-white">
-      <div className="max-w-6xl mx-auto px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="max-w-6xl mx-auto px-4"
+      >
         <h2 className="text-3xl font-pixel text-white mb-4 text-center uppercase tracking-widest">
           Explore The Realms
         </h2>
@@ -187,7 +193,7 @@ const WorldMapSection: React.FC = () => {
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
