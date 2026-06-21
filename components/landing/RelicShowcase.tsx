@@ -85,6 +85,64 @@ const RELICS: RelicData[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+} as const;
+
+const itemHeaderVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 15 }
+  }
+} as const;
+
+const itemTextVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 0.6 }
+  }
+} as const;
+
+const inventoryGridVariants = {
+  hidden: { opacity: 0, x: -60, y: 60 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+      duration: 0.8
+    }
+  }
+} as const;
+
+const inspectorPanelVariants = {
+  hidden: { opacity: 0, x: 60, y: 60 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+      duration: 0.8
+    }
+  }
+} as const;
+
 const RelicShowcase: React.FC = () => {
   const [selectedRelic, setSelectedRelic] = useState<RelicData | null>(null);
 
@@ -93,25 +151,34 @@ const RelicShowcase: React.FC = () => {
   };
 
   return (
-    <section className="py-20 border-t-4 border-[#0C4A6E] bg-gradient-to-b from-[#E0F2FE] to-[#F0F9FF]">
+    <section className="py-20 border-t-4 border-[#0C4A6E] bg-gradient-to-b from-[#E0F2FE] to-[#F0F9FF] overflow-hidden">
       <motion.div 
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
         className="max-w-6xl mx-auto px-4"
       >
-        <h2 className="text-3xl font-pixel text-[#0C4A6E] mb-4 text-center uppercase tracking-widest">
+        <motion.h2 
+          variants={itemHeaderVariants}
+          className="text-3xl font-pixel text-[#0C4A6E] mb-4 text-center uppercase tracking-widest"
+        >
           Collect Divine Relics
-        </h2>
-        <p className="text-center font-serif text-lg text-[#0C4A6E]/80 max-w-2xl mx-auto mb-12">
+        </motion.h2>
+        <motion.p 
+          variants={itemTextVariants}
+          className="text-center font-serif text-lg text-[#0C4A6E]/80 max-w-2xl mx-auto mb-12"
+        >
           &quot;Reclaim these lost artifacts scattered across the realms. Click on an item in your inventory to inspect its power and origin.&quot;
-        </p>
+        </motion.p>
 
         <div className="flex flex-col md:flex-row gap-8 items-stretch justify-center">
 
           {/* ── 2×2 Inventory Grid ── */}
-          <div className="flex flex-col justify-center items-center">
+          <motion.div 
+            variants={inventoryGridVariants}
+            className="flex flex-col justify-center items-center"
+          >
             <div className="border-4 border-[#0C4A6E] bg-white p-6 shadow-[6px_6px_0px_0px_rgba(12,74,110,1)]">
               <div className="font-pixel text-[10px] text-[#0C4A6E] border-b border-[#0C4A6E]/20 pb-2 mb-4 uppercase tracking-widest text-center">
                 Balangay Storage — Relics
@@ -165,10 +232,13 @@ const RelicShowcase: React.FC = () => {
                 })}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* ── Inspector Panel ── */}
-          <div className="flex-1 flex">
+          <motion.div 
+            variants={inspectorPanelVariants}
+            className="flex-1 flex"
+          >
             <AnimatePresence mode="wait">
               {selectedRelic ? (
                 <motion.div
@@ -244,7 +314,7 @@ const RelicShowcase: React.FC = () => {
                 </div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
 
         </div>
       </motion.div>

@@ -21,7 +21,7 @@ export default async function Home() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main className="flex min-h-screen flex-col overflow-x-hidden w-full max-w-full">
       {/* Pinned Video Parallax Hero Section */}
       <ParallaxHero />
       

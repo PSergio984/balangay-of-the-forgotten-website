@@ -77,6 +77,62 @@ const REGIONS: RegionData[] = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    }
+  }
+} as const;
+
+const itemHeaderVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 15 }
+  }
+} as const;
+
+const itemTextVariants = {
+  hidden: { opacity: 0 },
+  visible: { 
+    opacity: 1,
+    transition: { duration: 0.6 }
+  }
+} as const;
+
+const leftPanelVariants = {
+  hidden: { opacity: 0, x: -120 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+      duration: 0.8
+    }
+  }
+} as const;
+
+const rightPanelVariants = {
+  hidden: { opacity: 0, x: 120 },
+  visible: { 
+    opacity: 1, 
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+      duration: 0.8
+    }
+  }
+} as const;
+
 const WorldMapSection: React.FC = () => {
   const [selectedRegion, setSelectedRegion] = useState<RegionData>(REGIONS[0]);
 
@@ -89,25 +145,34 @@ const WorldMapSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 border-t-4 border-[#0C4A6E] bg-[#0C4A6E] text-white">
+    <section className="py-20 border-t-4 border-[#0C4A6E] bg-[#0C4A6E] text-white overflow-hidden">
       <motion.div 
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
         className="max-w-6xl mx-auto px-4"
       >
-        <h2 className="text-3xl font-pixel text-white mb-4 text-center uppercase tracking-widest">
+        <motion.h2 
+          variants={itemHeaderVariants}
+          className="text-3xl font-pixel text-white mb-4 text-center uppercase tracking-widest"
+        >
           Explore The Realms
-        </h2>
-        <p className="text-center font-serif text-lg text-slate-300 max-w-2xl mx-auto mb-12">
+        </motion.h2>
+        <motion.p 
+          variants={itemTextVariants}
+          className="text-center font-serif text-lg text-slate-300 max-w-2xl mx-auto mb-12"
+        >
           &quot;Select a territory on the map or from the list to view regional maps, listen to local scores, and read the forgotten lore.&quot;
-        </p>
+        </motion.p>
 
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           
           {/* Map Viewer Panel */}
-          <div className="w-full lg:w-2/3 space-y-4">
+          <motion.div 
+            variants={leftPanelVariants}
+            className="w-full lg:w-2/3 space-y-4"
+          >
             <div className="relative border-4 border-[#F97316] bg-slate-900 shadow-[0_10px_20px_rgba(0,0,0,0.6)] aspect-[16/9] w-full overflow-hidden p-1">
               <AnimatePresence mode="wait">
                 <motion.img
@@ -152,10 +217,13 @@ const WorldMapSection: React.FC = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Lore and Details Panel */}
-          <div className="w-full lg:w-1/3 border-4 border-[#F97316] bg-black/60 p-6 space-y-6 shadow-[8px_8px_0px_0px_rgba(249,115,22,1)] min-h-[400px] flex flex-col justify-between">
+          <motion.div 
+            variants={rightPanelVariants}
+            className="w-full lg:w-1/3 border-4 border-[#F97316] bg-black/60 p-6 space-y-6 shadow-[8px_8px_0px_0px_rgba(249,115,22,1)] min-h-[400px] flex flex-col justify-between"
+          >
             <div className="space-y-4">
               <div className="flex justify-between items-center border-b border-white/20 pb-2">
                 <span className="font-pixel text-[10px] text-[#F97316]">{selectedRegion.tagline}</span>
@@ -190,7 +258,7 @@ const WorldMapSection: React.FC = () => {
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
       </motion.div>
