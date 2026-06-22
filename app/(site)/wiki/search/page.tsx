@@ -24,6 +24,18 @@ const collections = [
   { label: 'Mini Bosses', value: 'minibosses' },
 ]
 
+function getImageUrl(image: any): string | null {
+  if (!image) return null
+  if (typeof image === 'object' && image.url) {
+    const url: string = image.url
+    return url.startsWith('/api/media/file/')
+      ? url.replace('/api/media/file/', '/media/')
+      : url
+  }
+  if (typeof image === 'string' && image.startsWith('/')) return image
+  return null
+}
+
 export default function SearchHubPage() {
   const [query, setQuery] = useState('')
   const [activeCollection, setActiveCollection] = useState('all')
@@ -149,33 +161,36 @@ export default function SearchHubPage() {
                   >
                     <Link
                       href={`/wiki/${result.collection}/${result.slug}`}
-                      className="group flex gap-4 border-4 border-black p-4 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer h-full min-h-[160px]"
+                      className="group flex gap-4 border-4 border-black p-3 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer h-full min-h-[100px] items-center"
                     >
-                      <div className="relative w-40 h-40 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden self-center">
-                        {result.image ? (
-                          <Image
-                            src={typeof result.image === 'string' ? result.image : (result.image.url.startsWith('/api/media/file/') ? result.image.url.replace('/api/media/file/', '/media/') : result.image.url)}
-                            alt={result.name || ''}
-                            fill
-                            unoptimized
-                            className="object-cover pixelated"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-white/20 font-pixel text-[8px] text-center p-2">
-                            NO IMAGE
-                          </div>
-                        )}
+                      {/* Small square sprite */}
+                      <div className="relative w-80 h-80 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden flex items-center justify-center">
+                        {(() => {
+                          const imgUrl = getImageUrl(result.image)
+                          return imgUrl ? (
+                            <Image
+                              src={imgUrl}
+                              alt={result.name || ''}
+                              fill
+                              unoptimized
+                              className="object-contain"
+                              style={{ imageRendering: 'pixelated' }}
+                            />
+                          ) : (
+                            <div className="font-pixel text-[6px] text-white/30 text-center">NO IMG</div>
+                          )
+                        })()}
                       </div>
-                      <div className="flex flex-col justify-between overflow-hidden py-1 flex-grow">
+                      {/* Text */}
+                      <div className="flex flex-col justify-between flex-grow overflow-hidden py-1">
                         <div>
                           <span className="text-[7px] font-pixel text-[#F97316] uppercase block mb-1">
                             {result.collection}
                           </span>
-                          <h2 className="text-xl font-bold uppercase truncate tracking-tight">
+                          <h2 className="text-base font-bold uppercase truncate tracking-tight">
                             {result.name}
                           </h2>
                         </div>
-
                         <div className="text-[7px] font-pixel text-gray-400 group-hover:text-black transition-colors uppercase mt-2">
                           ACCESS LOGS →
                         </div>

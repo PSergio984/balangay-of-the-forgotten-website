@@ -32,6 +32,7 @@ export async function GET(request: Request) {
       const queryOptions: any = {
         collection: col as any,
         limit: 15,
+        depth: 1,
       }
 
       if (andFilters.length > 0) {
