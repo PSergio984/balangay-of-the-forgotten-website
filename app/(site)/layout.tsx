@@ -35,12 +35,12 @@ export default function RootLayout({
       className={`${pixelFont.variable} ${bodyFont.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <LenisProvider>
           <SiteLoader />
           <div className="crt-overlay" />
           <PixelNavbar />
-          <main className="flex-grow">
+          <main className="flex-grow flex flex-col">
             {children}
           </main>
           <Footer />

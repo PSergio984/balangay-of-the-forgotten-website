@@ -151,7 +151,7 @@ export default function SearchHubPage() {
                       href={`/wiki/${result.collection}/${result.slug}`}
                       className="group flex gap-4 border-4 border-black p-4 bg-white shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all cursor-pointer h-full"
                     >
-                      <div className="relative w-24 h-24 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
+                      <div className="relative w-32 h-32 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
                         {result.image ? (
                           <Image
                             src={typeof result.image === 'string' ? result.image : (result.image.url.startsWith('/api/media/file/') ? result.image.url.replace('/api/media/file/', '/media/') : result.image.url)}
