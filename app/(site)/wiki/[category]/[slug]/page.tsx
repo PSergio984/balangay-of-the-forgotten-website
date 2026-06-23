@@ -144,8 +144,8 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
   }
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-24 pb-20">
-      <AncientScrollContainer>
+    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-24 pb-20">
+      <AncientScrollContainer className="flex-grow flex flex-col">
         <div className="flex flex-col gap-12">
           {/* Breadcrumbs / Back Navigation */}
           <nav className="text-sm font-pixel text-gray-500 uppercase flex gap-4 items-center bg-white/50 border-4 border-black p-3 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] w-fit">
@@ -330,7 +330,7 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
           </div>
         </div>
       </AncientScrollContainer>
-    </main>
+    </div>
   )
 }
 

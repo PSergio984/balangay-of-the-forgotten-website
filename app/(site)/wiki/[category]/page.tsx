@@ -59,8 +59,8 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
   })
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a] pt-32 pb-20">
-      <AncientScrollContainer>
+    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-32 pb-20">
+      <AncientScrollContainer className="flex-grow flex flex-col">
         <div className="flex flex-col gap-12">
           <nav className="text-sm font-pixel text-gray-500 uppercase flex gap-2">
             <Link href="/wiki" className="hover:text-black transition-colors">Archives</Link>
@@ -121,6 +121,6 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
           </div>
         </div>
       </AncientScrollContainer>
-    </main>
+    </div>
   )
 }

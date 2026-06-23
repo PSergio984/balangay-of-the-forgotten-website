@@ -46,6 +46,7 @@ const seed = async () => {
   await payload.delete({ collection: 'status-effects', where: { id: { exists: true } } })
   await payload.delete({ collection: 'rules', where: { id: { exists: true } } })
   await payload.delete({ collection: 'cards', where: { id: { exists: true } } })
+  await payload.delete({ collection: 'events', where: { id: { exists: true } } })
   // Don't delete media to avoid breaking existing references if we don't re-upload everything
 
   // Helper to upload image

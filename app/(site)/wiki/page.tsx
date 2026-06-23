@@ -83,8 +83,8 @@ const categories = [
 
 export default function WikiHubPage() {
   return (
-    <div className="flex-grow bg-[#0a0a0a] pt-32 pb-24">
-      <AncientScrollContainer>
+    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-32 pb-24">
+      <AncientScrollContainer className="flex-grow flex flex-col">
         <div className="flex flex-col gap-12">
           <header className="text-center space-y-4">
             <h1 className="text-4xl md:text-7xl font-bold uppercase tracking-widest text-[#0C4A6E]">

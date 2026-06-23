@@ -477,6 +477,7 @@ export interface Event {
 export interface StatusEffect {
   id: number;
   name: string;
+  slug?: string | null;
   type: 'Buff' | 'Debuff';
   description: string;
   image?: (number | null) | Media;
@@ -838,6 +839,7 @@ export interface EventsSelect<T extends boolean = true> {
  */
 export interface StatusEffectsSelect<T extends boolean = true> {
   name?: T;
+  slug?: T;
   type?: T;
   description?: T;
   image?: T;
