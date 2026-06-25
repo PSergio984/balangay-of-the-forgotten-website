@@ -10,6 +10,31 @@ interface TimelineClientProps {
   events: any[]
 }
 
+// Helper to recursively normalize Lexical RichText nodes ensuring they have explicit type="text"
+const normalizeLexicalContent = (node: any): any => {
+  if (!node) return node;
+  
+  const copy = { ...node };
+
+  if (copy.children && Array.isArray(copy.children)) {
+    copy.children = copy.children.map((child: any) => {
+      if (child && typeof child === 'object') {
+        if ('text' in child && !child.type) {
+          return {
+            ...child,
+            type: 'text',
+            version: 1
+          };
+        }
+        return normalizeLexicalContent(child);
+      }
+      return child;
+    });
+  }
+  
+  return copy;
+};
+
 const categoryColors: Record<string, { border: string, text: string, bg: string, hoverBg: string }> = {
   bosses: {
     border: 'border-red-600',
@@ -188,7 +213,7 @@ export default function TimelineClient({ events }: TimelineClientProps) {
                 </motion.h2>
                 
                 <motion.div variants={itemVariants} className="prose prose-lg text-gray-600 font-serif mb-6 leading-relaxed">
-                  <RichText data={event.description as any} />
+                  <RichText data={normalizeLexicalContent(event.description) as any} />
                 </motion.div>
 
                 {/* Related Lore */}

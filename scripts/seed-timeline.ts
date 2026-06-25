@@ -20,6 +20,8 @@ const seedTimeline = async () => {
               children: [
                 {
                   text: 'The primordial age ended when the sky shattered into floating islands. The deities retreated, and the first Balangays were built to bridge the void.',
+                  type: 'text',
+                  version: 1,
                 },
               ],
               type: 'paragraph',
@@ -40,6 +42,8 @@ const seedTimeline = async () => {
               children: [
                 {
                   text: 'Explorers from the lowlands discovered the currents of the Sky Mist, enabling long-distance travel between the fragmented islands.',
+                  type: 'text',
+                  version: 1,
                 },
               ],
               type: 'paragraph',
@@ -60,6 +64,8 @@ const seedTimeline = async () => {
               children: [
                 {
                   text: 'Unity was established among the floating tribes. The Balangay of the Forgotten was commissioned as a vessel of lore and protection.',
+                  type: 'text',
+                  version: 1,
                 },
               ],
               type: 'paragraph',
@@ -80,6 +86,8 @@ const seedTimeline = async () => {
               children: [
                 {
                   text: 'The chosen souls (Pinili) awakened to defend the archipelago against the rising shadows of the primordial deities.',
+                  type: 'text',
+                  version: 1,
                 },
               ],
               type: 'paragraph',

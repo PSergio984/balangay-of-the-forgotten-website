@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 interface LogbookEntryProps {
   title: string;
-  content: string;
+  content: React.ReactNode;
   imageSrc?: string;
   imageAlt?: string;
   reversed?: boolean;
@@ -45,9 +45,9 @@ const LogbookEntry: React.FC<LogbookEntryProps> = ({
         <h3 className="text-xl font-pixel text-[#0C4A6E] uppercase tracking-wider">
           {title}
         </h3>
-        <p className="text-lg font-serif text-[#0C4A6E] leading-relaxed">
+        <div className="text-lg font-serif text-[#0C4A6E] leading-relaxed">
           {content}
-        </p>
+        </div>
       </div>
     </motion.div>
   );

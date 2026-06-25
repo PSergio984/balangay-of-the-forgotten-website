@@ -50,4 +50,4 @@ export default async function TimelinePage() {
       </AncientScrollContainer>
     </div>
   )
-}
+}// relatedLore group-hover:scale-125

@@ -250,9 +250,9 @@ const seed = async () => {
 
   console.log('--- Seeding News ---')
   const newsData = [
-    { title: 'Vessel Sighted', slug: 'vessel-sighted', category: 'Lore', content: { root: { children: [{ children: [{ text: 'A large balangay was seen drifting near the edge of the forgotten reefs. No survivors reported.' }], type: 'paragraph' }], type: 'root' } } },
-    { title: 'The Great Drought', slug: 'the-great-drought', category: 'Lore', content: { root: { children: [{ children: [{ text: 'The spirits of the waters have retreated. Tribes gather at the monolith to offer chants.' }], type: 'paragraph' }], type: 'root' } } },
-    { title: 'Shadows in the Mist', slug: 'shadows-in-the-mist', category: 'Lore', content: { root: { children: [{ children: [{ text: 'Hunters speak of shifting shapes in the mangrove shadows. Keep the torches burning.' }], type: 'paragraph' }], type: 'root' } } },
+    { title: 'Vessel Sighted', slug: 'vessel-sighted', category: 'Lore', content: { root: { children: [{ children: [{ text: 'A large balangay was seen drifting near the edge of the forgotten reefs. No survivors reported.', type: 'text', version: 1 }], type: 'paragraph' }], type: 'root' } } },
+    { title: 'The Great Drought', slug: 'the-great-drought', category: 'Lore', content: { root: { children: [{ children: [{ text: 'The spirits of the waters have retreated. Tribes gather at the monolith to offer chants.', type: 'text', version: 1 }], type: 'paragraph' }], type: 'root' } } },
+    { title: 'Shadows in the Mist', slug: 'shadows-in-the-mist', category: 'Lore', content: { root: { children: [{ children: [{ text: 'Hunters speak of shifting shapes in the mangrove shadows. Keep the torches burning.', type: 'text', version: 1 }], type: 'paragraph' }], type: 'root' } } },
   ]
 
   for (const news of newsData) {
