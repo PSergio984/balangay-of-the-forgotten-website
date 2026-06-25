@@ -74,6 +74,13 @@ const WikiSearch: React.FC = () => {
     setQuery('');
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && query.trim()) {
+      router.push(`/wiki/search?q=${encodeURIComponent(query)}`);
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div className="relative w-full max-w-md" ref={searchRef}>
       <div className="relative">
@@ -81,6 +88,7 @@ const WikiSearch: React.FC = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Search the Archives..."
           className="w-full bg-white border-4 border-black p-3 font-pixel text-sm focus:outline-none focus:ring-4 focus:ring-[#F97316] transition-all"
         />
@@ -105,7 +113,7 @@ const WikiSearch: React.FC = () => {
                 onClick={() => handleSelect(result.collection, result.slug)}
                 className="w-full text-left p-3 hover:bg-[#F0F9FF] border-b-2 border-black last:border-b-0 flex gap-4 items-center group transition-colors"
               >
-                <div className="relative w-12 h-12 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
+                <div className="relative w-40 h-40 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
                   {result.image ? (
                     <img 
                       src={typeof result.image === 'string' ? result.image : (result.image.url.startsWith('/api/media/file/') ? result.image.url.replace('/api/media/file/', '/media/') : result.image.url)} 
@@ -113,7 +121,7 @@ const WikiSearch: React.FC = () => {
                       className="w-full h-full object-cover pixelated"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center text-white/20 text-[6px] font-pixel">?</div>
+                    <div className="w-full h-full flex items-center justify-center text-white/20 text-[8px] font-pixel">?</div>
                   )}
                 </div>
                 <div className="flex-1 overflow-hidden">
@@ -126,7 +134,7 @@ const WikiSearch: React.FC = () => {
               </button>
             ))}
             <Link 
-              href="/wiki/search" 
+              href={`/wiki/search?q=${encodeURIComponent(query)}`} 
               className="block w-full text-center p-3 bg-gray-100 font-pixel text-[10px] hover:bg-[#F97316] hover:text-white transition-colors"
               onClick={() => setIsOpen(false)}
             >
