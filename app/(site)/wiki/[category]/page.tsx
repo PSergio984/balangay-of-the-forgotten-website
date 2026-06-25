@@ -59,7 +59,7 @@ export default async function WikiCategoryPage({ params }: CategoryPageProps) {
   })
 
   return (
-    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-32 pb-20">
+    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-48 pb-20">
       <AncientScrollContainer className="flex-grow flex flex-col">
         <div className="flex flex-col gap-12">
           <nav className="text-sm font-pixel text-gray-500 uppercase flex gap-2">

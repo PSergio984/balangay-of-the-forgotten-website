@@ -144,7 +144,7 @@ export default async function WikiEntryPage({ params }: WikiPageProps) {
   }
 
   return (
-    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-24 pb-20">
+    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-48 pb-20">
       <AncientScrollContainer className="flex-grow flex flex-col">
         <div className="flex flex-col gap-12">
           {/* Breadcrumbs / Back Navigation */}

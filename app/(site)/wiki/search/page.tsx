@@ -77,7 +77,7 @@ export default function SearchHubPage() {
   }, [query, activeCollection]);
 
   return (
-    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-32 pb-24">
+    <div className="flex-grow flex flex-col bg-[#0a0a0a] pt-48 pb-24">
       <AncientScrollContainer className="flex-grow flex flex-col">
         <div className="flex flex-col gap-10">
           <header className="space-y-6">

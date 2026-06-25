@@ -34,7 +34,7 @@ const WikiSearch: React.FC = () => {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(async () => {
-      if (query.length > 2) {
+      if (query.length >= 2) {
         setIsSearching(true);
         try {
           const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);

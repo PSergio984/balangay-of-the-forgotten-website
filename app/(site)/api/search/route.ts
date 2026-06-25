@@ -33,6 +33,11 @@ export async function GET(request: Request) {
         collection: col as any,
         limit: 15,
         depth: 1,
+        select: {
+          name: true,
+          slug: true,
+          image: true,
+        }
       }
 
       if (andFilters.length > 0) {
@@ -48,7 +53,6 @@ export async function GET(request: Request) {
         slug: doc.slug,
         collection: col,
         image: doc.image,
-        description: doc.description,
       }))
     })
 
