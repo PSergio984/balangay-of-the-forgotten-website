@@ -52,7 +52,7 @@ const WikiSearch: React.FC = () => {
               image: doc.image
             }));
             setResults(allResults);
-            setIsOpen(allResults.length > 0);
+            setIsOpen(true);
           }
         } catch (error) {
           console.error('Search error:', error);
@@ -107,32 +107,38 @@ const WikiSearch: React.FC = () => {
             exit={{ opacity: 0, y: 10 }}
             className="absolute top-full left-0 right-0 mt-2 bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] z-50 overflow-hidden"
           >
-            {results.map((result) => (
-              <button
-                key={`${result.collection}-${result.id}`}
-                onClick={() => handleSelect(result.collection, result.slug)}
-                className="w-full text-left p-3 hover:bg-[#F0F9FF] border-b-2 border-black last:border-b-0 flex gap-4 items-center group transition-colors"
-              >
-                <div className="relative w-40 h-40 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
-                  {result.image ? (
-                    <img 
-                      src={typeof result.image === 'string' ? result.image : (result.image.url.startsWith('/api/media/file/') ? result.image.url.replace('/api/media/file/', '/media/') : result.image.url)} 
-                      alt="" 
-                      className="w-full h-full object-cover pixelated"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-white/20 text-[8px] font-pixel">?</div>
-                  )}
-                </div>
-                <div className="flex-1 overflow-hidden">
-                  <div className="font-bold text-base uppercase tracking-tight truncate">{result.name}</div>
-                  <div className="text-[8px] font-pixel text-gray-400 uppercase">{result.collection}</div>
-                </div>
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-[#F97316]">→</span>
-                </div>
-              </button>
-            ))}
+            {results.length > 0 ? (
+              results.map((result) => (
+                <button
+                  key={`${result.collection}-${result.id}`}
+                  onClick={() => handleSelect(result.collection, result.slug)}
+                  className="w-full text-left p-3 hover:bg-[#F0F9FF] border-b-2 border-black last:border-b-0 flex gap-4 items-center group transition-colors"
+                >
+                  <div className="relative w-40 h-40 bg-[#0C4A6E] shrink-0 border-2 border-black overflow-hidden">
+                    {result.image ? (
+                      <img 
+                        src={typeof result.image === 'string' ? result.image : (result.image.url.startsWith('/api/media/file/') ? result.image.url.replace('/api/media/file/', '/media/') : result.image.url)} 
+                        alt="" 
+                        className="w-full h-full object-cover pixelated"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-white/20 text-[8px] font-pixel">?</div>
+                    )}
+                  </div>
+                  <div className="flex-1 overflow-hidden">
+                    <div className="font-bold text-base uppercase tracking-tight truncate">{result.name}</div>
+                    <div className="text-[8px] font-pixel text-gray-400 uppercase">{result.collection}</div>
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[#F97316]">→</span>
+                  </div>
+                </button>
+              ))
+            ) : (
+              <div className="p-6 text-center text-gray-400 font-serif italic border-b-2 border-black">
+                "Record does not exist in the archives."
+              </div>
+            )}
             <Link 
               href={`/wiki/search?q=${encodeURIComponent(query)}`} 
               className="block w-full text-center p-3 bg-gray-100 font-pixel text-[10px] hover:bg-[#F97316] hover:text-white transition-colors"
