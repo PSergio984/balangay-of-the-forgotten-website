@@ -330,7 +330,10 @@ const RolesSection: React.FC = () => {
                             <span className="text-[#0C4A6E] font-bold">{val} / 100</span>
                           </div>
                           {/* Pixel Stat Bar */}
-                          <div className="h-3.5 bg-white border-2 border-[#0C4A6E] p-[1px] relative shadow-[inset_1px_1px_2px_rgba(0,0,0,0.1)]">
+                          <div 
+                            style={{ height: '16px' }} 
+                            className="bg-white border-2 border-[#0C4A6E] p-[1px] relative shadow-[inset_1px_1px_2px_rgba(0,0,0,0.1)]"
+                          >
                             <div
                               style={{ width: `${val}%` }}
                               className={`h-full ${barColor} shadow-[inset_-2px_0px_0px_rgba(0,0,0,0.2)]`}
