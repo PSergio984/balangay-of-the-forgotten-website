@@ -1,11 +1,17 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { useGameStore } from '@/lib/store';
 
 const AmbientPlayer: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const charAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  const {
+    isAudioPlaying: isPlaying,
+    currentTheme,
+    setAudioPlaying,
+  } = useGameStore();
 
   const toggleAudio = async () => {
     if (!audioRef.current) return;
@@ -17,7 +23,7 @@ const AmbientPlayer: React.FC = () => {
         if (charAudioRef.current) {
           charAudioRef.current.pause();
         }
-        setIsPlaying(false);
+        setAudioPlaying(false);
       } else {
         // If a custom theme was active, play it instead of the main background
         if (charAudioRef.current) {
@@ -25,19 +31,16 @@ const AmbientPlayer: React.FC = () => {
         } else {
           await audioRef.current.play();
         }
-        setIsPlaying(true);
+        setAudioPlaying(true);
       }
     } catch (err) {
       console.error("Audio play failed:", err);
-      setIsPlaying(false);
+      setAudioPlaying(false);
     }
   };
 
   useEffect(() => {
-    const handlePlayTheme = async (e: Event) => {
-      const customEvent = e as CustomEvent<{ src: string }>;
-      const { src } = customEvent.detail;
-
+    const updateTheme = async () => {
       // Pause main ambient theme
       if (audioRef.current) {
         audioRef.current.pause();
@@ -49,44 +52,37 @@ const AmbientPlayer: React.FC = () => {
         charAudioRef.current = null;
       }
 
-      // Initialize and play new theme
-      const newAudio = new Audio(src);
-      newAudio.loop = true;
-      newAudio.volume = 0.5;
-      charAudioRef.current = newAudio;
+      if (currentTheme) {
+        // Initialize and play new theme
+        const newAudio = new Audio(currentTheme);
+        newAudio.loop = true;
+        newAudio.volume = 0.5;
+        charAudioRef.current = newAudio;
 
-      if (isPlaying) {
-        try {
-          await newAudio.play();
-        } catch (err) {
-          console.error("Failed to play custom theme:", err);
+        if (isPlaying) {
+          try {
+            await newAudio.play();
+          } catch (err) {
+            console.error("Failed to play custom theme:", err);
+          }
+        }
+      } else {
+        // Resume main ambient theme if we should be playing
+        if (isPlaying && audioRef.current) {
+          audioRef.current.play().catch(err => console.error(err));
         }
       }
     };
 
-    const handleStopTheme = () => {
-      if (charAudioRef.current) {
-        charAudioRef.current.pause();
-        charAudioRef.current = null;
-      }
-
-      // Resume main ambient theme if we should be playing
-      if (isPlaying && audioRef.current) {
-        audioRef.current.play().catch(err => console.error(err));
-      }
-    };
-
-    window.addEventListener('play-game-theme', handlePlayTheme);
-    window.addEventListener('stop-game-theme', handleStopTheme);
+    updateTheme();
 
     return () => {
-      window.removeEventListener('play-game-theme', handlePlayTheme);
-      window.removeEventListener('stop-game-theme', handleStopTheme);
       if (charAudioRef.current) {
         charAudioRef.current.pause();
       }
     };
-  }, [isPlaying]);
+  }, [currentTheme, isPlaying]);
+
 
   return (
     <div className="fixed bottom-8 left-8 z-40">

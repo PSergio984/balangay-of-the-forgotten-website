@@ -2,8 +2,8 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: in_progress
-last_updated: "2026-06-30T07:25:27.563Z"
+status: Milestone complete
+last_updated: "2026-06-30T07:35:53.688Z"
 progress:
   total_phases: 7
   completed_phases: 1
@@ -30,7 +30,7 @@ progress:
 ## Performance Metrics
 
 - **Requirement Coverage**: 11/11 v1 requirements mapped (100%)
-- **Phase Progress**: 5/6 phases complete (Phase 1, 2, 2.5, 2.75, 3)
+- **Phase Progress**: 6/7 phases complete (Phase 1, 2, 2.5, 2.75, 3, 5)
 - **Build Health**: PASSED
 
 ## Accumulated Context
@@ -43,6 +43,7 @@ progress:
 - **Architecture**: Isolated site/admin via route groups.
 - **SEO & Meta Tags**: Dynamically generate meta titles, descriptions, and OpenGraph sharing images using dynamic Payload CMS queries via `generateMetadata`.
 - **Dynamic Sitemap**: Dynamic XML sitemap generation via Next.js `app/sitemap.ts` querying CMS routes.
+- **Global State**: Migrated component event-based state (CustomEvents) and loader states into a unified Zustand store (`lib/store.ts`).
 
 ### Todos
 
@@ -54,6 +55,7 @@ progress:
 - [x] Fix Navbar "Wiki" link and active states
 - [x] Implement Search Hub with categories (WIKI-02)
 - [x] Implement Interactive Lore Timeline (INT-02)
+- [x] Migrate event-based communication to Zustand global store (Phase 5)
 
 ### Blockers
 

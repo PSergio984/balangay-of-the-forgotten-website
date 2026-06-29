@@ -53,15 +53,27 @@ function PixelProgressBar({ progress }: { progress: number }) {
   )
 }
 
+import { useGameStore } from '@/lib/store'
+
 export default function SiteLoader() {
   const [mounted, setMounted] = useState(false)
-  const [visible, setVisible] = useState(false)
-  const [progress, setProgress] = useState(0)
-  const [bootMsgIndex, setBootMsgIndex] = useState(0)
-  const [bossIndex] = useState(() => Math.floor(Math.random() * BOSSES.length))
-  const [typedName, setTypedName] = useState("")
-  const [flash, setFlash] = useState(false)
   const progressRef = useRef(0)
+
+  const {
+    isLoaderVisible: visible,
+    loaderProgress: progress,
+    bootMsgIndex,
+    bossIndex,
+    typedName,
+    flash,
+    setLoaderVisible: setVisible,
+    setLoaderProgress: setProgress,
+    setBootMsgIndex,
+    setBossIndex,
+    setTypedName,
+    setFlash,
+    setReady,
+  } = useGameStore()
 
   const boss = BOSSES[bossIndex]
 
@@ -75,16 +87,16 @@ export default function SiteLoader() {
       if (i >= boss.name.length) clearInterval(interval)
     }, 80)
     return () => clearInterval(interval)
-  }, [visible, boss.name])
+  }, [visible, boss.name, setTypedName])
 
   // Cycle boot messages
   useEffect(() => {
     if (!visible) return
     const interval = setInterval(() => {
-      setBootMsgIndex((prev) => (prev + 1) % BOOT_MESSAGES.length)
+      setBootMsgIndex((bootMsgIndex + 1) % BOOT_MESSAGES.length)
     }, 600)
     return () => clearInterval(interval)
-  }, [visible])
+  }, [visible, bootMsgIndex, setBootMsgIndex])
 
   // Progress loader
   useEffect(() => {
@@ -99,20 +111,26 @@ export default function SiteLoader() {
         setTimeout(() => {
           setVisible(false)
           sessionStorage.setItem('balangay-site-loaded', 'true')
-          window.dispatchEvent(new CustomEvent('balangay-ready'))
+          setReady(true)
         }, 700)
       }
     }, 120)
     return () => clearInterval(interval)
-  }, [visible])
+  }, [visible, setProgress, setFlash, setVisible, setReady])
 
   useEffect(() => {
     setMounted(true)
     const isLoaded = sessionStorage.getItem('balangay-site-loaded')
-    if (!isLoaded) setVisible(true)
-  }, [])
+    if (!isLoaded) {
+      setVisible(true)
+      setBossIndex(Math.floor(Math.random() * BOSSES.length))
+    } else {
+      setReady(true)
+    }
+  }, [setVisible, setBossIndex, setReady])
 
   if (!mounted || !visible) return null
+
 
   return (
     <AnimatePresence>

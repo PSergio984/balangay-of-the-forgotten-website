@@ -3,6 +3,8 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+import { useGameStore } from "@/lib/store";
+
 export default function ParallaxHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   
@@ -22,21 +24,14 @@ export default function ParallaxHero() {
   const videoOpacity = useTransform(scrollYProgress, [0.3, 0.6], [1, 0.2]);
 
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const isReady = useGameStore((state) => state.isReady);
 
   useEffect(() => {
-    // If loader has already executed, animate immediately
-    if (sessionStorage.getItem('balangay-site-loaded')) {
+    if (isReady) {
       setShouldAnimate(true);
-      return;
     }
+  }, [isReady]);
 
-    const handleReady = () => {
-      setShouldAnimate(true);
-    };
-
-    window.addEventListener('balangay-ready', handleReady);
-    return () => window.removeEventListener('balangay-ready', handleReady);
-  }, []);
 
   return (
     <div 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface RegionData {
@@ -133,16 +133,20 @@ const rightPanelVariants = {
   }
 } as const;
 
+import { useGameStore } from '@/lib/store';
+
 const WorldMapSection: React.FC = () => {
-  const [selectedRegion, setSelectedRegion] = useState<RegionData>(REGIONS[0]);
+  const selectedRegionId = useGameStore((state) => state.selectedRegionId);
+  const selectRegionId = useGameStore((state) => state.selectRegion);
+  const playTheme = useGameStore((state) => state.playTheme);
+
+  const selectedRegion = REGIONS.find((r) => r.id === selectedRegionId) || REGIONS[0];
 
   const selectRegion = (region: RegionData) => {
-    setSelectedRegion(region);
-    // Play region theme
-    window.dispatchEvent(
-      new CustomEvent('play-game-theme', { detail: { src: region.themeSrc } })
-    );
+    selectRegionId(region.id);
+    playTheme(region.themeSrc);
   };
+
 
   return (
     <section className="py-20 border-t-4 border-[#0C4A6E] bg-[#0C4A6E] text-white overflow-hidden">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface RoleData {
@@ -139,22 +139,26 @@ const cardVariants = {
   }
 } as const;
 
+import { useGameStore } from '@/lib/store';
+
 const RolesSection: React.FC = () => {
-  const [selectedRole, setSelectedRole] = useState<RoleData | null>(null);
+  const selectedRoleId = useGameStore((state) => state.selectedRoleId);
+  const selectRoleId = useGameStore((state) => state.selectRole);
+  const playTheme = useGameStore((state) => state.playTheme);
+  const stopTheme = useGameStore((state) => state.stopTheme);
+
+  const selectedRole = ROLES_DATA.find((r) => r.id === selectedRoleId) || null;
 
   const selectRole = (role: RoleData) => {
-    if (selectedRole?.id === role.id) {
-      // Deselect
-      setSelectedRole(null);
-      window.dispatchEvent(new CustomEvent('stop-game-theme'));
+    if (selectedRoleId === role.id) {
+      selectRoleId(null);
+      stopTheme();
     } else {
-      setSelectedRole(role);
-      // Play character theme
-      window.dispatchEvent(
-        new CustomEvent('play-game-theme', { detail: { src: role.themeSrc } })
-      );
+      selectRoleId(role.id);
+      playTheme(role.themeSrc);
     }
   };
+
 
   return (
     <section className="py-20 border-t-4 border-[#0C4A6E] bg-gradient-to-b from-[#F0F9FF] to-[#E0F2FE]">
