@@ -68,7 +68,7 @@ const cardVariants = {
     x: 0,
     rotateY: 0,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 90,
       damping: 18,
       staggerChildren: 0.12,
@@ -83,7 +83,7 @@ const itemVariants = {
     opacity: 1, 
     y: 0,
     transition: { 
-      type: 'spring', 
+      type: 'spring' as const, 
       stiffness: 100, 
       damping: 15 
     }
@@ -104,7 +104,7 @@ const visualVariants = {
     rotateY: 0,
     scale: 1,
     transition: {
-      type: 'spring',
+      type: 'spring' as const,
       stiffness: 85,
       damping: 18
     }

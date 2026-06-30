@@ -2,6 +2,7 @@ import React from 'react';
 import AncientScrollContainer from '@/components/landing/AncientScrollContainer';
 import { getPayloadInstance } from '@/lib/payload';
 import LogbookFeed from '@/components/landing/LogbookFeed';
+import { News } from '@/payload-types';
 
 export const revalidate = 3600;
 
@@ -15,7 +16,7 @@ export default async function LogbookPage() {
     limit: 100,
   });
 
-  const newsItems = newsResult.docs.map((doc) => ({
+  const newsItems = newsResult.docs.map((doc: News) => ({
     id: String(doc.id),
     title: doc.title,
     slug: doc.slug,

@@ -7,6 +7,7 @@ import WorldMapSection from "@/components/landing/WorldMapSection";
 import RelicShowcase from "@/components/landing/RelicShowcase";
 import AccoladesSection from "@/components/landing/AccoladesSection";
 import { getPayloadInstance } from "@/lib/payload";
+import { News } from "@/payload-types";
 
 export const revalidate = 3600;
 
@@ -65,7 +66,7 @@ export default async function Home() {
       <AccoladesSection />
 
       {/* Town Bulletin Board (News Feed) */}
-      <BulletinBoard news={newsResult.docs.map(doc => ({
+      <BulletinBoard news={newsResult.docs.map((doc: News) => ({
         id: doc.id,
         title: doc.title,
         publishedDate: doc.publishedDate,
