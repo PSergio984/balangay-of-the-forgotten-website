@@ -6,6 +6,7 @@
 - [x] **Phase 2: Wiki Core & Content Engine** - Build the database for lore, characters, and news.
 - [x] **Phase 2.75: Wiki Polish, Performance & SEO Optimization** - Fix image loading, optimize performance, fix sticky footer, correct wiki page formatting, and implement SEO/sitemap.
 - [x] **Phase 3: Discovery & Search** - Implement global search and interactive lore timeline.
+- [x] **Phase 3.5: Content Seeding & Admin UX** - Populate wiki with real game data and improve Payload admin ergonomics.
 - [ ] **Phase 4: Unity Interactive Showcase** - Embed Unity WebGL models for character inspection.
 
 ## Phase Details
@@ -94,6 +95,25 @@ Plans:
 - [x] 03-01-PLAN.md — Search Hub & Lore Timeline
 
 **UI hint**: yes
+
+### Phase 3.5: Content Seeding & Admin UX
+
+**Goal**: Populate all wiki collections with real game data via a seed script, and improve the Payload admin panel ergonomics for efficient ongoing content management.
+**Depends on**: Phase 3
+**Requirements**: WIKI-01, WIKI-03
+**Success Criteria** (what must be TRUE):
+
+  1. A `npm run seed` command populates Characters, Bosses, Minibosses, Relics, and Locations with real game data.
+  2. Media (sprites) are uploaded and linked to their entries.
+  3. Slug fields auto-generate from the name field in the admin panel.
+  4. Admin list views show a sprite thumbnail next to each entry name.
+  5. Relation pickers (e.g. Boss → Location) show name + type, not just IDs.
+
+**Plans**: 2 plans
+**UI hint**: no
+
+- [x] 03.5-01-PLAN.md — Admin UX Improvements (slug hooks, thumbnail Cell, relation labels)
+- [x] 03.5-02-PLAN.md — Content Seed Script (all five collections + media)
 
 ### Phase 4: Unity Interactive Showcase
 
