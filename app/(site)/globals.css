@@ -1,4 +1,8 @@
-@import "tailwindcss";
+/* Import Tailwind theme + utilities WITHOUT the preflight base reset.
+   Preflight resets bare element selectors (button, input, a, etc.) and
+   bleeds into the Payload admin panel. We handle our own base styles below. */
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/utilities" layer(utilities);
 
 @theme {
   --spacing: 1px;
@@ -29,14 +33,16 @@
   image-rendering: crisp-edges;
 }
 
-/* Global Reset & Base Styles */
-html, body {
+/* Site-scoped Base Styles — applied via .site-body on <body> in site layout.
+   This prevents these rules from affecting the Payload admin panel. */
+.site-body {
   background-color: var(--color-sky-mist);
   color: var(--color-midnight-blue);
   font-family: var(--font-serif);
 }
 
-img, canvas {
+.site-body img,
+.site-body canvas {
   image-rendering: pixelated;
 }
 
