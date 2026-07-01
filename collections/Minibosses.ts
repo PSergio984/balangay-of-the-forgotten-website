@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { slugHook } from '@/lib/slug'
 
 export const Minibosses: CollectionConfig = {
   slug: 'minibosses',
@@ -19,6 +20,8 @@ export const Minibosses: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      admin: { position: 'sidebar' },
+      hooks: { beforeChange: [slugHook('name')] },
     },
     {
       name: 'description',
@@ -49,6 +52,15 @@ export const Minibosses: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
+    },
+    {
+      name: 'imagePreview',
+      type: 'ui',
+      admin: {
+        components: {
+          Cell: '/components/admin/ImageThumbnailCell',
+        },
+      },
     },
   ],
 }

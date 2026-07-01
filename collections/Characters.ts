@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { slugHook } from '@/lib/slug'
 
 export const Characters: CollectionConfig = {
   slug: 'characters',
@@ -19,6 +20,8 @@ export const Characters: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      admin: { position: 'sidebar' },
+      hooks: { beforeChange: [slugHook('name')] },
     },
     {
       name: 'role',
@@ -61,6 +64,15 @@ export const Characters: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
+    },
+    {
+      name: 'imagePreview',
+      type: 'ui',
+      admin: {
+        components: {
+          Cell: '/components/admin/ImageThumbnailCell',
+        },
+      },
     },
   ],
 }

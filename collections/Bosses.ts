@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { slugHook } from '@/lib/slug'
 
 export const Bosses: CollectionConfig = {
   slug: 'bosses',
@@ -7,7 +8,7 @@ export const Bosses: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'name',
-    defaultColumns: ['name', 'location', 'hp'],
+    defaultColumns: ['imagePreview', 'name', 'location', 'hp'],
   },
   fields: [
     {
@@ -20,6 +21,8 @@ export const Bosses: CollectionConfig = {
       type: 'text',
       required: true,
       unique: true,
+      admin: { position: 'sidebar' },
+      hooks: { beforeChange: [slugHook('name')] },
     },
     {
       name: 'description',
@@ -69,6 +72,15 @@ export const Bosses: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
+    },
+    {
+      name: 'imagePreview',
+      type: 'ui',
+      admin: {
+        components: {
+          Cell: '/components/admin/ImageThumbnailCell',
+        },
+      },
     },
   ],
 }

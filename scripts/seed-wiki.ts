@@ -21,7 +21,7 @@ const seed = async () => {
 
   const locations: Record<string, string | number> = {}
   for (const loc of locationsData) {
-    const doc = await payload.create({ collection: 'locations', data: loc as any })
+    const doc = await payload.create({ collection: 'locations', data: loc as any, overrideAccess: true })
     locations[loc.slug] = doc.id
     console.log(`Created location: ${loc.name}`)
   }
@@ -49,7 +49,7 @@ const seed = async () => {
   ]
 
   for (const relic of relicsData) {
-    await payload.create({ collection: 'relics', data: relic as any })
+    await payload.create({ collection: 'relics', data: relic as any, overrideAccess: true })
     console.log(`Created relic: ${relic.name}`)
   }
 
@@ -114,7 +114,7 @@ const seed = async () => {
   ]
 
   for (const boss of bossesData) {
-    await payload.create({ collection: 'bosses', data: boss as any })
+    await payload.create({ collection: 'bosses', data: boss as any, overrideAccess: true })
     console.log(`Created boss: ${boss.name}`)
   }
 
@@ -167,7 +167,7 @@ const seed = async () => {
   ]
 
   for (const mini of minibossesData) {
-    await payload.create({ collection: 'minibosses', data: mini as any })
+    await payload.create({ collection: 'minibosses', data: mini as any, overrideAccess: true })
     console.log(`Created miniboss: ${mini.name}`)
   }
 
@@ -244,7 +244,7 @@ const seed = async () => {
   ]
 
   for (const char of charactersData) {
-    await payload.create({ collection: 'characters', data: char as any })
+    await payload.create({ collection: 'characters', data: char as any, overrideAccess: true })
     console.log(`Created character: ${char.name}`)
   }
 
@@ -256,11 +256,12 @@ const seed = async () => {
   ]
 
   for (const news of newsData) {
-    await payload.create({ collection: 'news', data: news as any })
+    await payload.create({ collection: 'news', data: news as any, overrideAccess: true })
     console.log(`Created news: ${news.title}`)
   }
 
   console.log('--- Seeding Complete! ---')
+  await payload.destroy()
   process.exit(0)
 }
 
