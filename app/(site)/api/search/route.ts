@@ -36,7 +36,10 @@ export async function GET(request: Request) {
         select: {
           name: true,
           slug: true,
-          image: true,
+          image: {
+            url: true,
+            filename: true,
+          },
         }
       }
 
