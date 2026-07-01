@@ -1,5 +1,8 @@
+import 'dotenv/config'
 import { getPayload } from 'payload'
 import config from '../payload.config'
+import path from 'path'
+import fs from 'fs'
 
 const seed = async () => {
   const payload = await getPayload({ config })
@@ -12,11 +15,102 @@ const seed = async () => {
   await payload.delete({ collection: 'locations', where: { id: { exists: true } } })
   await payload.delete({ collection: 'news', where: { id: { exists: true } } })
 
+  console.log('--- Cleaning Existing Seeded Media ---')
+  const existingMedia = await payload.find({
+    collection: 'media',
+    where: {
+      alt: {
+        like: 'Seeded:',
+      },
+    },
+    limit: 1000,
+  })
+  for (const doc of existingMedia.docs) {
+    await payload.delete({
+      collection: 'media',
+      id: doc.id,
+      overrideAccess: true,
+    })
+    console.log(`Deleted media: ${doc.alt}`)
+  }
+
+  // Media upload helper
+  const uploadSeedMedia = async (filename: string, altText: string) => {
+    const filePath = path.resolve(process.cwd(), 'public', 'media', filename)
+    if (!fs.existsSync(filePath)) {
+      console.warn(`Asset not found: ${filePath}`)
+      return undefined
+    }
+
+    try {
+      const mediaDoc = await payload.create({
+        collection: 'media',
+        data: {
+          alt: `Seeded: ${altText}`,
+        },
+        filePath,
+        overrideAccess: true,
+      })
+      console.log(`Uploaded media: ${filename} (ID: ${mediaDoc.id})`)
+      return mediaDoc.id
+    } catch (error) {
+      console.error(`Failed to upload media ${filename}:`, error)
+      return undefined
+    }
+  }
+
+  console.log('--- Uploading Media Assets ---')
+  const images: Record<string, string | number | undefined> = {
+    // Locations
+    'dagat-ng-kabisayaan': await uploadSeedMedia('Dagat ng Kabisayaan.png', 'Dagat ng Kabisayaan Region'),
+    'daragang-magayon': await uploadSeedMedia('Daragang Magayon.png', 'Daragang Magayon Region'),
+    'bundok-pulag': await uploadSeedMedia('Bundok Pulag.png', 'Bundok Pulag Region'),
+    
+    // Relics
+    'item-1': await uploadSeedMedia('Korona.png', 'Korona Relic'),
+    'item-2': await uploadSeedMedia('Luhain.png', 'Luhain Relic'),
+    'item-3': await uploadSeedMedia('Pangil.png', 'Pangil Relic'),
+
+    // Bosses
+    'bathala': await uploadSeedMedia('Bathala.png', 'Bathala Boss'),
+    'mayari': await uploadSeedMedia('Mayari.png', 'Mayari Boss'),
+    'apolaki': await uploadSeedMedia('Apolaki.png', 'Apolaki Boss'),
+    'bakunawa': await uploadSeedMedia('Bakunawa.png', 'Bakunawa Boss'),
+    'minokawa': await uploadSeedMedia('Minokawa.png', 'Minokawa Boss'),
+
+    // Minibosses
+    'manananggal': await uploadSeedMedia('Manananggal.png', 'Manananggal Guardian'),
+    'tiyanak': await uploadSeedMedia('Tiyanak Swarm.png', 'Tiyanak Guardian'),
+    'siren': await uploadSeedMedia('Sirena.png', 'Sirena Guardian'),
+    'kapre': await uploadSeedMedia('Kapre.png', 'Kapre Guardian'),
+
+    // Characters
+    'mandirigma': await uploadSeedMedia('Mandirigma.png', 'Mandirigma'),
+    'bagani': await uploadSeedMedia('Bagani.png', 'Bagani'),
+    'babaylan': await uploadSeedMedia('Babaylan.png', 'Babaylan'),
+    'mangangayaw': await uploadSeedMedia('Mangangayaw.png', 'Mangangayaw'),
+  }
+
   console.log('--- Seeding Locations ---')
   const locationsData = [
-    { name: 'Dagat ng Kabisayaan', slug: 'dagat-ng-kabisayaan', description: { root: { children: [{ children: [{ text: 'The vast seas where spirits roam.' }], type: 'paragraph' }], type: 'root' } } },
-    { name: 'Daragang Magayon', slug: 'daragang-magayon', description: { root: { children: [{ children: [{ text: 'The volcanic peaks of beauty and fire.' }], type: 'paragraph' }], type: 'root' } } },
-    { name: 'Bundok Pulag', slug: 'bundok-pulag', description: { root: { children: [{ children: [{ text: 'The sacred playground of the gods.' }], type: 'paragraph' }], type: 'root' } } },
+    { 
+      name: 'Dagat ng Kabisayaan', 
+      slug: 'dagat-ng-kabisayaan', 
+      image: images['dagat-ng-kabisayaan'],
+      description: { root: { children: [{ children: [{ text: 'The vast seas where spirits roam.' }], type: 'paragraph' }], type: 'root' } } 
+    },
+    { 
+      name: 'Daragang Magayon', 
+      slug: 'daragang-magayon', 
+      image: images['daragang-magayon'],
+      description: { root: { children: [{ children: [{ text: 'The volcanic peaks of beauty and fire.' }], type: 'paragraph' }], type: 'root' } } 
+    },
+    { 
+      name: 'Bundok Pulag', 
+      slug: 'bundok-pulag', 
+      image: images['bundok-pulag'],
+      description: { root: { children: [{ children: [{ text: 'The sacred playground of the gods.' }], type: 'paragraph' }], type: 'root' } } 
+    },
   ]
 
   const locations: Record<string, string | number> = {}
@@ -32,18 +126,21 @@ const seed = async () => {
       name: '1st Item', 
       slug: 'item-1', 
       effect: '+15% DMG to all.', 
+      image: images['item-1'],
       foundAt: locations['dagat-ng-kabisayaan']
     },
     { 
       name: '2nd Item', 
       slug: 'item-2', 
       effect: '+25% DEF to 2 players.', 
+      image: images['item-2'],
       foundAt: locations['daragang-magayon']
     },
     { 
       name: '3rd Item', 
       slug: 'item-3', 
       effect: 'A next round with No Cooldown of skills for all.', 
+      image: images['item-3'],
       foundAt: locations['bundok-pulag']
     },
   ]
@@ -58,6 +155,7 @@ const seed = async () => {
     {
       name: 'Bathala',
       slug: 'bathala',
+      image: images['bathala'],
       stats: { hp: 2800, atk: 110, mag: 250, def: 200 },
       moveset: [
         { name: "Heaven's Mandate", type: 'Buff', description: 'Do On Guard on self. Removes Debuff. Won’t work if it gets pick after the previous turn.' },
@@ -69,6 +167,7 @@ const seed = async () => {
     {
       name: 'Mayari',
       slug: 'mayari',
+      image: images['mayari'],
       stats: { hp: 2100, atk: 300, mag: 120, def: 180 },
       moveset: [
         { name: 'Moonlight Grace', type: 'Buff', description: 'Heal herself with a total of 25% max HP.' },
@@ -80,6 +179,7 @@ const seed = async () => {
     {
       name: 'Apolaki',
       slug: 'apolaki',
+      image: images['apolaki'],
       stats: { hp: 1700, atk: 360, mag: 70, def: 150 },
       moveset: [
         { name: 'Solar Flare Slash', type: 'Single Target', description: 'Deals 175% ATK to enemy, + 55% CRIT Rate.' },
@@ -91,6 +191,7 @@ const seed = async () => {
     {
       name: 'Bakunawa',
       slug: 'bakunawa',
+      image: images['bakunawa'],
       stats: { hp: 2000, atk: 40, mag: 300, def: 190 },
       moveset: [
         { name: 'Eclipse Fang', type: 'Single Target', description: 'Heals Bakunawa for 50 (+100%) MAG. Deals 110% MAG as damage.' },
@@ -103,6 +204,7 @@ const seed = async () => {
     {
       name: 'Minokawa',
       slug: 'minokawa',
+      image: images['minokawa'],
       stats: { hp: 1000, atk: 300, mag: 40, def: 190 },
       moveset: [
         { name: 'Solar Devour', type: 'Single Target', description: 'Swallows prey, stunning for 1 turn. Deals 90% ATK, ignore 10% DEF.' },
@@ -113,8 +215,10 @@ const seed = async () => {
     }
   ]
 
+  const bosses: Record<string, string | number> = {}
   for (const boss of bossesData) {
-    await payload.create({ collection: 'bosses', data: boss as any, overrideAccess: true })
+    const doc = await payload.create({ collection: 'bosses', data: boss as any, overrideAccess: true })
+    bosses[boss.slug] = doc.id
     console.log(`Created boss: ${boss.name}`)
   }
 
@@ -125,6 +229,8 @@ const seed = async () => {
       slug: 'manananggal',
       stats: { hp: 900, atk: 230, mag: 35, def: 100 },
       location: locations['dagat-ng-kabisayaan'],
+      parentBoss: bosses['bakunawa'], // Assign a parent boss link
+      image: images['manananggal'],
       moveset: [
         { name: 'Batwing Slash', description: 'Deals 1.2 x ATK to one enemy' },
         { name: 'Blood Splash', description: 'Deals 1.5 x ATK to one enemy' },
@@ -136,6 +242,8 @@ const seed = async () => {
       slug: 'tiyanak',
       stats: { hp: 1150, atk: 50, mag: 195, def: 125 },
       location: locations['daragang-magayon'],
+      parentBoss: bosses['bathala'],
+      image: images['tiyanak'],
       moveset: [
         { name: 'Claw Latch', description: 'Deals 1.2 x MAG to one enemy' },
         { name: 'Blood Hex', description: 'Deals 1.5 x MAG to one enemy' },
@@ -147,6 +255,8 @@ const seed = async () => {
       slug: 'siren',
       stats: { hp: 1000, atk: 20, mag: 240, def: 80 },
       location: locations['dagat-ng-kabisayaan'],
+      parentBoss: bosses['bakunawa'],
+      image: images['siren'],
       moveset: [
         { name: 'Drowning Current', description: 'Deals 1.2 x MAG to one enemy' },
         { name: 'Tidal Surge', description: 'Deals 1.5 x MAG to one enemy' },
@@ -158,6 +268,8 @@ const seed = async () => {
       slug: 'kapre',
       stats: { hp: 1300, atk: 200, mag: 0, def: 150 },
       location: locations['bundok-pulag'],
+      parentBoss: bosses['apolaki'],
+      image: images['kapre'],
       moveset: [
         { name: 'Tree Smash', description: 'Deals 1.2 x ATK to one enemy' },
         { name: 'Uproot Smash', description: 'Deals 1.5 x ATK to one enemy' },
@@ -177,6 +289,7 @@ const seed = async () => {
       name: 'Mandirigma',
       slug: 'mandirigma',
       role: 'Damage',
+      image: images['mandirigma'],
       presets: [
         { name: 'Glass Canon', stats: { hp: 650, atk: 120, mag: 0, def: 60 } },
         { name: 'Bruiser', stats: { hp: 800, atk: 90, mag: 0, def: 90 } },
@@ -194,6 +307,7 @@ const seed = async () => {
       name: 'Bagani',
       slug: 'bagani',
       role: 'Tank',
+      image: images['bagani'],
       presets: [
         { name: 'Wall', stats: { hp: 1050, atk: 30, mag: 0, def: 250 } },
         { name: 'Juggernaut', stats: { hp: 1000, atk: 60, mag: 0, def: 190 } },
@@ -211,6 +325,7 @@ const seed = async () => {
       name: 'Babaylan',
       slug: 'babaylan',
       role: 'Healer',
+      image: images['babaylan'],
       presets: [
         { name: 'Pure Healer', stats: { hp: 500, atk: 0, mag: 220, def: 70 } },
         { name: 'Support Cleric', stats: { hp: 650, atk: 0, mag: 200, def: 80 } },
@@ -228,6 +343,7 @@ const seed = async () => {
       name: 'Mangangayaw',
       slug: 'mangangayaw',
       role: 'Ranged',
+      image: images['mangangayaw'],
       presets: [
         { name: 'Sniper', stats: { hp: 600, atk: 110, mag: 0, def: 50 } },
         { name: 'Ranger', stats: { hp: 700, atk: 90, mag: 0, def: 100 } },

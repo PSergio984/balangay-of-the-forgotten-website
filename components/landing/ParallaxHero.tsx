@@ -69,6 +69,7 @@ export default function ParallaxHero() {
             transition={{ type: "spring", stiffness: 50, damping: 12, delay: 0.3 }}
             src="/videos/animations/logo.png" 
             alt="Balangay of the Forgotten" 
+            fetchPriority="high"
             className="w-[90%] md:w-full h-auto max-h-[50vh] object-contain rendering-pixelated drop-shadow-[0_8px_8px_rgba(0,0,0,0.8)]"
           />
           

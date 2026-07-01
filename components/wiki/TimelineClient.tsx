@@ -270,6 +270,7 @@ export default function TimelineClient({ events }: TimelineClientProps) {
                     alt={event.title}
                     fill
                     unoptimized
+                    priority={index < 2}
                     className="object-cover pixelated transition-transform duration-700 ease-out group-hover:scale-108"
                   />
                 ) : (
