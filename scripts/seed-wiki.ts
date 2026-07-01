@@ -471,6 +471,23 @@ const seed = async () => {
     console.log(`Created news: ${news.title}`)
   }
 
+  console.log('--- Seeding Admin User ---')
+  const existingUsers = await payload.find({
+    collection: 'users',
+    limit: 1,
+  })
+  if (existingUsers.totalDocs === 0) {
+    await payload.create({
+      collection: 'users',
+      data: {
+        email: 'admin@balangay.com',
+        password: 'password123',
+      },
+      overrideAccess: true,
+    })
+    console.log('Created default admin user: admin@balangay.com / password123')
+  }
+
   console.log('--- Seeding Complete! ---')
   await payload.destroy()
   process.exit(0)
