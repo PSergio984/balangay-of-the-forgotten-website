@@ -460,38 +460,81 @@ const seed = async () => {
   }
 
   console.log('--- Seeding Rules ---')
-  const rulesHtmlPath = path.join(OLD_WIKI_PATH, 'wiki', 'cards.html')
-  if (fs.existsSync(rulesHtmlPath)) {
-      const html = fs.readFileSync(rulesHtmlPath, 'utf-8')
-      const rulesData = [
-          { title: 'Prep', tagalogTitle: '1\\) Prep \\(GM, before players arrive\\)' },
-          { title: 'Opening the Table', tagalogTitle: '2\\) Opening the Table' },
-          { title: 'Core Loop', tagalogTitle: '5\\) Core Loop' }
-      ]
-      
-      let order = 1
-      for (const rule of rulesData) {
-          const regex = new RegExp(`<h3>${rule.tagalogTitle}</h3>([\\s\\S]*?)(?:<h3>|</div>)`, 'i')
-          const match = html.match(regex)
-          let ruleContent = { root: { children: [{ children: [{ text: 'Content not found.' }], type: 'paragraph' }], type: 'root' } }
-          
-          if (match) {
-              const content = match[1]
-              const cleanText = content.replace(/<[^>]*>?/gm, '').trim().replace(/\s+/g, ' ')
-              ruleContent = { root: { children: [{ children: [{ text: cleanText }], type: 'paragraph' }], type: 'root' } }
-          }
+  // Full rule content comes from GAME-MASTER-SCRIPT-v0.2 (extracted-content.json -> script
+  // key) — docx wins; the old-wiki cards.html holds only a skeleton of headings/one-liners.
+  // Audience split per decision #6/#9: Prep + Opening the Table gmOnly, story sections
+  // player-facing, script instructions become Intro to Cards/Dice (d9 -> d10 canonical).
+  const extractedJson = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), 'public', 'extracted-content.json'), 'utf-8')
+  )
+  const scriptText: string = extractedJson.script
 
-          await payload.create({
-              collection: 'rules',
-              data: {
-                  title: rule.title,
-                  slug: rule.title.toLowerCase().replace(/\s+/g, '-'),
-                  content: ruleContent,
-                  order: order++
-              } as any
-          })
-          console.log(`Created rule: ${rule.title}`)
-      }
+  const cleanScript = (s: string): string =>
+    s
+      .replace(/\u00E2\u20AC\u0153/g, '\u201C') // â€œ -> left quote
+      .replace(/\u00E2\u20AC\u2122/g, '\u2019') // â€™ -> apostrophe
+      .replace(/\u00E2\u20AC[\u009C\u009D]/g, '\u201D') // â€<ctl> -> right quote
+      .replace(/\u00E2\u20AC/g, '\u2014') // remaining â€ -> em dash
+      .replace(/\r\n/g, '\n')
+      .replace(/[ \t]+/g, ' ')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim()
+
+  const scriptSection = (start: string, end: string): string => {
+    const m = new RegExp(start).exec(scriptText)
+    if (!m) return ''
+    const from = m.index + m[0].length
+    if (!end) return cleanScript(scriptText.slice(from))
+    const em = new RegExp(end).exec(scriptText.slice(from))
+    const to = em ? from + em.index : scriptText.length
+    return cleanScript(scriptText.slice(from, to))
+  }
+
+  const toRichText = (text: string) => ({
+    root: { children: [{ children: [{ text }], type: 'paragraph' }], type: 'root' }
+  })
+
+  const rulesData = [
+    { title: 'Prep', order: 1, gmOnly: true, text: scriptSection('1\\) Prep \\(GM, before players arrive\\)', '2\\) Opening the table') },
+    { title: 'Opening the Table', order: 2, gmOnly: true, text: 'GM script + background music. The GM narrates the opening story — Brief History – Pambungad, Pagtawag sa mga Manlalaro, Paglalahad ng Apat na Diyos, Paglipat sa Manlalakbay — then walks the players through the card and dice instructions.' },
+    { title: 'Introduction to Cards', order: 3, gmOnly: false, text: scriptSection('\\[Instruksiyon sa Cards\\]', '\\[Instruksiyon sa Dice\\]') },
+    { title: 'Introduction to Dice', order: 4, gmOnly: false, text: scriptSection('\\[Instruksiyon sa Dice\\]', '3\\) Explain the simple core loop').replace(/\bd9\b/gi, 'd10') },
+    { title: 'Core Loop', order: 5, gmOnly: false, text: scriptSection('3\\) Explain the simple core loop \\(one line\\)', '\\[Transition to Gameplay\\]') },
+    { title: 'Brief History – Pambungad', gmOnly: false, text: scriptSection('\\[Brief History[^\\]]*\\]', '\\[Pagtawag sa mga Manlalaro\\]') },
+    { title: 'Pagtawag sa mga Manlalaro', gmOnly: false, text: scriptSection('\\[Pagtawag sa mga Manlalaro\\]', '\\[Paglalahad ng Apat na Diyos\\]') },
+    { title: 'Paglalahad ng Apat na Diyos', gmOnly: false, text: scriptSection('\\[Paglalahad ng Apat na Diyos\\]', '\\[Paglipat sa Manlalakbay\\]') },
+    { title: 'Paglipat sa Manlalakbay', gmOnly: false, text: scriptSection('\\[Paglipat sa Manlalakbay\\]', '\\[Instruksiyon sa Cards\\]') },
+    { title: 'Transition to Gameplay', gmOnly: true, text: scriptSection('\\[Transition to Gameplay\\]', '') },
+  ]
+
+  const matPath = path.join(OLD_WIKI_PATH, 'assets', 'rules', 'playing_mat.jpg')
+  const matImageId = fs.existsSync(matPath) ? await uploadImage(matPath, 'Balangay Playing Mat') : null
+
+  for (const rule of rulesData) {
+    const children: any[] = [{ children: [{ text: rule.text, type: 'text' }], type: 'paragraph' }]
+    if (rule.title === 'Introduction to Cards' && matImageId) {
+      children.push({
+        type: 'upload',
+        relationTo: 'media',
+        value: matImageId,
+        fields: { alt: 'Playing mat — where players place their chosen cards' },
+        children: [{ text: '', type: 'text' }],
+        version: 1,
+        format: 'center',
+      })
+    }
+
+    await payload.create({
+      collection: 'rules',
+      data: {
+        title: rule.title,
+        slug: rule.title.toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, ''),
+        content: { root: { children, type: 'root' } },
+        order: rule.order,
+        gmOnly: rule.gmOnly,
+      } as any
+    })
+    console.log(`Created rule: ${rule.title}${rule.gmOnly ? ' (GM)' : ''}`)
   }
 
   console.log('--- Seeding Cards ---')
