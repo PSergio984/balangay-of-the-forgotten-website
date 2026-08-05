@@ -1,9 +1,16 @@
+import 'dotenv/config'
 import { getPayload } from 'payload'
 import config from '../payload.config'
 import fs from 'fs'
 import path from 'path'
 
-const OLD_WIKI_PATH = 'C:/Users/admin/OneDrive/Documents/GitHub/balangay_of_the_forgotten'
+const OLD_WIKI_PATH = process.env.OLD_WIKI_PATH || 'D:/Github/balangay_of_the_forgotten'
+
+if (!fs.existsSync(OLD_WIKI_PATH)) {
+  throw new Error(
+    `OLD_WIKI_PATH does not exist: ${OLD_WIKI_PATH}. Set the OLD_WIKI_PATH env var to the old wiki repo location.`
+  )
+}
 
 // Helper to extract lore from old wiki HTML
 function extractLoreFull(html: string, title: string): any {
