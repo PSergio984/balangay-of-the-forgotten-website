@@ -117,9 +117,9 @@ const seed = async () => {
   console.log('--- Seeding Locations ---')
   const locationsData = [
     { name: 'Dagat ng Kabisayaan', slug: 'dagat_kabisayaan', tagalogTitle: 'Karagatan ng Eklipse' },
-    { name: 'Daragang Magayon', slug: 'daragang_magayon', tagalogTitle: 'Bulkan ng Magayon' },
-    { name: 'Bundok Pulag', slug: 'bundok_pulag', tagalogTitle: 'Bundok ng mga Diyos' },
-    { name: 'Kaluwalhatian', slug: 'kaluwalhatian', tagalogTitle: 'Tahanan ng mga Diyos' },
+    { name: 'Daragang Magayon', slug: 'daragang_magayon', tagalogTitle: 'Pulo ng Apoy' },
+    { name: 'Bundok Pulag', slug: 'bundok_pulag', tagalogTitle: 'Pilak ng Dambana' },
+    { name: 'Kaluwalhatian', slug: 'kaluwalhatian', tagalogTitle: 'Ang Kaharian sa Ulap' },
     { name: 'Ang Kabilang Mundo', slug: 'ang_kabilang_mundo', tagalogTitle: 'Lagusan' }
   ]
 
@@ -342,7 +342,7 @@ const seed = async () => {
   console.log('--- Seeding Characters ---')
   const charactersData = [
     {
-      name: 'Mandirigma', slug: 'mandirigma', role: 'Damage', tagalogTitle: 'Ang Matapang na Mandirigma',
+      name: 'Mandirigma', slug: 'mandirigma', role: 'Damage', tagalogTitle: 'Ang Sandata ng Balangay',
       presets: [
         { name: 'Glass Canon', stats: { hp: 650, atk: 120, mag: 0, def: 60 } },
         { name: 'Bruiser', stats: { hp: 800, atk: 90, mag: 0, def: 90 } },
@@ -357,7 +357,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Bagani', slug: 'bagani', role: 'Tank', tagalogTitle: 'Ang Tagapagtanggol',
+      name: 'Bagani', slug: 'bagani', role: 'Tank', tagalogTitle: 'Ang Kalasag ng Balangay',
       presets: [
         { name: 'Wall', stats: { hp: 1050, atk: 30, mag: 0, def: 250 } },
         { name: 'Juggernaut', stats: { hp: 1000, atk: 60, mag: 0, def: 190 } },
@@ -372,7 +372,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Babaylan', slug: 'babaylan', role: 'Healer', tagalogTitle: 'Ang Manggagamot',
+      name: 'Babaylan', slug: 'babaylan', role: 'Healer', tagalogTitle: 'Ang Diwa ng Balangay',
       presets: [
         { name: 'Pure Healer', stats: { hp: 500, atk: 0, mag: 220, def: 70 } },
         { name: 'Support Cleric', stats: { hp: 650, atk: 0, mag: 200, def: 80 } },
@@ -387,7 +387,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Mangangayaw', slug: 'mangangayaw', role: 'Ranged', tagalogTitle: 'Ang Mangangaso',
+      name: 'Mangangayaw', slug: 'mangangayaw', role: 'Ranged', tagalogTitle: 'Ang Anino ng Balangay',
       presets: [
         { name: 'Sniper', stats: { hp: 600, atk: 110, mag: 0, def: 50 } },
         { name: 'Ranger', stats: { hp: 700, atk: 90, mag: 0, def: 100 } },
