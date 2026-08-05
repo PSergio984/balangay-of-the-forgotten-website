@@ -18,7 +18,7 @@ const main = async () => {
   console.log('cards type=back:', backs.docs.map((d: any) => d.name).join(', ') || '(none)')
   console.log('cards type=utility:', utils.docs.map((d: any) => d.name).join(', ') || '(none)')
   const loreCheck = async (collection: string) => {
-    const r = await payload.find({ collection, limit: 100, depth: 0 })
+    const r = await payload.find({ collection: collection as any, limit: 100, depth: 0 })
     const bad = r.docs.filter((d: any) => JSON.stringify(d.description || {}).includes('Lore not found.'))
     console.log(`${collection} with "Lore not found.": ${bad.length}${bad.length ? ' - ' + bad.map((d: any) => d.name || d.title).join(', ') : ''}`)
     return bad.length

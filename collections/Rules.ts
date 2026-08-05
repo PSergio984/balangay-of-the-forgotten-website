@@ -31,6 +31,14 @@ export const Rules: CollectionConfig = {
       admin: {
         description: 'Order of the rules/flow section',
       }
-    }
+    },
+    {
+      name: 'gmOnly',
+      type: 'checkbox',
+      defaultValue: false,
+      admin: {
+        description: 'Mark as GM-only material (rendered at the bottom of the rules category with a GM tag)',
+      },
+    },
   ],
 }

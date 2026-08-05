@@ -511,6 +511,10 @@ export interface Rule {
    * Order of the rules/flow section
    */
   order?: number | null;
+  /**
+   * Mark as GM-only material (rendered at the bottom of the rules category with a GM tag)
+   */
+  gmOnly?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -855,6 +859,7 @@ export interface RulesSelect<T extends boolean = true> {
   slug?: T;
   content?: T;
   order?: T;
+  gmOnly?: T;
   updatedAt?: T;
   createdAt?: T;
 }
