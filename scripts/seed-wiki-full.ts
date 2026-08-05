@@ -261,7 +261,7 @@ const seed = async () => {
     if (boss.slug === 'minokawa') {
       // Minokawa's HP is dynamic ("inherits Bakunawa's total HP" per char-stats) —
       // seeded as the resolved 2000, with the rule noted in prose (conflict C1).
-      loreData.root.children.push({
+      ;(loreData as any).root.children.push({
         type: 'paragraph',
         children: [{ text: 'Note: Minokawa inherits Bakunawa\'s total HP in battle — see Bakunawa\'s "Eat the Sun and Moon" passive.', type: 'text' }]
       })
@@ -292,7 +292,7 @@ const seed = async () => {
       await payload.update({
         collection: 'relics',
         where: { slug: { equals: relic.slug } },
-        data: { sourceBoss: bosses[relic.sourceBoss] },
+        data: { sourceBoss: Number(bosses[relic.sourceBoss]) },
       })
       console.log(`Linked relic: ${relic.name} -> ${relic.sourceBoss}`)
     }
