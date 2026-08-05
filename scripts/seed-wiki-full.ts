@@ -557,20 +557,69 @@ const seed = async () => {
           const name = file.split('.')[0].replace(/([A-Z])/g, ' $1').trim()
           const imageId = await uploadImage(filePath, name)
           if (imageId) {
+              const stem = file.split('.')[0]
+              const cardCategory = category || categoryFor(stem, type)
+              const description =
+                type === 'item'
+                  ? itemEffectFor(stem) || `Special item card for ${name}.`
+                  : `Official ${type} card for ${name}.`
               await payload.create({
                   collection: 'cards',
                   data: {
                       name,
-                      slug: `${type}-${file.split('.')[0].toLowerCase()}`,
+                      slug: `${type}-${stem.toLowerCase()}`,
                       type: type as any,
-                      category: category,
+                      category: cardCategory,
                       image: imageId,
-                      description: `Official ${type} card for ${name}.`
+                      description
                   } as any
               })
-              console.log(`Created card: ${name} (${type})`)
+              console.log(`Created card: ${name} (${type}${cardCategory ? ` [${cardCategory}]` : ''})`)
           }
       }
+  }
+
+  // Category = character/region/boss the card belongs to (decision #7), derived from
+  // the asset filename prefix; subdirs (SKILL CARDS per role) pass their own category.
+  const CATEGORY_BY_PREFIX: Array<[string, string]> = [
+    ['Mangagayaw', 'Mangangayaw'], // old-wiki typo preserved in the asset name
+    ['Mangangayaw', 'Mangangayaw'],
+    ['Mandirigma', 'Mandirigma'],
+    ['Bagani', 'Bagani'],
+    ['Babaylan', 'Babaylan'],
+    ['BundokPulag', 'Bundok Pulag'],
+    ['DagatNgKabisayan', 'Dagat ng Kabisayaan'],
+    ['DaragangMagayon', 'Daragang Magayon'],
+    ['Kaluwalhatian', 'Kaluwalhatian'],
+    ['Apolaki', 'Apolaki'],
+    ['Bakunawa', 'Bakunawa'],
+    ['Bathala', 'Bathala'],
+    ['Mayari', 'Mayari'],
+    ['Minokawa', 'Minokawa'],
+    ['Kapre', 'Kapre'],
+    ['Mananangal', 'Manananggal'],
+    ['Sirena', 'Sirena'],
+    ['Tiyanak', 'Tiyanak'],
+  ]
+  const categoryFor = (stem: string, type: string): string | undefined => {
+    if (type === 'item') return 'Special Item'
+    for (const [prefix, category] of CATEGORY_BY_PREFIX) {
+      if (stem.toLowerCase().startsWith(prefix.toLowerCase())) return category
+    }
+    return undefined
+  }
+
+  // Real effects for the special-item cards (char-stats / Game-Flow-and-Rules, C10).
+  const ITEM_EFFECTS: Array<[string, string]> = [
+    ['Agos-Oras', 'Special item: no cooldowns for 1 round.'],
+    ['Balaraw', 'Special item: +15% DMG to all.'],
+    ['Kalasag', 'Special item: +25% DEF to 2 players.'],
+  ]
+  const itemEffectFor = (stem: string): string | undefined => {
+    for (const [key, effect] of ITEM_EFFECTS) {
+      if (stem.toLowerCase().startsWith(key.toLowerCase())) return effect
+    }
+    return undefined
   }
 
   await seedCardDir('ROLE CARDS', 'role')
