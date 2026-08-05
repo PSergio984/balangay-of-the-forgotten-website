@@ -118,6 +118,9 @@ const main = async () => {
   console.log('\n--- Known deviations (not counted as gaps) ---')
   for (const d of KNOWN_DEVIATIONS) console.log(`  - ${d}`)
 
+  console.log('\n--- Name mapping (old-wiki name -> canonical seeded name) ---')
+  for (const [oldName, canonical] of Object.entries(NAME_MAP)) console.log(`  ${oldName} -> ${canonical}`)
+
   console.log(`\n=== VERDICT: ${gaps === 0 ? 'ZERO GAPS — old wiki retireable' : `${gaps} GAP(S) REMAINING`} ===`)
   await payload.destroy()
   process.exit(gaps === 0 ? 0 : 1)
