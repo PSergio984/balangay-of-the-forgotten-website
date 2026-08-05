@@ -510,6 +510,12 @@ const seed = async () => {
   const matPath = path.join(OLD_WIKI_PATH, 'assets', 'rules', 'playing_mat.jpg')
   const matImageId = fs.existsSync(matPath) ? await uploadImage(matPath, 'Balangay Playing Mat') : null
 
+  console.log('--- Seeding Book Cover ---')
+  const coverPath = path.join(process.cwd(), 'public', 'media', 'BOTF_BOOK_COVER.jpg')
+  if (fs.existsSync(coverPath)) {
+    await uploadImage(coverPath, 'Balangay of the Forgotten Book Cover')
+  }
+
   for (const rule of rulesData) {
     const children: any[] = [{ children: [{ text: rule.text, type: 'text' }], type: 'paragraph' }]
     if (rule.title === 'Introduction to Cards' && matImageId) {

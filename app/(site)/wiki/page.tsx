@@ -1,6 +1,7 @@
 import React from 'react'
 import type { Metadata } from 'next'
 import AncientScrollContainer from '@/components/landing/AncientScrollContainer'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -95,6 +96,28 @@ export default function WikiHubPage() {
             </p>
             <div className="w-32 h-2 bg-[#F97316] mx-auto mt-8" />
           </header>
+
+          {/* World lore — Home (Lore), per decision #10 (Game-Lore.docx world overview) */}
+          <section className="border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+            <div className="relative w-56 md:w-72 shrink-0 border-4 border-black bg-[#0C4A6E] overflow-hidden">
+              <Image
+                src="/media/BOTF_BOOK_COVER.jpg"
+                alt="Balangay of the Forgotten book cover"
+                width={2400}
+                height={3394}
+                unoptimized
+                className="w-full h-auto"
+              />
+            </div>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold uppercase tracking-tighter border-l-8 border-[#F97316] pl-4">
+                Ang Kabilang Mundo
+              </h2>
+              <p className="text-gray-700 font-serif text-lg leading-relaxed">
+                Ang Kabilang Mundo ay isang kahariang nakabalot sa alaala, hiwaga, at panganib. Dito itinago ng mga diyos ang mga kasalanan at alaala ng sangkatauhan matapos ang dakilang tunggalian. Bagaman tila pamilyar ang anyo ng mga pulo at karagatan, ang bawat lugar ay pinaghaharian ng mahika, halimaw, at mga bantay ng diyos. Sa bawat sulok ng Kabilang Mundo, matatagpuan ang mga bakas ng nakaraan — mga Bato ng Kapangyarihan, mga banal na bundok, at mga dagat na pinagmumulan ng mga Memory Fragment.
+              </p>
+            </div>
+          </section>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category) => (
