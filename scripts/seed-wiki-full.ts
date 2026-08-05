@@ -120,7 +120,6 @@ const seed = async () => {
     { name: 'Daragang Magayon', slug: 'daragang_magayon', tagalogTitle: 'Pulo ng Apoy' },
     { name: 'Bundok Pulag', slug: 'bundok_pulag', tagalogTitle: 'Pilak ng Dambana' },
     { name: 'Kaluwalhatian', slug: 'kaluwalhatian', tagalogTitle: 'Ang Kaharian sa Ulap' },
-    { name: 'Ang Kabilang Mundo', slug: 'ang_kabilang_mundo', tagalogTitle: 'Lagusan' }
   ]
 
   const locations: Record<string, number | string> = {}
@@ -149,12 +148,14 @@ const seed = async () => {
   }
 
   console.log('--- Seeding Relics (Items) ---')
+  // Canonical names/effects/locations per Game-Lore.docx (docx wins, decision #10);
+  // real effects migrated from seed-wiki.ts relic/item effects (conflict C10).
   const relicsData = [
-    { name: 'Korona ng Araw', slug: 'korona', htmlSlug: 'korona', effect: 'Ancient relic of the archipelago.', loc: 'bundok_pulag', type: 'Artifact' },
-    { name: 'Luha ng Buwan', slug: 'luhain', htmlSlug: 'luhain', tagalogTitle: 'Tabak ng Luha ng Buwan - Ang Bantay ni Mayari', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact' },
-    { name: 'Pangil ng Buwan', slug: 'pangil', htmlSlug: 'pangil', effect: 'Ancient relic of the archipelago.', loc: 'dagat_kabisayaan', type: 'Artifact' },
-    { name: 'Silang', slug: 'silang', htmlSlug: 'silang', tagalogTitle: 'Bato ng Pagsilang - Ang Bantay ni Bathala', effect: 'Ancient relic of the archipelago.', loc: 'kaluwalhatian', type: 'Artifact' },
-    { name: 'Memory Fragment', slug: 'memory-fragment', htmlSlug: 'memory-fragment', effect: 'The combination of all sacred relics. A fragment of the ultimate truth.', loc: 'ang_kabilang_mundo', type: 'Fragment' }
+    { name: 'Korona ng Araw', slug: 'korona', htmlSlug: 'korona', effect: '+15% DMG to all.', loc: 'daragang_magayon', sourceBoss: 'apolaki', type: 'Artifact' },
+    { name: 'Tabak ng Luha ng Buwan', slug: 'luhain', htmlSlug: 'luhain', tagalogTitle: 'Tabak ng Luha ng Buwan - Ang Bantay ni Mayari', effect: '+25% DEF to 2 players.', loc: 'bundok_pulag', sourceBoss: 'mayari', type: 'Artifact' },
+    { name: 'Pangil ng Buwan', slug: 'pangil', htmlSlug: 'pangil', effect: 'A next round with No Cooldown of skills for all.', loc: 'dagat_kabisayaan', sourceBoss: 'bakunawa', type: 'Artifact' },
+    { name: 'Bato ng Pagsilang', slug: 'silang', htmlSlug: 'silang', tagalogTitle: 'Bato ng Pagsilang - Ang Bantay ni Bathala', effect: 'Grant double shield stats to all allies next turn.', loc: 'kaluwalhatian', sourceBoss: 'bathala', type: 'Artifact' },
+    { name: 'Memory Fragment', slug: 'memory-fragment', htmlSlug: 'memory-fragment', effect: 'The combination of all sacred relics. A fragment of the ultimate truth.', type: 'Fragment' }
   ]
 
   for (const relic of relicsData) {
@@ -169,8 +170,13 @@ const seed = async () => {
         }
     }
 
-    let nameForAsset = relic.name === 'Memory Fragment' ? 'Memory Fragment' : relic.name.split(' ')[0]
-    if (relic.htmlSlug === 'luhain') nameForAsset = 'Luhain'
+    let nameForAsset = relic.name
+    if (relic.htmlSlug) {
+      const assetNames: Record<string, string> = {
+        korona: 'Korona', luhain: 'Luhain', pangil: 'Pangil', silang: 'Silang', 'memory-fragment': 'Memory Fragment',
+      }
+      nameForAsset = assetNames[relic.htmlSlug] || relic.name
+    }
     const imgPath = path.join(OLD_WIKI_PATH, 'assets', 'relics', `${nameForAsset}.png`)
     const imageId = await uploadImage(imgPath, relic.name)
 
@@ -181,7 +187,7 @@ const seed = async () => {
         slug: relic.slug,
         description: loreData,
         effect: relic.effect,
-        foundAt: locations[relic.loc],
+        foundAt: relic.loc ? locations[relic.loc] : undefined,
         image: imageId,
         type: relic.type
       } as any 
@@ -192,7 +198,7 @@ const seed = async () => {
   console.log('--- Seeding Bosses ---')
   const bossesData = [
     {
-      name: 'Bathala', slug: 'bathala', tagalogTitle: 'Ama ng Langit',
+      name: 'Bathala', slug: 'bathala', tagalogTitle: 'Ama ng Langit', loc: 'kaluwalhatian',
       stats: { hp: 2800, atk: 110, mag: 250, def: 200 },
       moveset: [
         { name: "Heaven's Mandate", type: 'Buff', description: 'Do On Guard on self. Removes Debuff. Won’t work if it gets pick after the previous turn.' },
@@ -202,7 +208,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Mayari', slug: 'mayari', tagalogTitle: 'Diyosa ng Buwan',
+      name: 'Mayari', slug: 'mayari', tagalogTitle: 'Diyosa ng Buwan', loc: 'bundok_pulag',
       stats: { hp: 2100, atk: 300, mag: 120, def: 180 },
       moveset: [
         { name: 'Moonlight Grace', type: 'Buff', description: 'Heal herself with a total of 25% max HP.' },
@@ -212,7 +218,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Apolaki', slug: 'apolaki', tagalogTitle: 'Diyos ng Araw',
+      name: 'Apolaki', slug: 'apolaki', tagalogTitle: 'Diyos ng Araw', loc: 'daragang_magayon',
       stats: { hp: 1700, atk: 360, mag: 70, def: 150 },
       moveset: [
         { name: 'Solar Flare Slash', type: 'Single Target', description: 'Deals 175% ATK to enemy, + 55% CRIT Rate.' },
@@ -222,19 +228,19 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Bakunawa', slug: 'bakunawa', tagalogTitle: 'Serpiyente ng Buwan',
+      name: 'Bakunawa', slug: 'bakunawa', tagalogTitle: 'Serpiyente ng Buwan', loc: 'dagat_kabisayaan',
       stats: { hp: 2000, atk: 40, mag: 300, def: 190 },
       moveset: [
         { name: 'Eclipse Fang', type: 'Single Target', description: 'Heals Bakunawa for 50 (+100%) MAG. Deals 110% MAG as damage.' },
         { name: "Serpent's Coil", type: 'Single Target', description: 'Binds enemy. Deal 50 (+150%) ATK damage.' },
         { name: 'Lunar Devour', type: 'AoE', description: 'Deal 80% MAG to all. Inflicts Devoured (Takes fixed 60HP DMG for 2 turns).' },
         { name: 'Shadow Dive', type: 'Buff', description: 'Recharge magical power, skip 1 turn. Next attack deals double damage.' },
-        { name: 'Eat the Sun and Moon', type: 'Passive', description: 'At 50% HP, summons Minokawa. Both heal 20% of Bakunawa max HP.' },
+        { name: 'Eat the Sun and Moon', type: 'Passive', description: 'At 50% HP, Bakunawa skips its turn and summons Minokawa. Minokawa takes 50% of Bakunawa\'s current HP to inherit. Both heal 20% of Bakunawa\'s max HP. Minokawa attacks the same turn.' },
       ]
     },
     {
-      name: 'Minokawa', slug: 'minokawa', tagalogTitle: 'Lawin ng Kamatayan',
-      stats: { hp: 1000, atk: 300, mag: 40, def: 190 },
+      name: 'Minokawa', slug: 'minokawa', tagalogTitle: 'Lawin ng Kamatayan', loc: 'dagat_kabisayaan',
+      stats: { hp: 2000, atk: 300, mag: 40, def: 190 },
       moveset: [
         { name: 'Solar Devour', type: 'Single Target', description: 'Swallows prey, stunning for 1 turn. Deals 90% ATK, ignore 10% DEF.' },
         { name: 'Wing Tempest', type: 'AoE', description: 'Deals 80% ATK damage to all. Inflicts Eye of the Dragon (Decrease DEF by 10% for 2 turns).' },
@@ -252,6 +258,14 @@ const seed = async () => {
         const html = fs.readFileSync(htmlPath, 'utf-8')
         loreData = extractLoreFull(html, boss.tagalogTitle)
     }
+    if (boss.slug === 'minokawa') {
+      // Minokawa's HP is dynamic ("inherits Bakunawa's total HP" per char-stats) —
+      // seeded as the resolved 2000, with the rule noted in prose (conflict C1).
+      loreData.root.children.push({
+        type: 'paragraph',
+        children: [{ text: 'Note: Minokawa inherits Bakunawa\'s total HP in battle — see Bakunawa\'s "Eat the Sun and Moon" passive.', type: 'text' }]
+      })
+    }
 
     const imgPath = path.join(OLD_WIKI_PATH, 'assets', 'boss', `${boss.name}.png`)
     const imageId = await uploadImage(imgPath, boss.name)
@@ -264,6 +278,7 @@ const seed = async () => {
         description: loreData,
         stats: boss.stats,
         moveset: boss.moveset,
+        location: locations[boss.loc],
         image: imageId
       } as any
     })
@@ -271,10 +286,22 @@ const seed = async () => {
     console.log(`Created boss: ${boss.name}`)
   }
 
+  console.log('--- Linking Relic sourceBoss ---')
+  for (const relic of relicsData) {
+    if (relic.sourceBoss && bosses[relic.sourceBoss]) {
+      await payload.update({
+        collection: 'relics',
+        where: { slug: { equals: relic.slug } },
+        data: { sourceBoss: bosses[relic.sourceBoss] },
+      })
+      console.log(`Linked relic: ${relic.name} -> ${relic.sourceBoss}`)
+    }
+  }
+
   console.log('--- Seeding Mini Bosses ---')
   const minibossesData = [
     {
-      name: 'Manananggal', slug: 'manananggal', tagalogTitle: 'Ang Bantay ni Mayari', loc: 'dagat_kabisayaan',
+      name: 'Manananggal', slug: 'manananggal', tagalogTitle: 'Ang Bantay ni Mayari', loc: 'bundok_pulag', parentBoss: 'mayari',
       stats: { hp: 900, atk: 230, mag: 35, def: 100 },
       moveset: [
         { name: 'Batwing Slash', description: 'Deals 1.2 x ATK to one enemy' },
@@ -283,7 +310,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Tiyanak', slug: 'tiyanak', tagalogTitle: 'Ang Bantay ni Apolaki', loc: 'daragang_magayon',
+      name: 'Tiyanak', slug: 'tiyanak', tagalogTitle: 'Ang Bantay ni Apolaki', loc: 'daragang_magayon', parentBoss: 'apolaki',
       stats: { hp: 1150, atk: 50, mag: 195, def: 125 },
       moveset: [
         { name: 'Claw Latch', description: 'Deals 1.2 x MAG to one enemy' },
@@ -292,7 +319,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Sirena', slug: 'sirena', tagalogTitle: 'Ang Bantay ni Bakunawa at Minokawa', loc: 'dagat_kabisayaan',
+      name: 'Sirena', slug: 'sirena', tagalogTitle: 'Ang Bantay ni Bakunawa at Minokawa', loc: 'dagat_kabisayaan', parentBoss: 'bakunawa',
       stats: { hp: 1000, atk: 20, mag: 240, def: 80 },
       moveset: [
         { name: 'Drowning Current', description: 'Deals 1.2 x MAG to one enemy' },
@@ -301,7 +328,7 @@ const seed = async () => {
       ]
     },
     {
-      name: 'Kapre', slug: 'kapre', tagalogTitle: 'Ang Bantay ni Bathala', loc: 'bundok_pulag',
+      name: 'Kapre', slug: 'kapre', tagalogTitle: 'Ang Bantay ni Bathala', loc: 'kaluwalhatian', parentBoss: 'bathala',
       stats: { hp: 1300, atk: 200, mag: 0, def: 150 },
       moveset: [
         { name: 'Tree Smash', description: 'Deals 1.2 x ATK to one enemy' },
@@ -333,6 +360,7 @@ const seed = async () => {
         stats: mini.stats,
         moveset: mini.moveset,
         location: locations[mini.loc],
+        parentBoss: mini.parentBoss ? bosses[mini.parentBoss] : undefined,
         image: imageId
       } as any
     })
@@ -368,7 +396,7 @@ const seed = async () => {
         { name: 'Taunt', description: 'Boss targets you for 2 turns', cooldown: 2 },
         { name: 'Fortify', description: 'Gain shield equal to +30% max HP for 2 turns', cooldown: 4 },
         { name: 'Last Stand', description: 'Do On Guard on self. Requirement: HP <= 20%', cooldown: 4 },
-        { name: 'Guardian’s Oath', description: 'Sacrifice 25% current HP, shield all allies for 25% current HP for 2 turns', cooldown: 4 },
+        { name: 'Guardian’s Oath', description: 'Sacrifice 25% current HP, shield all allies (except itself) for 25% current HP for 2 turns. Unstackable.', cooldown: 4 },
       ]
     },
     {
