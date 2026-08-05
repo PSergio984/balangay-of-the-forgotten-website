@@ -1,0 +1,1022 @@
+{
+  "D:\\Github\\balangay-of-the-forgotten-website\\eslint.config.mjs": {
+    "mtime": 1785921742.5847363,
+    "hash": "6c4307ffa009658f5c97f5629094c0c2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\next-env.d.ts": {
+    "mtime": 1785922658.4096003,
+    "hash": "b698cdd97fe8e3bd16dcd74899ad7cef"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\next.config.mjs": {
+    "mtime": 1785921742.5909457,
+    "hash": "60dfb83167f29b981d3c8b279c8fe0f4"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\payload-types.ts": {
+    "mtime": 1785922447.7267883,
+    "hash": "77c11d362e51f86f308db8821bc581b5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\payload.config.ts": {
+    "mtime": 1785921742.594946,
+    "hash": "f2909442821c01182487e8a1273b1a7e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\postcss.config.mjs": {
+    "mtime": 1785921742.5969467,
+    "hash": "481fac0fdecd70e1821cc30b86030c1a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\sitemap.ts": {
+    "mtime": 1785921742.5731769,
+    "hash": "4247d708b1912860f14af5f37d1ef953"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(payload)\\admin\\importMap.js": {
+    "mtime": 1785921742.5661767,
+    "hash": "9a924a0cca8425947d20144a697ae3d9"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(payload)\\admin\\[[...segments]]\\layout.tsx": {
+    "mtime": 1785921742.5651772,
+    "hash": "66253962e16a5f48b44c84af0073fdf0"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(payload)\\admin\\[[...segments]]\\page.tsx": {
+    "mtime": 1785921742.5661767,
+    "hash": "4e3b7ef182bd69f2a324597992e5c34c"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(payload)\\api\\[[...slug]]\\route.ts": {
+    "mtime": 1785921742.5661767,
+    "hash": "409edd22c2a294f59845b368d1d670c5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\layout.tsx": {
+    "mtime": 1785921742.5691774,
+    "hash": "1bb468ad8d731b2e68c201d46b2a8059"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\page.tsx": {
+    "mtime": 1785921742.5691774,
+    "hash": "fe8260ce4e373b3432a38ff814557c39"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\api\\search\\route.ts": {
+    "mtime": 1785921742.568172,
+    "hash": "02536c3be1c1adf10f6a51f26e350cf1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\explore\\page.tsx": {
+    "mtime": 1785921742.568172,
+    "hash": "82ebb00df31f48422e3528186204274b"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\logbook\\page.tsx": {
+    "mtime": 1785921742.5691774,
+    "hash": "d2e68f26cf26866a162445f2b8619277"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\wiki\\page.tsx": {
+    "mtime": 1785921742.57118,
+    "hash": "a9f23be7514ca7746233aff4b5ac70df"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\wiki\\search\\layout.tsx": {
+    "mtime": 1785921742.57118,
+    "hash": "d53d925ca9f89e02b278058cc8001a1d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\wiki\\search\\page.tsx": {
+    "mtime": 1785921742.5721774,
+    "hash": "08a179790ee3671de92d9f3396049d44"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\wiki\\timeline\\page.tsx": {
+    "mtime": 1785921742.5721774,
+    "hash": "2374f15bde42fa7c80fc8b18486a1b20"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\wiki\\[category]\\page.tsx": {
+    "mtime": 1785921742.57118,
+    "hash": "aca1e1ec812ad8d39a5409295e2b5b03"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\app\\(site)\\wiki\\[category]\\[slug]\\page.tsx": {
+    "mtime": 1785921742.5701785,
+    "hash": "f9f8041ff42f7feb59237766a0b75449"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Bosses.ts": {
+    "mtime": 1785921742.5731769,
+    "hash": "910ee51bbb1b7ffd5fb6bbd2316a611c"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Cards.ts": {
+    "mtime": 1785921742.5731769,
+    "hash": "0671d7c311b64e21d12ee00543f48f16"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Characters.ts": {
+    "mtime": 1785921742.5741794,
+    "hash": "cd3032ef2c7ab38f64736ca8231a98df"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Events.ts": {
+    "mtime": 1785921742.5741794,
+    "hash": "e47c312344b697d79287281a54994b4e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Locations.ts": {
+    "mtime": 1785921742.5741794,
+    "hash": "c38e8b066cbb07b0ba90b459ef4303ae"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Media.ts": {
+    "mtime": 1785921742.5751786,
+    "hash": "06d3b51a67da2e7e717d56c71d17a315"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Minibosses.ts": {
+    "mtime": 1785921742.5751786,
+    "hash": "6515fcc38e8f22fed2dc072566535ad6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\News.ts": {
+    "mtime": 1785921742.5751786,
+    "hash": "11b96e947f95d5ec4453e55ca09f4721"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Relics.ts": {
+    "mtime": 1785921742.5761795,
+    "hash": "85eb337e8ae4b6da03ce6b7a656ee3ae"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Rules.ts": {
+    "mtime": 1785921742.5761795,
+    "hash": "8866aefdf693594c07ed1f1f9dd7297a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\StatusEffects.ts": {
+    "mtime": 1785921742.5761795,
+    "hash": "5475cdf871f7c7f5e9aa3e3b469a4835"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\collections\\Users.ts": {
+    "mtime": 1785921742.5761795,
+    "hash": "e544c2b7e7e68416be4186ff4d981bb6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\admin\\ImageThumbnailCell.tsx": {
+    "mtime": 1785921742.5771766,
+    "hash": "24440182d41b4368a79653d8a47c915f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\audio\\AmbientPlayer.tsx": {
+    "mtime": 1785921742.5771766,
+    "hash": "d98cc63633fb99ba0f324e2ab55fd26d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\AccoladesSection.tsx": {
+    "mtime": 1785921742.5782256,
+    "hash": "8f20d4a0ebefd20844ee9f869302c3aa"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\AncientScrollContainer.tsx": {
+    "mtime": 1785921742.5782256,
+    "hash": "704681f0c89bdbd7686296e3659daf1a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\BulletinBoard.tsx": {
+    "mtime": 1785921742.5782256,
+    "hash": "6fc7671c9f48d0fd0ad05dfc8deea845"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\Footer.tsx": {
+    "mtime": 1785921742.579226,
+    "hash": "a27bf53929edc5c254cad610d8a32421"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\LogbookEntry.tsx": {
+    "mtime": 1785921742.579226,
+    "hash": "f689e0164b26db7798bdbf1a8cb6598f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\LogbookFeed.tsx": {
+    "mtime": 1785921742.580225,
+    "hash": "fc4f2be1f113ff1ccda6e7286e12fdbc"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\ParallaxHero.tsx": {
+    "mtime": 1785921742.580225,
+    "hash": "1beaf709a8a767176b3ff7a0ee30b126"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\PixelNavbar.tsx": {
+    "mtime": 1785921742.5807333,
+    "hash": "2474315139d0b53d2d5e1cd408ef07ad"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\RelicShowcase.tsx": {
+    "mtime": 1785921742.5807333,
+    "hash": "1a7b69eee4e69ed647391e67daa34c96"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\RolesSection.tsx": {
+    "mtime": 1785921742.5807333,
+    "hash": "f604ae451919e48631eba5b535153b8d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\SiteLoader.tsx": {
+    "mtime": 1785921742.581735,
+    "hash": "bc663463574d6e8a8361641376197fce"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\landing\\WorldMapSection.tsx": {
+    "mtime": 1785921742.581735,
+    "hash": "59faa3be20268e75f17e0636d85eb2a8"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\providers\\LenisProvider.tsx": {
+    "mtime": 1785921742.5827358,
+    "hash": "094fd734180987e2c652fcb84a90236e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\wiki\\TimelineClient.tsx": {
+    "mtime": 1785921742.5827358,
+    "hash": "f73a37372d74ed4fd529c4d1e071e49d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\components\\wiki\\WikiSearch.tsx": {
+    "mtime": 1785921742.5827358,
+    "hash": "39676929ec21bf385c4a9a1c886a0cb2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\lib\\payload.ts": {
+    "mtime": 1785921742.5847363,
+    "hash": "1a341f75d4e789b1e91758086654588a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\lib\\slug.ts": {
+    "mtime": 1785921742.5857382,
+    "hash": "9adad8107addd5351a122722bdc96980"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\lib\\store.ts": {
+    "mtime": 1785921742.5857382,
+    "hash": "d08f113cd83982aecf0ad643b0e1e00d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\migrations\\20260526_123438_initial_setup.ts": {
+    "mtime": 1785921742.5867343,
+    "hash": "ffd230018c30b522d79547930ea8904c"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\migrations\\20260526_123608_lore_collections.ts": {
+    "mtime": 1785921742.5878503,
+    "hash": "2d3cccdcb85d55bb5ba4136d381eac62"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\migrations\\20260526_165039_name.ts": {
+    "mtime": 1785921742.5888524,
+    "hash": "bb3a07b27125e375baedacf667df7ee6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\migrations\\20260526_171704_name.ts": {
+    "mtime": 1785921742.5898502,
+    "hash": "7b1e76584a2abfff0bdb72ea1af1d514"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\migrations\\20260527_173046.ts": {
+    "mtime": 1785921742.5898502,
+    "hash": "16505a4f7cd617e768316b2165986606"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\migrations\\index.ts": {
+    "mtime": 1785921742.5909457,
+    "hash": "a659472af323febeb2c28bff23bd9158"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\check-users.ts": {
+    "mtime": 1785921743.922495,
+    "hash": "26318cbdaaac7123a89b27b6df40dbfd"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\extract-docx.ts": {
+    "mtime": 1785921743.922495,
+    "hash": "743a93d6c3fea2bb03ac98ebd527cc58"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\seed-timeline.ts": {
+    "mtime": 1785921743.9234953,
+    "hash": "6227452e22bcdeb1289bb895557e35e5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\seed-wiki-full.ts": {
+    "mtime": 1785921743.924497,
+    "hash": "2613d40490ba52360f2867ca471b69e7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\seed-wiki.ts": {
+    "mtime": 1785921743.924497,
+    "hash": "4c77b63b3be373708aea07191b6a8011"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\update-db.ts": {
+    "mtime": 1785921743.9254937,
+    "hash": "520370dc4d073868bce8d051c2368c62"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\bulletin-board.test.ts": {
+    "mtime": 1785921743.9254937,
+    "hash": "2bbfee5b3bbd81f683882c4651e8aef5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\logbook-entry.test.ts": {
+    "mtime": 1785921743.9254937,
+    "hash": "a30cf9677767fd2d727650d475f4129f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\navbar.test.ts": {
+    "mtime": 1785921743.9254937,
+    "hash": "36c064955ced163418d961401dd75e3e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\parallax-hero.test.ts": {
+    "mtime": 1785921743.926998,
+    "hash": "808117c255c676304d37c7851eef4733"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\polish.test.ts": {
+    "mtime": 1785921743.926998,
+    "hash": "b633681082ad6d3a12204e21c61156d3"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\scroll-container.test.ts": {
+    "mtime": 1785921743.9280033,
+    "hash": "ff8a8113995a8d8fd8f2ddffd97ca957"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\search-timeline.test.ts": {
+    "mtime": 1785921743.9280033,
+    "hash": "38daaf043919205ba58d7844697ecc76"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\state-store.test.ts": {
+    "mtime": 1785921743.9280033,
+    "hash": "5d184d72a7a35c7796be22ebc95ccbb2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\tests\\theme.test.ts": {
+    "mtime": 1785921743.9280033,
+    "hash": "ca9835f495497630bce1b82b66a18fb6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\AGENTS.md": {
+    "mtime": 1785921742.5631356,
+    "hash": "9346a4897ff955555ddedb7bebf77adb"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\CLAUDE.md": {
+    "mtime": 1785921742.5641346,
+    "hash": "ed68755b206109563c54e0ff417003b2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\README.md": {
+    "mtime": 1785921742.5641346,
+    "hash": "748061e1d4c1333c219d997fd6af84fb"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\design-system\\balangay-of-the-forgotten\\MASTER.md": {
+    "mtime": 1785921742.583735,
+    "hash": "e9316740eff5639d3e6c1b7193c70dd1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\design-system\\balangay-of-the-forgotten\\pages\\landing-page.md": {
+    "mtime": 1785921742.5847363,
+    "hash": "52413d2431a92b995a01e55dec91ca02"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\Allbosses.png": {
+    "mtime": 1785921742.608669,
+    "hash": "5d78ac8a9cb79c272b42cce36c33468e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\bglong.png": {
+    "mtime": 1785921742.8940523,
+    "hash": "eb2cb7b83a6d1cdd5efa5d470062adff"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\file.svg": {
+    "mtime": 1785921742.9641466,
+    "hash": "d09f95206c3fa0bb9bd9fefabfd0ea71"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\globe.svg": {
+    "mtime": 1785921742.9641466,
+    "hash": "2aaafa6a49b6563925fe440891e32717"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\kaluwalhatian.png": {
+    "mtime": 1785921742.970536,
+    "hash": "22ec0c99fd0fbdc5ba33360ca14274f3"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\next.svg": {
+    "mtime": 1785921743.1280348,
+    "hash": "8e061864f388b47f33a1c3780831193e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\ORIG Memory Fragment.png": {
+    "mtime": 1785921742.6121812,
+    "hash": "4dc61600d353c6a0e9193ac10de3fc92"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\vercel.svg": {
+    "mtime": 1785921743.129037,
+    "hash": "c0af2f507b369b085b35ef4bbe3bcf1e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\window.svg": {
+    "mtime": 1785921743.9054525,
+    "hash": "a2760511c65806022ad20adf74370ff3"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\cards\\babaylan-card.gif": {
+    "mtime": 1785921742.9040937,
+    "hash": "d79e30377f08a75a7b4d13d1fa044b43"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\cards\\bagani-card.gif": {
+    "mtime": 1785921742.9121141,
+    "hash": "a9f609cdddee71a507c14c2461743425"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\cards\\mandirigma-card.gif": {
+    "mtime": 1785921742.9171135,
+    "hash": "e5b8b6ae2355fedf466a7981243304a9"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\cards\\mangangayaw-card.gif": {
+    "mtime": 1785921742.9233665,
+    "hash": "0474875f59ee98767870c37251046b3b"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\characters\\babaylan-shadow.gif": {
+    "mtime": 1785921742.9288766,
+    "hash": "7f4eb79e81ddde6cf52b24a99f4b0797"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\characters\\bagani-shadow.gif": {
+    "mtime": 1785921742.9313865,
+    "hash": "b2eedbb7fabb19fdc306b6127f9591c6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\characters\\mandirigma-shadow.gif": {
+    "mtime": 1785921742.932387,
+    "hash": "832fe5606b7b7ae3f2222cd9e271b7cc"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\characters\\mangangayaw-shadow.gif": {
+    "mtime": 1785921742.9348962,
+    "hash": "ac332d632cf0d0af8fd4c44a7aab095d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\battle-start.png": {
+    "mtime": 1785921742.9384112,
+    "hash": "2fc27f1bc02e658f1ca0066e18486cbc"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\defeat-banner.png": {
+    "mtime": 1785921742.9384112,
+    "hash": "cb3b0a04f404787194fa52d98e1361cd"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\game-enemy-turn.png": {
+    "mtime": 1785921742.9394119,
+    "hash": "f9489e3071cca2a84812a55141df97fe"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\game-player-turn.png": {
+    "mtime": 1785921742.9394119,
+    "hash": "1e099155cad303bc86daaf5053adfd3f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\graybattle-start.png": {
+    "mtime": 1785921742.9394119,
+    "hash": "94c6a5bc34be117a0af8fabb9afd48ae"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\main-boss-battle-banner.png": {
+    "mtime": 1785921742.941411,
+    "hash": "1bfbee3afb079b2d215ced6dfe10bafe"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\mini-boss-battle-banner.png": {
+    "mtime": 1785921742.9429882,
+    "hash": "136285dd6974e37e734fe90d69c6b695"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\banners\\victory-banner.png": {
+    "mtime": 1785921742.943988,
+    "hash": "184d2e8c6028641fce04a00d94b16147"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\buffs\\agos-buff.png": {
+    "mtime": 1785921742.943988,
+    "hash": "72a72915cb768e1dd442bbac725576cf"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\buffs\\balaraw-buff.png": {
+    "mtime": 1785921742.943988,
+    "hash": "9bebe9b63d1e77b1e06fcfb0add19cd8"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\buffs\\kalasag-buff.png": {
+    "mtime": 1785921742.9449887,
+    "hash": "c3c6643768fbfe3d3bfe89605a0b014a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\buttons\\continue.png": {
+    "mtime": 1785921742.9449887,
+    "hash": "345cd60abf3c6adf21c4296e4c539e64"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\buttons\\end-turn.png": {
+    "mtime": 1785921742.9449887,
+    "hash": "0a4ac757158c1e47733a89662b224160"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\chest-close.png": {
+    "mtime": 1785921742.9460216,
+    "hash": "d1727be84e75b438cca633ba7b6f3966"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\chest-main-boss-close.png": {
+    "mtime": 1785921742.9460216,
+    "hash": "9bc5dccae6eb17d9dc24c91cd23c8f55"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\chest-main-boss-open.png": {
+    "mtime": 1785921742.9460216,
+    "hash": "4f6a3b3d4739fc30e310f688a6f8c394"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\chest-main-boss.png": {
+    "mtime": 1785921742.9470193,
+    "hash": "19570b8b119756778c4a825da0c4524f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\chest-open.png": {
+    "mtime": 1785921742.9470193,
+    "hash": "55462bb14ddd7488d479f9aa29f6a3a5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\chest.png": {
+    "mtime": 1785921742.9470193,
+    "hash": "f180790ccb22b476ed7b621c131af5e1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\korona.png": {
+    "mtime": 1785921742.94805,
+    "hash": "2c09f13e805145927bbfe0c65cc47182"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\luhain.png": {
+    "mtime": 1785921742.94805,
+    "hash": "77783ca929a301110cdd7350416bee62"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\pangil.png": {
+    "mtime": 1785921742.94805,
+    "hash": "fedf3056a46d4cb579fe58a70982ceaf"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\chests\\silang.png": {
+    "mtime": 1785921742.94805,
+    "hash": "578e7d1e6eb1c454c7b86275c2aca26d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\arrow-head.png": {
+    "mtime": 1785921742.9490492,
+    "hash": "174c0cd65a32edeab7350c5905e4713d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\arrow-node.png": {
+    "mtime": 1785921742.9490492,
+    "hash": "bbfa7a72b8c3b5ddcf6d435e64f40362"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\boss-healthbar.png": {
+    "mtime": 1785921742.9490492,
+    "hash": "ed37c3d8a82451be9a090cbaded51587"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\card-back.png": {
+    "mtime": 1785921742.9621427,
+    "hash": "91a22898de440ddfd280e74945bdce58"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\map-border.png": {
+    "mtime": 1785921742.9631436,
+    "hash": "0e217f55d5ccabe0582cb9bd99f31074"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\role-healthbar.png": {
+    "mtime": 1785921742.9631436,
+    "hash": "fdd330b6a467204dd90da0580de04064"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\settings.png": {
+    "mtime": 1785921742.9631436,
+    "hash": "0027891b19debf417a94afbc97ca2242"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\skill-cd.png": {
+    "mtime": 1785921742.9641466,
+    "hash": "3aef39ce0afce5054d00606ee68b7cca"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\fight-scene\\others\\turn-border.png": {
+    "mtime": 1785921742.9641466,
+    "hash": "7e4d8fcddb35826208c9e05ea1d8df52"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\maps\\ang-lagusan.png": {
+    "mtime": 1785921742.9751177,
+    "hash": "8d2271a5984b1069ed637b6477f49a3d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\maps\\bundok-pulag.png": {
+    "mtime": 1785921742.9791846,
+    "hash": "be7812e1505d8642dd49732071c3a92f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\maps\\choosing-territory.png": {
+    "mtime": 1785921742.9972343,
+    "hash": "a07fb191c2abc8fccaa2289ab28995a7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\maps\\dagat-kabisayaan.png": {
+    "mtime": 1785921743.0022357,
+    "hash": "7e002e193772b39cb216b8646b43e0e6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\maps\\daragang-magayon.png": {
+    "mtime": 1785921743.0058436,
+    "hash": "3798aaff7ae462d8b83622aca27cf098"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\maps\\kaluwalhatian.png": {
+    "mtime": 1785921743.0123508,
+    "hash": "22ec0c99fd0fbdc5ba33360ca14274f3"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Agos-Oras.jpg": {
+    "mtime": 1785921743.0133517,
+    "hash": "e2b7ef0753f91646490af6e180020e12"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Ang Kabilang Mundo.png": {
+    "mtime": 1785921743.015353,
+    "hash": "1f8838e2bda70a20b1b05b529f1fd691"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Apolaki-1.png": {
+    "mtime": 1785921743.015353,
+    "hash": "80a12f26bbda01eece547dcd0ec9312d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Apolaki.png": {
+    "mtime": 1785921743.0168557,
+    "hash": "80a12f26bbda01eece547dcd0ec9312d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\ApolakiFInal.jpg": {
+    "mtime": 1785921743.0178604,
+    "hash": "562f5635864b140a3fe3bc753cd42ab5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Babaylan-1.png": {
+    "mtime": 1785921743.0188594,
+    "hash": "aa7a978424dfde05b0420c2dca099e69"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Babaylan.png": {
+    "mtime": 1785921743.0188594,
+    "hash": "aa7a978424dfde05b0420c2dca099e69"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanBattlePriest.jpg": {
+    "mtime": 1785921743.0203624,
+    "hash": "10414f4a5c704c1787bcf89333bea04f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanBlessingFinal.jpg": {
+    "mtime": 1785921743.0213697,
+    "hash": "b736dc41a3aebdd9244733ba3437b54e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanBlessingFinal_1.jpg": {
+    "mtime": 1785921743.0223694,
+    "hash": "df18bd1b859fd5f956856fd58a4ea313"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanHealFinal.jpg": {
+    "mtime": 1785921743.0233684,
+    "hash": "ff7d7deb57d18650b457f95379ff00cd"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanManaSurge.jpg": {
+    "mtime": 1785921743.0253706,
+    "hash": "35419db8a2e29ab4477986c3d500cff5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanPureHealer.jpg": {
+    "mtime": 1785921743.0253706,
+    "hash": "bc07a397801a9c550c5e4627251c728d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanPurify.jpg": {
+    "mtime": 1785921743.026875,
+    "hash": "779535728a34d69fe9e1b61e328b3e25"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanRoleCard.jpg": {
+    "mtime": 1785921743.0278795,
+    "hash": "2f8b253ea7fbf3354019fb80a7ca656f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanSacrificeFInal.jpg": {
+    "mtime": 1785921743.0288801,
+    "hash": "a3faae66e23a8e6d04c32d4a740ac384"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BabaylanSupportCleric.jpg": {
+    "mtime": 1785921743.030385,
+    "hash": "04cd634e80fd3c5db8103a3455295159"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bagani-1.png": {
+    "mtime": 1785921743.0313897,
+    "hash": "c3a78d58e285ecb42c155cd0c3583164"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bagani.png": {
+    "mtime": 1785921743.0313897,
+    "hash": "c3a78d58e285ecb42c155cd0c3583164"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiBash.jpg": {
+    "mtime": 1785921743.0323906,
+    "hash": "a2a47a5f3607aa386a4adc114dab8550"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiDamageSoaker.jpg": {
+    "mtime": 1785921743.0338943,
+    "hash": "980e6bed263d7f70d88dcec52f4dd774"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiFortify.jpg": {
+    "mtime": 1785921743.035426,
+    "hash": "fd8346868f32ef4727cc73ef0aed38db"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiFortify_1.jpg": {
+    "mtime": 1785921743.035426,
+    "hash": "83cc7e60422c8c945dbd8b3916ed31d2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiJUggernaut.jpg": {
+    "mtime": 1785921743.037529,
+    "hash": "e7099207c1b3dc7b0b2fa0430002e5a1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiLastStand_1.jpg": {
+    "mtime": 1785921743.0385356,
+    "hash": "8cd01fc45e70bd7838dacd2cb5ed4b02"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiOath_1.jpg": {
+    "mtime": 1785921743.039537,
+    "hash": "cd3a67e9c005f2acbd4c90634dfe54fc"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiOath_2.jpg": {
+    "mtime": 1785921743.040536,
+    "hash": "49b8e485430af829792eedf5ac736825"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiRoleCard.jpg": {
+    "mtime": 1785921743.0415344,
+    "hash": "41cc1da5ffeb5aba188827181dbf40e8"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiTauntFinal_1.jpg": {
+    "mtime": 1785921743.0425346,
+    "hash": "e0a78ffe7b326578d1fc70fe8b8b9c23"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BaganiWall.jpg": {
+    "mtime": 1785921743.0445354,
+    "hash": "68f524ffe51649aff12088cffa122de2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bakunawa-1.png": {
+    "mtime": 1785921743.0445354,
+    "hash": "1c1603ea6c6b790565ce62e89c512520"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bakunawa.png": {
+    "mtime": 1785921743.0450423,
+    "hash": "1c1603ea6c6b790565ce62e89c512520"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BakunawaFinal.jpg": {
+    "mtime": 1785921743.0460484,
+    "hash": "3c7c05f1aabfa8b32b4d57e7f5f3fccf"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Balaraw.jpg": {
+    "mtime": 1785921743.0470476,
+    "hash": "6a1c1b55f3955dfeea26283cb47fcbcd"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bathala-1.png": {
+    "mtime": 1785921743.0470476,
+    "hash": "066a09cf6958b00855eb917e0de5e9f1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bathala.png": {
+    "mtime": 1785921743.0470476,
+    "hash": "066a09cf6958b00855eb917e0de5e9f1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BathalaFinal.jpg": {
+    "mtime": 1785921743.049554,
+    "hash": "4678ad438aae425a4440bc5bbab01bc6"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bundok Pulag-1.png": {
+    "mtime": 1785921743.0505514,
+    "hash": "611cddbef55b21068731da81bc0b74e7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Bundok Pulag.png": {
+    "mtime": 1785921743.0505514,
+    "hash": "611cddbef55b21068731da81bc0b74e7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\BundokPulag.jpg": {
+    "mtime": 1785921743.052624,
+    "hash": "d9639ffac590a5b0ec84ac56201e192c"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\CARD BACK OG.png": {
+    "mtime": 1785921743.0651958,
+    "hash": "91a22898de440ddfd280e74945bdce58"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\d10.png": {
+    "mtime": 1785921743.1089933,
+    "hash": "bc954eeff46597d7c4f450c8df6e42f2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\d100.png": {
+    "mtime": 1785921743.1089933,
+    "hash": "bc954eeff46597d7c4f450c8df6e42f2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\d20.png": {
+    "mtime": 1785921743.1089933,
+    "hash": "6dc6a3bcfe5786d514ea89d623bc6e69"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\d4.png": {
+    "mtime": 1785921743.1104977,
+    "hash": "36d7929ef9f79a317b504174a8d46f62"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Dagat ng Kabisayaan-1.png": {
+    "mtime": 1785921743.0651958,
+    "hash": "8eb55ea6e0db81661d0ba0c0b929f1c9"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Dagat ng Kabisayaan.png": {
+    "mtime": 1785921743.0667007,
+    "hash": "8eb55ea6e0db81661d0ba0c0b929f1c9"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\DagatNgKabisayan_1.jpg": {
+    "mtime": 1785921743.0682883,
+    "hash": "d2732bd2f999370675483f35877f001a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Daragang Magayon-1.png": {
+    "mtime": 1785921743.0692966,
+    "hash": "87f7c2b21dc01654da76a9173cb475b3"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Daragang Magayon.png": {
+    "mtime": 1785921743.0702965,
+    "hash": "87f7c2b21dc01654da76a9173cb475b3"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\DaragangMagayon.jpg": {
+    "mtime": 1785921743.0712936,
+    "hash": "f97b1c75f5cd3fd634dceec7985b4f5b"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Kalasag.jpg": {
+    "mtime": 1785921743.0722935,
+    "hash": "9feabd9c6be5d7c9f1310cca6b228ee5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Kalasag_1.jpg": {
+    "mtime": 1785921743.0742927,
+    "hash": "583ed87f3dad57e7c298cbe03fa5a9e1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Kaluwalhatian.jpg": {
+    "mtime": 1785921743.0752928,
+    "hash": "e4c82980458a82f0ea4330ed37a6efd7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Kaluwalhatian.png": {
+    "mtime": 1785921743.0767968,
+    "hash": "7494c8a0c71d206a8e3c6edbeecaafec"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Kapre-1.png": {
+    "mtime": 1785921743.0767968,
+    "hash": "674eb2d4ccee667b3c6e21770e4ad1b7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Kapre.png": {
+    "mtime": 1785921743.0767968,
+    "hash": "674eb2d4ccee667b3c6e21770e4ad1b7"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\KapreFinal.jpg": {
+    "mtime": 1785921743.0778012,
+    "hash": "cbde1f75d7eda779c1f84ec0ae17787d"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Korona-1.png": {
+    "mtime": 1785921743.0778012,
+    "hash": "137f74d707606293e32ed4e57828a977"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Korona.png": {
+    "mtime": 1785921743.0788045,
+    "hash": "137f74d707606293e32ed4e57828a977"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Luhain-1.png": {
+    "mtime": 1785921743.0788045,
+    "hash": "47c213a7ded4946a253eadffd5c631f2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Luhain.png": {
+    "mtime": 1785921743.0788045,
+    "hash": "47c213a7ded4946a253eadffd5c631f2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MananangalFinal.jpg": {
+    "mtime": 1785921743.0803084,
+    "hash": "1ff74806c1f29b002e544541c81996ee"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Manananggal-1.png": {
+    "mtime": 1785921743.0803084,
+    "hash": "fa85174769e5ca8e5a38155a742c0d25"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Manananggal.png": {
+    "mtime": 1785921743.0808115,
+    "hash": "fa85174769e5ca8e5a38155a742c0d25"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Mandirigma-1.png": {
+    "mtime": 1785921743.0808115,
+    "hash": "88aa229eb308162f331ed73a5c30f0e0"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Mandirigma.png": {
+    "mtime": 1785921743.0808115,
+    "hash": "88aa229eb308162f331ed73a5c30f0e0"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaAllIn.jpg": {
+    "mtime": 1785921743.0818157,
+    "hash": "45e923c4e6f9474daa89e8d29a36cbd2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaAllIn_1.jpg": {
+    "mtime": 1785921743.0828164,
+    "hash": "d9a123821b6c2b25244e2f4429352519"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaAttack.jpg": {
+    "mtime": 1785921743.0838182,
+    "hash": "9ee396f0aa7c0c9ba6c64c909f2201ee"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaBerserk.jpg": {
+    "mtime": 1785921743.0848162,
+    "hash": "4e2f793eeb4111c603ecaeaeb9840d18"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaBerserker.jpg": {
+    "mtime": 1785921743.0868173,
+    "hash": "5e9ba6095a20a4139abbf5323207eb43"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaBruiser.jpg": {
+    "mtime": 1785921743.0873227,
+    "hash": "175ade84dfe65ff7f746799cf387dc69"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaGlassCanon.jpg": {
+    "mtime": 1785921743.088328,
+    "hash": "1158b34d8ed146e772eec7e95762218f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaHeavyAttack.jpg": {
+    "mtime": 1785921743.088328,
+    "hash": "8c3d6fe515adb74de3b216acab0fdbae"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaRest.jpg": {
+    "mtime": 1785921743.0898328,
+    "hash": "2c02a84d9cf9d85aa53f79cdbf4e6ef5"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MandirigmaRoleCard.jpg": {
+    "mtime": 1785921743.0908384,
+    "hash": "4f274eb8fc74b40c322fdb65e722e409"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangagayawRoleCard.jpg": {
+    "mtime": 1785921743.0918388,
+    "hash": "01812d73b2a4b340298ebc9e550a490f"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Mangangayaw-1.png": {
+    "mtime": 1785921743.0918388,
+    "hash": "35aa0d08e6a2c9f2a39ed552a7cc1487"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Mangangayaw.png": {
+    "mtime": 1785921743.0928378,
+    "hash": "35aa0d08e6a2c9f2a39ed552a7cc1487"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawExplosiveF.jpg": {
+    "mtime": 1785921743.0938377,
+    "hash": "74dd8157e19ce3c950238feb435033d0"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawFocusF.jpg": {
+    "mtime": 1785921743.0948384,
+    "hash": "5844cea8288eb0c1ad6417a7d8e02359"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawHunter.jpg": {
+    "mtime": 1785921743.0958383,
+    "hash": "44ca448d605cd59750466b69a8f41768"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawPiercingF.jpg": {
+    "mtime": 1785921743.096838,
+    "hash": "90988b3c1303b1c14a5b85c6d62a321e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawQuickF.jpg": {
+    "mtime": 1785921743.0984795,
+    "hash": "2c85a39ce8a96bf58a2efcf25dd66a3e"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawRanger.jpg": {
+    "mtime": 1785921743.0994847,
+    "hash": "71a6d58c7d786ebcc1736516f30319de"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawSniper.jpg": {
+    "mtime": 1785921743.0994847,
+    "hash": "e8e4acd5d208221e632e102acdbe5f31"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MangangayawVolleySHot.jpg": {
+    "mtime": 1785921743.1014843,
+    "hash": "febed6ec9bb6b1a5bfd24e9db2ddd352"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Mayari-1.png": {
+    "mtime": 1785921743.1014843,
+    "hash": "bc1dc9817c68868c13fae4e2bd80e569"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Mayari.png": {
+    "mtime": 1785921743.1014843,
+    "hash": "bc1dc9817c68868c13fae4e2bd80e569"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MayariFinal.jpg": {
+    "mtime": 1785921743.1024845,
+    "hash": "262f58145d8f527bcf60dbfab20019ae"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Memory Fragment.png": {
+    "mtime": 1785921743.1034877,
+    "hash": "01ff50c235713b5880710463f45aa194"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Minokawa-1.png": {
+    "mtime": 1785921743.1034877,
+    "hash": "99bbd09570537b4d28fa8ca4434554e4"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Minokawa.png": {
+    "mtime": 1785921743.1034877,
+    "hash": "99bbd09570537b4d28fa8ca4434554e4"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\MinokawaFinal1.jpg": {
+    "mtime": 1785921743.1044872,
+    "hash": "097e83d2a2537e5293aa149e7d432d8b"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Pangil-1.png": {
+    "mtime": 1785921743.1054847,
+    "hash": "55bcdd00e112e590797e51c3ff11daf8"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Pangil.png": {
+    "mtime": 1785921743.1054847,
+    "hash": "55bcdd00e112e590797e51c3ff11daf8"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Silang-1.png": {
+    "mtime": 1785921743.1054847,
+    "hash": "d66d269d507b2c95ac6f1332d8a68590"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Silang.png": {
+    "mtime": 1785921743.1054847,
+    "hash": "d66d269d507b2c95ac6f1332d8a68590"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Sirena-1.png": {
+    "mtime": 1785921743.1054847,
+    "hash": "8dee487b6c932df237f60f552d8c8171"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Sirena.png": {
+    "mtime": 1785921743.1054847,
+    "hash": "8dee487b6c932df237f60f552d8c8171"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\SirenaFinal.jpg": {
+    "mtime": 1785921743.1069884,
+    "hash": "f73b5ee2901dfe598f01f6f192342bbd"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\timeline-age-of-balangay.png": {
+    "mtime": 1785921743.1155019,
+    "hash": "cd443230807a8ab3026e953bd7abf54c"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\timeline-arrival-pinili.png": {
+    "mtime": 1785921743.119016,
+    "hash": "dfdda34163a1f9b77c655a5e67d33ce9"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\timeline-fragmentation.png": {
+    "mtime": 1785921743.1235254,
+    "hash": "bc0557945ee4976ff6648b7e4a2153e1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\timeline-sky-mist.png": {
+    "mtime": 1785921743.1270287,
+    "hash": "2f24dbb293feadfaa62ac8a1a53b8719"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Tiyanak Swarm-1.png": {
+    "mtime": 1785921743.1079948,
+    "hash": "fe6b3a734ff68a556fb42da22b6fce10"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\Tiyanak Swarm.png": {
+    "mtime": 1785921743.1079948,
+    "hash": "fe6b3a734ff68a556fb42da22b6fce10"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\TiyanakFinal.jpg": {
+    "mtime": 1785921743.1089933,
+    "hash": "7ac6c1186947e14050a64730a362435a"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\media\\turnpiece.png": {
+    "mtime": 1785921743.1270287,
+    "hash": "03bec8159a76e5ad2e39b9503cf61003"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\relics\\korona.png": {
+    "mtime": 1785921743.1280348,
+    "hash": "137f74d707606293e32ed4e57828a977"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\relics\\luhain.png": {
+    "mtime": 1785921743.1280348,
+    "hash": "47c213a7ded4946a253eadffd5c631f2"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\relics\\memory-fragment.png": {
+    "mtime": 1785921743.1280348,
+    "hash": "01ff50c235713b5880710463f45aa194"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\relics\\pangil.png": {
+    "mtime": 1785921743.129037,
+    "hash": "55bcdd00e112e590797e51c3ff11daf8"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\relics\\silang.png": {
+    "mtime": 1785921743.129037,
+    "hash": "d66d269d507b2c95ac6f1332d8a68590"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\public\\videos\\animations\\logo.png": {
+    "mtime": 1785921743.4505198,
+    "hash": "cd0417f6c12745071da1a0de56245834"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\assets\\timeline-age-of-balangay.png": {
+    "mtime": 1785921743.9114723,
+    "hash": "cd443230807a8ab3026e953bd7abf54c"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\assets\\timeline-arrival-pinili.png": {
+    "mtime": 1785921743.9154713,
+    "hash": "dfdda34163a1f9b77c655a5e67d33ce9"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\assets\\timeline-fragmentation.png": {
+    "mtime": 1785921743.9189827,
+    "hash": "bc0557945ee4976ff6648b7e4a2153e1"
+  },
+  "D:\\Github\\balangay-of-the-forgotten-website\\scripts\\assets\\timeline-sky-mist.png": {
+    "mtime": 1785921743.922495,
+    "hash": "2f24dbb293feadfaa62ac8a1a53b8719"
+  }
+}
