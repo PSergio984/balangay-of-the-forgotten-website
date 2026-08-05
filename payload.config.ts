@@ -20,6 +20,13 @@ import { Cards } from './collections/Cards'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+// Force an explicit sslmode=verify-full so pg-connection-string does not fall back to
+// the 'prefer' alias default and emit its SECURITY WARNING on every connection.
+const rawDbUrl = process.env.DATABASE_URL || ''
+const DATABASE_URL = rawDbUrl.includes('sslmode=')
+  ? rawDbUrl.replace(/sslmode=[^&]+/, 'sslmode=verify-full')
+  : rawDbUrl + (rawDbUrl.includes('?') ? '&' : '?') + 'sslmode=verify-full'
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -48,7 +55,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: DATABASE_URL,
     },
   }),
 })
